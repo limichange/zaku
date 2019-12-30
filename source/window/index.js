@@ -5,10 +5,10 @@ exports.createLoginWin = async () => {
   const win = new BrowserWindow({
     title: app.name,
     show: false,
-    width: 300,
-    height: 450,
+    width: 1000,
+    height: 600,
     titleBarStyle: 'hidden',
-    resizable: false,
+    resizable: true,
     webPreferences: {
       nodeIntegration: true,
       webSecurity: false

@@ -21,53 +21,52 @@ app.setAppUserModelId('com.hbfocus.implan')
 // Prevent window from being garbage collected
 let mainWindow
 
-const createMainWindow = window.createLoginWin
+const createMainWindow = window.createMainWin
 
 // Prevent multiple instances of the app
 if (!app.requestSingleInstanceLock()) {
-	app.quit()
+  app.quit()
 }
 
 app.on('second-instance', () => {
-	if (mainWindow) {
-		if (mainWindow.isMinimized()) {
-			mainWindow.restore()
-		}
+  if (mainWindow) {
+    if (mainWindow.isMinimized()) {
+      mainWindow.restore()
+    }
 
-		mainWindow.show()
-	}
+    mainWindow.show()
+  }
 })
 
 app.on('window-all-closed', () => {
-	if (!is.macos) {
-		app.quit()
-	}
+  if (!is.macos) {
+    app.quit()
+  }
 })
 
 app.on('activate', async () => {
-	if (!mainWindow) {
-		mainWindow = await createMainWindow()
-	}
+  if (!mainWindow) {
+    mainWindow = await createMainWindow()
+  }
 })
-
 ;(async () => {
-	await app.whenReady()
+  await app.whenReady()
 
-	enforceMacOSAppLocation()
+  enforceMacOSAppLocation()
 
-	await prepareNext('./renderer')
+  await prepareNext('./renderer')
 
-	Menu.setApplicationMenu(menu)
-	mainWindow = await createMainWindow()
+  Menu.setApplicationMenu(menu)
+  mainWindow = await createMainWindow()
 
-	// const favoriteAnimal = config.get('favoriteAnimal');
-	// mainWindow.webContents.executeJavaScript(`document.querySelector('header p').textContent = 'Your favorite animal is ${favoriteAnimal}'`);
+  // const favoriteAnimal = config.get('favoriteAnimal');
+  // mainWindow.webContents.executeJavaScript(`document.querySelector('header p').textContent = 'Your favorite animal is ${favoriteAnimal}'`);
 })()
 
 const isDev = require('electron-is-dev')
 
 if (isDev) {
-	console.log('Running in development')
+  console.log('Running in development')
 } else {
-	console.log('Running in production')
+  console.log('Running in production')
 }
