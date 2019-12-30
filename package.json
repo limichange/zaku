@@ -61,7 +61,7 @@
     "react-split-pane": "^2.0.3",
     "rxdb": "^8.2.1",
     "rxjs": "^6.5.2",
-    "style-loader": "^0.23.1",
+    "style-loader": "^1.0.0",
     "styled-components": "^5.0.0-beta.6-ej4"
   },
   "devDependencies": {
