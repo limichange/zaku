@@ -47,7 +47,7 @@
     "electron-is-dev": "^1.1.0",
     "electron-next": "^3.1.5",
     "electron-store": "^3.3.0",
-    "electron-unhandled": "^2.2.0",
+    "electron-unhandled": "^3.0.0",
     "electron-updater": "^4.1.2",
     "electron-util": "^0.12.1",
     "execa": "^2.0.3",
