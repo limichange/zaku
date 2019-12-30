@@ -1,0 +1,19 @@
+{
+  "name": "zaku",
+  "version": "1.0.0",
+  "description": "<img src=\"https://github.com/limichange/zaku/blob/master/images/logo.jpg?raw=true\" alt=\"avatar\" width=\"300\"/>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/limichange/zaku.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/limichange/zaku/issues"
+  },
+  "homepage": "https://github.com/limichange/zaku#readme"
+}

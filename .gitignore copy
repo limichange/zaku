@@ -1,0 +1,8 @@
+node_modules
+yarn.lock
+package-lock.json
+/dist
+/renderer/out
+/renderer/.next
+/app/dist
+.DS_Store
