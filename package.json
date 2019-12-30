@@ -1,14 +1,17 @@
 {
   "name": "zaku",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "productName": "zaku",
   "description": "<img src=\"https://github.com/limichange/zaku/blob/master/images/logo.jpg?raw=true\" alt=\"avatar\" width=\"300\"/>",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/limichange/zaku.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": {
+    "name": "limichange",
+    "email": "limichange@hotmail.com"
+  },
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/limichange/zaku/issues"
   },
