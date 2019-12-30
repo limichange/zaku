@@ -40,7 +40,7 @@
     "classnames": "^2.2.6",
     "css-loader": "^3.0.0",
     "dayjs": "^1.8.15",
-    "electron-better-ipc": "^0.3.0",
+    "electron-better-ipc": "^0.7.0",
     "electron-context-menu": "^0.12.1",
     "electron-debug": "^3.0.0",
     "electron-dl": "^1.14.0",
