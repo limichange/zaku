@@ -9,11 +9,11 @@ function callback(key) {
 export default function LeftPanel() {
   return (
     <Tabs defaultActiveKey='1' onChange={callback}>
-      <TabPane tab='Tab 1' key='1'>
-        组件
-      </TabPane>
-      <TabPane tab='Tab 2' key='2'>
+      <TabPane tab='属性' key='1'>
         属性
+      </TabPane>
+      <TabPane tab='组件' key='2'>
+        组件
       </TabPane>
     </Tabs>
   )
