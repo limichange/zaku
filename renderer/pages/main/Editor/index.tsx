@@ -1,6 +1,4 @@
 import React from 'react'
-import ContactPanel from './ContactPanel'
-import ChatPanel from './ChatPanel'
 import SplitPane from 'react-split-pane'
 import './index.less'
 

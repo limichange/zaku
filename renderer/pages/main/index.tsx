@@ -1,7 +1,6 @@
 import React from 'react'
 import { Layout, Menu, Icon } from 'antd'
-import Chat from './Chat'
-import History from './History'
+import Chat from './Editor'
 import MainHeader from './MainHeader'
 
 const { Content, Sider } = Layout
@@ -55,19 +54,7 @@ class LayoutComponent extends React.Component {
             mode='inline'>
             <Menu.Item key='1'>
               <Icon type='message' />
-              <span>聊天</span>
-            </Menu.Item>
-            <Menu.Item key='2'>
-              <Icon type='contacts' />
-              <span>通讯录</span>
-            </Menu.Item>
-            <Menu.Item key='3'>
-              <Icon type='cloud' />
-              <span>文件云</span>
-            </Menu.Item>
-            <Menu.Item key='4'>
-              <Icon type='clock-circle' />
-              <span>记录</span>
+              <span>编辑</span>
             </Menu.Item>
             <Menu.Item key='5'>
               <Icon type='setting' />
@@ -80,7 +67,6 @@ class LayoutComponent extends React.Component {
             <MainHeader></MainHeader>
             <div className='mainContent'>
               {menuKey === '1' && <Chat />}
-              {menuKey === '4' && <History />}
               {menuKey === '5' && <Setting />}
             </div>
           </div>
