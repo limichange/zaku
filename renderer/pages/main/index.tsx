@@ -2,7 +2,6 @@ import React from 'react'
 import { Layout, Menu, Icon } from 'antd'
 import Chat from './Chat'
 import History from './History'
-import Contact from './Contact'
 import Cloud from './Cloud'
 import MainHeader from './MainHeader'
 
@@ -82,7 +81,6 @@ class LayoutComponent extends React.Component {
             <MainHeader></MainHeader>
             <div className='mainContent'>
               {menuKey === '1' && <Chat />}
-              {menuKey === '2' && <Contact />}
               {menuKey === '3' && <Cloud />}
               {menuKey === '4' && <History />}
               {menuKey === '5' && <Setting />}
