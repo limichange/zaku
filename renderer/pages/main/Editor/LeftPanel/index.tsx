@@ -1,42 +1,17 @@
-import { Tabs } from 'antd'
-import Example1 from '../../../../components/Example1'
-import { useDrag } from 'react-dnd'
-import Example2 from '../../../../components/Example2'
-
-const { TabPane } = Tabs
-
-function callback(key) {
-  console.log(key)
-}
+import { useDrop, DropTargetMonitor } from 'react-dnd'
+import './index.less'
 
 export default function RightPanel() {
-  const [{ opacity }, dragRef] = useDrag({
-    item: { type: 'a', text: 'a' },
-    collect: monitor => ({
-      opacity: monitor.isDragging() ? 0.5 : 1
-    })
-  })
-
-  const [{ opacity: a2 }, dragRef2] = useDrag({
-    item: { type: 'a', text: 'a' },
-    collect: monitor => ({
-      opacity: monitor.isDragging() ? 0.5 : 1
+  const [collectedProps, drop] = useDrop({
+    accept: 'a',
+    collect: (minoter: DropTargetMonitor) => ({
+      isOver: minoter.isOver()
     })
   })
 
   return (
-    <Tabs defaultActiveKey='1' onChange={callback}>
-      <TabPane tab='属性' key='1'>
-        属性
-      </TabPane>
-      <TabPane tab='组件' key='2'>
-        <div ref={dragRef}>
-          <Example1></Example1>
-        </div>
-        <div ref={dragRef2}>
-          <Example2></Example2>
-        </div>
-      </TabPane>
-    </Tabs>
+    <div className='LeftPanel' ref={drop}>
+      Drop Target
+    </div>
   )
 }
