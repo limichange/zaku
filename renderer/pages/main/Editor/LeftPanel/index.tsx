@@ -9,7 +9,7 @@ function callback(key) {
   console.log(key)
 }
 
-export default function LeftPanel() {
+export default function RightPanel() {
   const [{ opacity }, dragRef] = useDrag({
     item: { type: 'a', text: 'a' },
     collect: monitor => ({

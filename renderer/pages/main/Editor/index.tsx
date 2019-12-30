@@ -6,13 +6,10 @@ import LeftPanel from './LeftPanel'
 import { DndProvider } from 'react-dnd'
 import RightPanel from './RightPanel'
 
-export default function Chat() {
+export default function Editor() {
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className='Chat'>
-        {/* <ContactPanel />
-				<ChatPanel /> */}
-
+      <div className='Editor'>
         <SplitPane>
           <div>
             <RightPanel></RightPanel>
