@@ -1,11 +1,8 @@
 {
   "name": "zaku",
   "version": "1.0.0",
+  "productName": "zaku",
   "description": "<img src=\"https://github.com/limichange/zaku/blob/master/images/logo.jpg?raw=true\" alt=\"avatar\" width=\"300\"/>",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/limichange/zaku.git"
@@ -15,5 +12,106 @@
   "bugs": {
     "url": "https://github.com/limichange/zaku/issues"
   },
-  "homepage": "https://github.com/limichange/zaku#readme"
+  "homepage": "https://github.com/limichange/zaku#readme",
+  "main": "source/index.js",
+  "scripts": {
+    "postinstall": "electron-builder install-app-deps",
+    "lint": "xo",
+    "test": "npm run lint",
+    "start": "electron ./source",
+    "build": "next build renderer && next export renderer",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder --macos --linux --windows --publish onTag ./src",
+    "sign": "electron-osx-sign",
+    "release": "np"
+  },
+  "dependencies": {
+    "@datorama/akita": "^4.5.0",
+    "@ffmpeg-installer/ffmpeg": "^1.0.19",
+    "@sindresorhus/tsconfig": "^0.4.0",
+    "@zeit/next-css": "^1.0.1",
+    "@zeit/next-less": "^1.0.1",
+    "@zeit/next-sass": "^1.0.1",
+    "@zeit/next-typescript": "^1.1.1",
+    "antd": "^3.20.2",
+    "classnames": "^2.2.6",
+    "css-loader": "^3.0.0",
+    "dayjs": "^1.8.15",
+    "electron-better-ipc": "^0.3.0",
+    "electron-context-menu": "^0.12.1",
+    "electron-debug": "^3.0.0",
+    "electron-dl": "^1.14.0",
+    "electron-is-dev": "^1.1.0",
+    "electron-next": "^3.1.5",
+    "electron-store": "^3.3.0",
+    "electron-unhandled": "^2.2.0",
+    "electron-updater": "^4.1.2",
+    "electron-util": "^0.12.1",
+    "execa": "^2.0.3",
+    "less": "^3.9.0",
+    "macos-version": "^5.2.0",
+    "node-sass": "^4.12.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "rxdb": "^8.2.1",
+    "rxjs": "^6.5.2",
+    "style-loader": "^0.23.1",
+    "styled-components": "^5.0.0-beta.6-ej4"
+  },
+  "devDependencies": {
+    "@types/next": "^8.0.6",
+    "@types/styled-components": "^4.1.18",
+    "acorn": "^6.2.0",
+    "electron": "^5.0.4",
+    "electron-builder": "^20.43.0",
+    "next": "^9.0.1",
+    "np": "^5.0.3",
+    "typescript": "^3.5.3",
+    "xo": "^0.24.0"
+  },
+  "xo": {
+    "envs": [
+      "node",
+      "browser"
+    ]
+  },
+  "np": {
+    "publish": false,
+    "releaseDraft": false
+  },
+  "build": {
+    "appId": "com.hbfocus.implan",
+    "mac": {
+      "category": "public.app-category.social-networking",
+      "darkModeSupport": true
+    },
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "http://127.0.0.1:8080"
+      }
+    ],
+    "dmg": {
+      "iconSize": 160,
+      "contents": [
+        {
+          "x": 180,
+          "y": 170
+        },
+        {
+          "x": 480,
+          "y": 170,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Network;Chat"
+    }
+  }
 }
