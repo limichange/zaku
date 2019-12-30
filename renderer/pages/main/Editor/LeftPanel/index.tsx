@@ -1,6 +1,7 @@
 import { Tabs } from 'antd'
 import Example1 from '../../../../components/Example1'
 import { useDrag } from 'react-dnd'
+import Example2 from '../../../../components/Example2'
 
 const { TabPane } = Tabs
 
@@ -24,6 +25,7 @@ export default function LeftPanel() {
       <TabPane tab='组件' key='2'>
         <div ref={dragRef}>
           <Example1></Example1>
+          <Example2></Example2>
         </div>
       </TabPane>
     </Tabs>
