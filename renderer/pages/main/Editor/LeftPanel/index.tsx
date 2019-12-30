@@ -17,6 +17,13 @@ export default function LeftPanel() {
     })
   })
 
+  const [{ opacity: a2 }, dragRef2] = useDrag({
+    item: { type: 'a', text: 'a' },
+    collect: monitor => ({
+      opacity: monitor.isDragging() ? 0.5 : 1
+    })
+  })
+
   return (
     <Tabs defaultActiveKey='1' onChange={callback}>
       <TabPane tab='属性' key='1'>
@@ -26,7 +33,7 @@ export default function LeftPanel() {
         <div ref={dragRef}>
           <Example1></Example1>
         </div>
-        <div ref={dragRef}>
+        <div ref={dragRef2}>
           <Example2></Example2>
         </div>
       </TabPane>
