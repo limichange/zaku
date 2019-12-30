@@ -25,6 +25,8 @@ export default function LeftPanel() {
       <TabPane tab='组件' key='2'>
         <div ref={dragRef}>
           <Example1></Example1>
+        </div>
+        <div ref={dragRef}>
           <Example2></Example2>
         </div>
       </TabPane>
