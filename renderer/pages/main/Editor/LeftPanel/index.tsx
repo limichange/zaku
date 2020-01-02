@@ -5,10 +5,14 @@ import './index.less'
 export default function RightPanel() {
   const [components, setComponents] = useState([])
   const [collectedProps, drop] = useDrop({
-    accept: 'a',
+    accept: ['input', 'button'],
     drop: (item, monitor) => {
       console.log(item, monitor)
-      setComponents([...components, <input />])
+
+      const component =
+        item.type === 'button' ? <button>按钮</button> : <input />
+
+      setComponents([...components, component])
     },
     collect: (minoter: DropTargetMonitor) => {
       const isOver = minoter.isOver()
@@ -21,7 +25,6 @@ export default function RightPanel() {
 
   return (
     <div className='LeftPanel' ref={drop}>
-      Drop Target
       {components}
     </div>
   )

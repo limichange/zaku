@@ -1,3 +1,3 @@
 export default function Example1() {
-  return <div>Example Component 1</div>
+  return <div>输入框</div>
 }
