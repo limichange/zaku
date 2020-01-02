@@ -1,6 +1,7 @@
 import { useDrop, DropTargetMonitor } from 'react-dnd'
 import { useState } from 'react'
 import './index.less'
+import { Button, Input } from 'antd'
 
 export default function RightPanel() {
   const [components, setComponents] = useState([])
@@ -10,11 +11,7 @@ export default function RightPanel() {
       console.log(item, monitor)
 
       const component =
-        item.type === 'button' ? (
-          <button disabled>按钮</button>
-        ) : (
-          <input disabled />
-        )
+        item.type === 'button' ? <Button>按钮</Button> : <Input />
 
       setComponents([...components, component])
     },
