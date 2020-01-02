@@ -65,15 +65,15 @@
     "styled-components": "^5.0.0-beta.6-ej4"
   },
   "devDependencies": {
-    "@types/next": "^8.0.6",
-    "@types/styled-components": "^4.1.18",
-    "acorn": "^6.2.0",
-    "electron": "^5.0.4",
-    "electron-builder": "^20.43.0",
-    "next": "^9.0.1",
-    "np": "^5.0.3",
-    "typescript": "^3.5.3",
-    "xo": "^0.24.0"
+    "@types/next": "8.0.7",
+    "@types/styled-components": "4.4.1",
+    "acorn": "6.4.0",
+    "electron": "5.0.13",
+    "electron-builder": "20.44.4",
+    "next": "9.1.6",
+    "np": "5.2.1",
+    "typescript": "3.7.4",
+    "xo": "0.24.0"
   },
   "xo": {
     "envs": [
