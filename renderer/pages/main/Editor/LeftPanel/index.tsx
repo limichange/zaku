@@ -3,6 +3,10 @@ import { useState } from 'react'
 import { Button, Input, DatePicker } from 'antd'
 import './index.less'
 
+function withHover(component) {
+  return <div style={{ width: '100px' }}>{component}</div>
+}
+
 export default function RightPanel() {
   const [components, setComponents] = useState([])
   const [collectedProps, drop] = useDrop({
@@ -17,7 +21,7 @@ export default function RightPanel() {
       } else if (item.type === 'datePicker') {
         component = <DatePicker />
       } else if (item.type === 'input') {
-        component = <Input />
+        component = withHover(<Input />)
       }
 
       if (!component) return
