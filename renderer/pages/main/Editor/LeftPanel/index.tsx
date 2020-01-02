@@ -1,7 +1,7 @@
 import { useDrop, DropTargetMonitor } from 'react-dnd'
 import { useState } from 'react'
-import './index.less'
 import { Button, Input, DatePicker } from 'antd'
+import './index.less'
 
 export default function RightPanel() {
   const [components, setComponents] = useState([])

@@ -1,12 +1,15 @@
 import React from 'react'
 import { Layout, Menu, Icon } from 'antd'
-import Chat from './Editor'
 import MainHeader from './MainHeader'
+import dynamic from 'next/dynamic'
+import Setting from './Setting'
+import './index.less'
 
 const { Content, Sider } = Layout
 
-import './index.less'
-import Setting from './Setting'
+const DynamicComponentWithNoSSR = dynamic(() => import('./Editor'), {
+  ssr: false
+})
 
 class LayoutComponent extends React.Component {
   state = {
@@ -66,7 +69,7 @@ class LayoutComponent extends React.Component {
           <div className='mainLayout'>
             <MainHeader></MainHeader>
             <div className='mainContent'>
-              {menuKey === '1' && <Chat />}
+              {menuKey === '1' && <DynamicComponentWithNoSSR />}
               {menuKey === '5' && <Setting />}
             </div>
           </div>
