@@ -12,14 +12,14 @@ function callback(key) {
 
 export default function RightPanel() {
   const [{ opacity }, dragRef] = useDrag({
-    item: { type: 'a', text: 'a' },
+    item: { type: 'input', text: 'a' },
     collect: monitor => ({
       opacity: monitor.isDragging() ? 0.5 : 1
     })
   })
 
   const [{ opacity: a2 }, dragRef2] = useDrag({
-    item: { type: 'a', text: 'a' },
+    item: { type: 'button', text: 'a' },
     collect: monitor => ({
       opacity: monitor.isDragging() ? 0.5 : 1
     })

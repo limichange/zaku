@@ -7,7 +7,8 @@ export default function RightPanel() {
   const [collectedProps, drop] = useDrop({
     accept: 'a',
     drop: (item, monitor) => {
-      setComponents(components.concat([<input />]))
+      console.log(item, monitor)
+      setComponents([...components, <input />])
     },
     collect: (minoter: DropTargetMonitor) => {
       const isOver = minoter.isOver()
