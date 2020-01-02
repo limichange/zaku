@@ -67,7 +67,7 @@
   "devDependencies": {
     "@types/next": "8.0.7",
     "@types/styled-components": "4.4.1",
-    "acorn": "6.4.0",
+    "acorn": "7.1.0",
     "electron": "5.0.13",
     "electron-builder": "20.44.4",
     "next": "9.1.6",
