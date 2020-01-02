@@ -1,5 +1,5 @@
 import { Tabs } from 'antd'
-import { useDrag } from 'react-dnd'
+import useDrag from './useDrag'
 import Example1 from '../../../../components/Example1'
 import Example2 from '../../../../components/Example2'
 import DatePicker from '../../../../components/DatePicker'
@@ -12,26 +12,9 @@ function callback(key) {
 }
 
 export default function RightPanel() {
-  const [{ opacity }, dragRef] = useDrag({
-    item: { type: 'input', text: 'a' },
-    collect: monitor => ({
-      opacity: monitor.isDragging() ? 0.5 : 1
-    })
-  })
-
-  const [{ opacity: a2 }, dragRef2] = useDrag({
-    item: { type: 'button', text: 'a' },
-    collect: monitor => ({
-      opacity: monitor.isDragging() ? 0.5 : 1
-    })
-  })
-
-  const [{ opacity: a3 }, dragRef3] = useDrag({
-    item: { type: 'datePicker', text: 'a' },
-    collect: monitor => ({
-      opacity: monitor.isDragging() ? 0.5 : 1
-    })
-  })
+  const [item, dragRef] = useDrag({ type: 'input', text: 'a' })
+  const [item2, dragRef2] = useDrag({ type: 'button', text: 'a' })
+  const [item3, dragRef3] = useDrag({ type: 'datePicker', text: 'a' })
 
   return (
     <div className='RightPanel'>
