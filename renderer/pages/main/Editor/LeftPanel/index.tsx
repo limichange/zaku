@@ -6,12 +6,21 @@ import { Button, Input, DatePicker } from 'antd'
 export default function RightPanel() {
   const [components, setComponents] = useState([])
   const [collectedProps, drop] = useDrop({
-    accept: ['input', 'button'],
+    accept: ['input', 'button', 'datePicker'],
     drop: (item, monitor) => {
       console.log(item, monitor)
 
-      const component =
-        item.type === 'button' ? <Button>按钮</Button> : <DatePicker />
+      let component = null
+
+      if (item.type === 'button') {
+        component = <Button>按钮</Button>
+      } else if (item.type === 'datePicker') {
+        component = <DatePicker />
+      } else if (item.type === 'input') {
+        component = <Input />
+      }
+
+      if (!component) return
 
       setComponents([...components, component])
     },
