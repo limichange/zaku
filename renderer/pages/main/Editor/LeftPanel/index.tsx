@@ -10,7 +10,11 @@ export default function RightPanel() {
       console.log(item, monitor)
 
       const component =
-        item.type === 'button' ? <button>按钮</button> : <input />
+        item.type === 'button' ? (
+          <button disabled>按钮</button>
+        ) : (
+          <input disabled />
+        )
 
       setComponents([...components, component])
     },
