@@ -16,5 +16,5 @@
     "strict": true,
     "target": "esnext"
   },
-  "exclude": ["render/.next"]
+  "exclude": ["renderer/.next", "node_modules"]
 }

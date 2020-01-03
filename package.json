@@ -60,7 +60,7 @@
     "react-dom": "^16.8.6",
     "react-split-pane": "^2.0.3",
     "rxdb": "^8.2.1",
-    "rxjs": "^6.5.2",
+    "rxjs": "^6.5.4",
     "style-loader": "^0.23.1",
     "styled-components": "^5.0.0-beta.6-ej4",
     "uuid": "^3.3.3"
