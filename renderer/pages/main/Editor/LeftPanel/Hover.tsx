@@ -20,6 +20,7 @@ export default function Hover(props) {
 
   function onClick() {
     store.setIndex('0')
+    store.setComponentKey(key)
     props.onClick(key)
   }
 
