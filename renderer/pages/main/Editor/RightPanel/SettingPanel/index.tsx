@@ -10,11 +10,13 @@ export default function SettingPanel() {
     item => editorState.key === item.key
   )
 
+  console.log(component)
+
   return (
     <div>
       <div>{editorState.key}</div>
-      <div>{component.type === 'Button' && <Button></Button>}</div>
-      <div>{component.type === 'Input' && <Input></Input>}</div>
+      <div>{component && component.type === 'button' && <Button></Button>}</div>
+      <div>{component && component.type === 'input' && <Input></Input>}</div>
     </div>
   )
 }
