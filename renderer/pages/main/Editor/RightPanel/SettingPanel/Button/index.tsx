@@ -5,6 +5,7 @@ const { Option } = Select
 export default function Button() {
   return (
     <div className='Button'>
+      type
       <Select defaultValue='Default' style={{ width: 120 }}>
         <Option value='default'>default</Option>
         <Option value='primary'>primary</Option>

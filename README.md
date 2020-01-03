@@ -12,4 +12,12 @@
 - nextjs
 - typescript
 
+## Thanks
+
+- [ReactJS — A quick tutorial to build dynamic JSON based form.](https://codeburst.io/reactjs-a-quick-tutorial-to-build-dynamic-json-based-form-a4768b3151c0)
+
+## Author
+
 <img src="https://github.com/limichange/zaku/blob/master/images/logo.jpg?raw=true" alt="avatar" width="200"/>
+
+limichange@hotmail.com
