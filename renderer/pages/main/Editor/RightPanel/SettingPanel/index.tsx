@@ -9,6 +9,9 @@ export default function SettingPanel() {
   return (
     <div>
       <div>{editorState.key}</div>
+      <div>
+        <Button></Button>
+      </div>
     </div>
   )
 }
