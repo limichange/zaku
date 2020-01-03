@@ -6,5 +6,9 @@ import editorStore from '../../store/editorStore'
 export default function SettingPanel() {
   const [editorState] = useSubscribe(editorStore)
 
-  return <div>{editorState.key}</div>
+  return (
+    <div>
+      <div>{editorState.key}</div>
+    </div>
+  )
 }

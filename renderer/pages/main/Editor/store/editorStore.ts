@@ -2,7 +2,12 @@ import { Subject } from 'rxjs'
 
 const subject = new Subject()
 
-const initialState = {
+export type initialStateInterface = {
+  tabIndex: string
+  key: string
+}
+
+const initialState: initialStateInterface = {
   tabIndex: '0',
   key: ''
 }
@@ -40,7 +45,8 @@ const editorStore = {
     state = initialState
     subject.next(state)
   },
-  initialState
+  initialState,
+  subject
 }
 
 export default editorStore
