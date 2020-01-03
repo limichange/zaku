@@ -2,7 +2,13 @@
 
 【WIP】A JSX-based page builder 基于 JSX 的编辑器
 
+<p align="center">
+  <img src="https://github.com/limichange/zaku/blob/master/images/logo.jpg?raw=true" alt="avatar" width="200"/>
+</p>
+
+<p align="center">
 <img src="https://github.com/limichange/zaku/blob/master/images/preview.png?raw=true" alt="preview" />
+</p>
 
 ## Technology
 
@@ -19,6 +25,6 @@
 
 ## Author
 
-<img src="https://github.com/limichange/zaku/blob/master/images/logo.jpg?raw=true" alt="avatar" width="200"/>
+<img src="https://github.com/limichange/log-log-log/blob/master/images/avatar.jpg?raw=true" alt="avatar" width="200"/>
 
 limichange@hotmail.com
