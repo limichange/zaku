@@ -3,8 +3,7 @@ import { Subject } from 'rxjs'
 const subject = new Subject()
 
 const initialState = {
-  data: [],
-  newDataCount: 0
+  tabIndex: '0'
 }
 
 let state = initialState
@@ -12,11 +11,10 @@ let state = initialState
 const EditorStore = {
   init: () => subject.next(state),
   subscribe: setState => subject.subscribe(setState),
-  sendMessage: message => {
+  sendMessage: tabIndex => {
     state = {
       ...state,
-      data: [...state.data, message],
-      newDataCount: state.newDataCount + 1
+      tabIndex
     }
 
     subject.next(state)
@@ -24,5 +22,8 @@ const EditorStore = {
   clear: () => {
     state = initialState
     subject.next(state)
-  }
+  },
+  initialState
 }
+
+export default EditorStore
