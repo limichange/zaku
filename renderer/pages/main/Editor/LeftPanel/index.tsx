@@ -25,7 +25,7 @@ export default function RightPanel() {
       if (!component) return
 
       component = (
-        <Hover key={key} onClick={removeComponent}>
+        <Hover key={key} uuid={key} onClick={removeComponent}>
           {component}
         </Hover>
       )

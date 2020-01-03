@@ -2,6 +2,7 @@ import useDrag from '../useDrag'
 import Example1 from '../../../../../components/Example1'
 import Example2 from '../../../../../components/Example2'
 import DatePicker from '../../../../../components/DatePicker'
+import './index.less'
 
 const ComponentsPanel: React.FC = function() {
   const [item, dragRef] = useDrag({ type: 'input', text: 'a' })

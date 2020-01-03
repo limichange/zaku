@@ -9,11 +9,12 @@ interface Hover {
 
 export default function Hover(props) {
   const [editorStoreState] = useSubscribe(store)
+  const { uuid: key } = props
 
   function onClick() {
     store.setIndex('0')
-    store.setComponentKey(props.key)
-    props.onClick(props.key)
+    store.setComponentKey(key)
+    props.onClick(key)
   }
 
   return (
