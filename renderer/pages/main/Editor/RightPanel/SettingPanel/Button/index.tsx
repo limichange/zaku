@@ -1,22 +1,39 @@
-import { Select, Row, Col } from 'antd'
+import { Select, Row, Col, Input } from 'antd'
+import './index.less'
 
 const { Option } = Select
+
+function ItemRow(props) {
+  return (
+    <Row
+      style={{ marginBottom: '5px' }}
+      type='flex'
+      justify='space-between'
+      align='middle'>
+      {props.children}
+    </Row>
+  )
+}
 
 export default function Button() {
   return (
     <div className='Button'>
-      <Row type='flex' justify='start'>
-        <Col span={4}>Type</Col>
-        <Col span={4}>
-          <Select defaultValue='Default' style={{ width: 120 }}>
-            <Option value='default'>default</Option>
-            <Option value='primary'>primary</Option>
-            <Option value='dashed'>dashed</Option>
-            <Option value='danger'>danger</Option>
-            <Option value='link'>link</Option>
-          </Select>
-        </Col>
-      </Row>
+      <ItemRow>
+        <div>Type</div>
+        <Select defaultValue='Default' style={{ width: 120 }}>
+          <Option value='default'>default</Option>
+          <Option value='primary'>primary</Option>
+          <Option value='dashed'>dashed</Option>
+          <Option value='danger'>danger</Option>
+          <Option value='link'>link</Option>
+        </Select>
+      </ItemRow>
+      <ItemRow>
+        <div>Text</div>
+        <div>
+          <Input></Input>
+        </div>
+      </ItemRow>
     </div>
   )
 }
