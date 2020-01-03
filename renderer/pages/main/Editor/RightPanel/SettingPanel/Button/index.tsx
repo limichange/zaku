@@ -1,5 +1,7 @@
 import { Select, Row, Col, Input } from 'antd'
 import './index.less'
+import useSubscribe from '../../../../../../hooks/useSubscribe'
+import editorStore from '../../../store/editorStore'
 
 const { Option } = Select
 
@@ -16,6 +18,8 @@ function ItemRow(props) {
 }
 
 export default function Button() {
+  const [editorState] = useSubscribe(editorStore)
+
   return (
     <div className='Button'>
       <ItemRow>
