@@ -4,6 +4,7 @@ import store from '../store'
 
 export default function Hover(props) {
   const [editorStore, setEditorStore] = useState(store.initialState)
+  const [key] = useState(uuid())
 
   useLayoutEffect(() => {
     const sub = store.subscribe(setEditorStore)
@@ -18,7 +19,7 @@ export default function Hover(props) {
   }
 
   return (
-    <div style={{ position: 'relative' }} key={uuid()}>
+    <div style={{ position: 'relative' }} key={key}>
       {props.children}
       <div onClick={onClickHover} className='hover'></div>
     </div>

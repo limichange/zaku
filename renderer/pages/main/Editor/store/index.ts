@@ -3,7 +3,8 @@ import { Subject } from 'rxjs'
 const subject = new Subject()
 
 const initialState = {
-  tabIndex: '0'
+  tabIndex: '0',
+  key: ''
 }
 
 let state = initialState
@@ -11,6 +12,14 @@ let state = initialState
 const EditorStore = {
   init: () => subject.next(state),
   subscribe: setState => subject.subscribe(setState),
+  setComponentKey: key => {
+    state = {
+      ...state,
+      key
+    }
+
+    subject.next(state)
+  },
   setIndex: tabIndex => {
     state = {
       ...state,
