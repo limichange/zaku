@@ -1,6 +1,7 @@
 import uuid from 'uuid'
 import { useState, useLayoutEffect } from 'react'
 import store from '../store'
+import useSubscribe from '../../../../hooks/useSubscribe'
 
 interface Hover {
   props: {}
@@ -10,13 +11,7 @@ export default function Hover(props) {
   const [editorStore, setEditorStore] = useState(store.initialState)
   const [key] = useState(uuid())
 
-  useLayoutEffect(() => {
-    const sub = store.subscribe(setEditorStore)
-
-    return () => {
-      sub.unsubscribe()
-    }
-  }, [])
+  useSubscribe(store, setEditorStore)
 
   function onClick() {
     store.setIndex('0')
