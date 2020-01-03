@@ -4,10 +4,12 @@ import { Button, Input, DatePicker } from 'antd'
 import Hover from './Hover'
 import editorStore from '../store/editorStore'
 import uuid from 'uuid'
+import useSubscribe from '../../../../hooks/useSubscribe'
 import './index.less'
 
 export default function RightPanel() {
   const [components, setComponents] = useState([])
+  const [editorState] = useSubscribe(editorStore)
   const [collectedProps, drop] = useDrop({
     accept: ['input', 'button', 'datePicker'],
     drop: (item, monitor) => {
