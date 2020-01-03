@@ -14,6 +14,7 @@ export default function RightPanel() {
       let component = null
       const key = uuid()
 
+      // todo: auto create component
       if (item.type === 'button') {
         component = <Button>Button</Button>
       } else if (item.type === 'datePicker') {
