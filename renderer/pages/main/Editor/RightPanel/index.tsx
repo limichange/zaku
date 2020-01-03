@@ -17,7 +17,6 @@ export default function RightPanel() {
 
   useLayoutEffect(() => {
     const sub = store.subscribe(setEditorStore)
-    store.init()
 
     return () => {
       sub.unsubscribe()

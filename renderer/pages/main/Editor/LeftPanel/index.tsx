@@ -1,7 +1,7 @@
 import { useDrop, DropTargetMonitor } from 'react-dnd'
 import { useState } from 'react'
 import { Button, Input, DatePicker } from 'antd'
-import withHover from './withHover'
+import Hover from './Hover'
 import './index.less'
 
 export default function RightPanel() {
@@ -12,16 +12,16 @@ export default function RightPanel() {
       let component = null
 
       if (item.type === 'button') {
-        component = withHover(<Button>按钮</Button>)
+        component = <Button>按钮</Button>
       } else if (item.type === 'datePicker') {
-        component = withHover(<DatePicker />)
+        component = <DatePicker />
       } else if (item.type === 'input') {
-        component = withHover(<Input />)
+        component = <Input />
       }
 
       if (!component) return
 
-      setComponents([...components, component])
+      setComponents([...components, <Hover>{component}</Hover>])
     },
     collect: (minoter: DropTargetMonitor) => {
       const isOver = minoter.isOver()
