@@ -9,10 +9,6 @@ import './index.less'
 
 const { TabPane } = Tabs
 
-function callback(key) {
-  console.log(key)
-}
-
 export default function RightPanel() {
   const [item, dragRef] = useDrag({ type: 'input', text: 'a' })
   const [item2, dragRef2] = useDrag({ type: 'button', text: 'a' })
@@ -27,6 +23,10 @@ export default function RightPanel() {
       sub.unsubscribe()
     }
   }, [])
+
+  function callback(key) {
+    store.setIndex(key)
+  }
 
   return (
     <div className='RightPanel'>

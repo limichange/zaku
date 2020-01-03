@@ -11,7 +11,7 @@ let state = initialState
 const EditorStore = {
   init: () => subject.next(state),
   subscribe: setState => subject.subscribe(setState),
-  sendMessage: tabIndex => {
+  setIndex: tabIndex => {
     state = {
       ...state,
       tabIndex
