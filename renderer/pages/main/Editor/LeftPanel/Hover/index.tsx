@@ -2,6 +2,8 @@ import uuid from 'uuid'
 import { useState } from 'react'
 import store from '../../store/editorStore'
 import useSubscribe from '../../../../../hooks/useSubscribe'
+import classnames from 'classnames'
+import './index.less'
 
 interface Hover {
   props: {}
@@ -20,7 +22,12 @@ export default function Hover(props) {
   return (
     <div style={{ position: 'relative' }}>
       {props.children}
-      <div onClick={onClick} className='hover'></div>
+      <div
+        onClick={onClick}
+        className={classnames({
+          hover: true,
+          selected: key === editorStoreState.key
+        })}></div>
     </div>
   )
 }
