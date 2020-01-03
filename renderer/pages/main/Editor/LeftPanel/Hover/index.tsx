@@ -8,7 +8,7 @@ interface Hover {
 }
 
 export default function Hover(props) {
-  const [editorStore, setEditorStore] = useSubscribe(store)
+  const [editorStoreState] = useSubscribe(store)
   const [key] = useState(uuid())
 
   function onClick() {
