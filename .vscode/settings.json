@@ -1,0 +1,6 @@
+{
+  "search.exclude": {
+    "**/renderer/out": true,
+    "**/renderer/.next": true
+  }
+}

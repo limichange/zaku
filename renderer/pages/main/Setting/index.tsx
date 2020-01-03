@@ -1,3 +1,3 @@
 export default function Setting() {
-  return <div>Setting</div>
+  return <div>todo</div>
 }

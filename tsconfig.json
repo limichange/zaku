@@ -16,5 +16,6 @@
     "strict": true,
     "target": "esnext"
   },
-  "exclude": ["renderer/.next", "node_modules"]
+  "include": ["**/*.tsx", "**/*.ts"],
+  "exclude": ["renderer/.next", "renderer/out", "node_modules"]
 }
