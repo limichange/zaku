@@ -5,9 +5,11 @@ import Hover from './Hover'
 import editorStore from '../store/editorStore'
 import uuid from 'uuid'
 import useSubscribe from '../../../../hooks/useSubscribe'
+import MonacoEditor from 'react-monaco-editor'
+import dynamic from 'next/dynamic'
 import './index.less'
 
-export default function RightPanel() {
+function RightPanel() {
   const [components, setComponents] = useState([])
   const [editorState] = useSubscribe(editorStore)
   const [collectedProps, drop] = useDrop({
@@ -56,6 +58,18 @@ export default function RightPanel() {
   return (
     <div className='LeftPanel' ref={drop}>
       {components}
+      {/* <MonacoEditor
+        language='javascript'
+        theme='vs-dark'
+        value={'todo'}
+        options={{
+          selectOnLineNumbers: true
+        }}
+      /> */}
     </div>
   )
 }
+
+export default dynamic(() => Promise.resolve(RightPanel), {
+  ssr: false
+})
