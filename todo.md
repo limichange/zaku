@@ -7,3 +7,7 @@
 | button     | x      |
 | input      | x      |
 | text       | x      |
+
+## 功能
+
+拖动的组件的自定义图
