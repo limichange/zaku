@@ -1,7 +1,7 @@
 import uuid from 'uuid'
-import { useState, useLayoutEffect } from 'react'
-import store from '../store'
-import useSubscribe from '../../../../hooks/useSubscribe'
+import { useState, useLayoutEffect, useRef } from 'react'
+import store from '../../store'
+import useSubscribe from '../../../../../hooks/useSubscribe'
 
 interface Hover {
   props: {}
@@ -10,6 +10,7 @@ interface Hover {
 export default function Hover(props) {
   const [editorStore, setEditorStore] = useState(store.initialState)
   const [key] = useState(uuid())
+  const ref = useRef()
 
   useSubscribe(store, setEditorStore)
 
@@ -20,7 +21,7 @@ export default function Hover(props) {
   }
 
   return (
-    <div style={{ position: 'relative' }} key={key}>
+    <div ref={ref} style={{ position: 'relative' }} key={key}>
       {props.children}
       <div onClick={onClick} className='hover'></div>
     </div>
