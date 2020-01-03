@@ -10,7 +10,6 @@ interface Hover {
 export default function Hover(props) {
   const [editorStore, setEditorStore] = useState(store.initialState)
   const [key] = useState(uuid())
-  const ref = useRef()
 
   useSubscribe(store, setEditorStore)
 
@@ -21,7 +20,7 @@ export default function Hover(props) {
   }
 
   return (
-    <div ref={ref} style={{ position: 'relative' }} key={key}>
+    <div style={{ position: 'relative' }} key={key}>
       {props.children}
       <div onClick={onClick} className='hover'></div>
     </div>

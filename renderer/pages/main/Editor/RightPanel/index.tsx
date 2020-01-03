@@ -4,8 +4,9 @@ import Example1 from '../../../../components/Example1'
 import Example2 from '../../../../components/Example2'
 import DatePicker from '../../../../components/DatePicker'
 import store from '../store'
-import { useLayoutEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import './index.less'
+import useSubscribe from '../../../../hooks/useSubscribe'
 
 const { TabPane } = Tabs
 
@@ -15,13 +16,7 @@ export default function RightPanel() {
   const [item3, dragRef3] = useDrag({ type: 'datePicker', text: 'a' })
   const [editorStore, setEditorStore] = useState(store.initialState)
 
-  useLayoutEffect(() => {
-    const sub = store.subscribe(setEditorStore)
-
-    return () => {
-      sub.unsubscribe()
-    }
-  }, [])
+  useSubscribe(store, setEditorStore)
 
   function callback(key) {
     store.setIndex(key)
