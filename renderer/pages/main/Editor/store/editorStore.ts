@@ -5,9 +5,11 @@ const subject = new Subject()
 export type initialStateInterface = {
   tabIndex: string
   key: string
+  components: any
 }
 
 const initialState: initialStateInterface = {
+  components: [],
   tabIndex: '0',
   key: ''
 }
@@ -39,6 +41,9 @@ const editorStore = {
       ...data
     }
 
+    subject.next(state)
+  },
+  addComponent(component) {
     subject.next(state)
   },
   clear: () => {

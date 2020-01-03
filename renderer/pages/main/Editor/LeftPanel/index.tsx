@@ -4,6 +4,7 @@ import { Button, Input, DatePicker } from 'antd'
 import Hover from './Hover'
 import './index.less'
 import editorStore from '../store/editorStore'
+import uuid from 'uuid'
 
 export default function RightPanel() {
   const [components, setComponents] = useState([])
@@ -11,6 +12,7 @@ export default function RightPanel() {
     accept: ['input', 'button', 'datePicker'],
     drop: (item, monitor) => {
       let component = null
+      const key = uuid()
 
       if (item.type === 'button') {
         component = <Button>Button</Button>
@@ -22,12 +24,18 @@ export default function RightPanel() {
 
       if (!component) return
 
-      // editorStore.addComponent({})
+      component = (
+        <Hover key={key} onClick={removeComponent}>
+          {component}
+        </Hover>
+      )
 
-      setComponents([
-        ...components,
-        <Hover onClick={removeComponent}>{component}</Hover>
-      ])
+      editorStore.addComponent({
+        key,
+        ...item
+      })
+
+      setComponents([...components, component])
     },
     collect: (minoter: DropTargetMonitor) => {
       const isOver = minoter.isOver()
