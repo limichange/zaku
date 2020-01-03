@@ -3,7 +3,7 @@ import Example1 from '../../../../../components/Example1'
 import Example2 from '../../../../../components/Example2'
 import DatePicker from '../../../../../components/DatePicker'
 
-export default function ComponentsPanel() {
+const ComponentsPanel: React.FC = function() {
   const [item, dragRef] = useDrag({ type: 'input', text: 'a' })
   const [item2, dragRef2] = useDrag({ type: 'button', text: 'a' })
   const [item3, dragRef3] = useDrag({ type: 'datePicker', text: 'a' })
@@ -22,3 +22,5 @@ export default function ComponentsPanel() {
     </div>
   )
 }
+
+export default ComponentsPanel
