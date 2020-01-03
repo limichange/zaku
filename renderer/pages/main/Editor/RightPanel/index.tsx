@@ -1,10 +1,9 @@
 import { Tabs } from 'antd'
-
 import editorStore from '../store/editorStore'
 import useSubscribe from '../../../../hooks/useSubscribe'
 import SettingPanel from './SettingPanel'
-import './index.less'
 import ComponentsPanel from './ComponentsPanel'
+import './index.less'
 
 const { TabPane } = Tabs
 
@@ -18,6 +17,7 @@ export default function RightPanel() {
   return (
     <div className='RightPanel'>
       <Tabs
+        animated={false}
         defaultActiveKey='0'
         activeKey={editorStoreState.tabIndex}
         onChange={callback}>
