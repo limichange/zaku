@@ -44,6 +44,11 @@ const editorStore = {
     subject.next(state)
   },
   addComponent(component) {
+    state = {
+      ...state,
+      components: [...state.components, component]
+    }
+
     subject.next(state)
   },
   clear: () => {
