@@ -1,5 +1,5 @@
 import uuid from 'uuid'
-import { useState, useLayoutEffect, useRef } from 'react'
+import { useState } from 'react'
 import store from '../../store'
 import useSubscribe from '../../../../../hooks/useSubscribe'
 

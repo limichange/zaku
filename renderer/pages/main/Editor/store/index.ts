@@ -28,6 +28,14 @@ const EditorStore = {
 
     subject.next(state)
   },
+  update: data => {
+    state = {
+      ...state,
+      ...data
+    }
+
+    subject.next(state)
+  },
   clear: () => {
     state = initialState
     subject.next(state)
