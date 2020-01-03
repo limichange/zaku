@@ -2,9 +2,9 @@ import { useDrop, DropTargetMonitor } from 'react-dnd'
 import { useState } from 'react'
 import { Button, Input, DatePicker } from 'antd'
 import Hover from './Hover'
-import './index.less'
 import editorStore from '../store/editorStore'
 import uuid from 'uuid'
+import './index.less'
 
 export default function RightPanel() {
   const [components, setComponents] = useState([])
