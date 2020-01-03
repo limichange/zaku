@@ -1,6 +1,6 @@
 import uuid from 'uuid'
 import { useState } from 'react'
-import store from '../../store'
+import store from '../../store/editorStore'
 import useSubscribe from '../../../../../hooks/useSubscribe'
 
 interface Hover {
@@ -8,10 +8,8 @@ interface Hover {
 }
 
 export default function Hover(props) {
-  const [editorStore, setEditorStore] = useState(store.initialState)
+  const [editorStore, setEditorStore] = useSubscribe(store)
   const [key] = useState(uuid())
-
-  useSubscribe(store, setEditorStore)
 
   function onClick() {
     store.setIndex('0')

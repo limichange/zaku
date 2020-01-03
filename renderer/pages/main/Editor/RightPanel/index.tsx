@@ -3,7 +3,7 @@ import useDrag from './useDrag'
 import Example1 from '../../../../components/Example1'
 import Example2 from '../../../../components/Example2'
 import DatePicker from '../../../../components/DatePicker'
-import store from '../store'
+import editorStore from '../store/editorStore'
 import { useEffect, useState } from 'react'
 import './index.less'
 import useSubscribe from '../../../../hooks/useSubscribe'
@@ -14,19 +14,17 @@ export default function RightPanel() {
   const [item, dragRef] = useDrag({ type: 'input', text: 'a' })
   const [item2, dragRef2] = useDrag({ type: 'button', text: 'a' })
   const [item3, dragRef3] = useDrag({ type: 'datePicker', text: 'a' })
-  const [editorStore, setEditorStore] = useState(store.initialState)
-
-  useSubscribe(store, setEditorStore)
+  const [editorStoreState, setEditorStore] = useSubscribe(editorStore)
 
   function callback(key) {
-    store.setIndex(key)
+    editorStore.setIndex(key)
   }
 
   return (
     <div className='RightPanel'>
       <Tabs
         defaultActiveKey='0'
-        activeKey={editorStore.tabIndex}
+        activeKey={editorStoreState.tabIndex}
         onChange={callback}>
         <TabPane tab='属性' key='0'>
           属性
