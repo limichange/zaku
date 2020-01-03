@@ -21,7 +21,10 @@ export default function RightPanel() {
 
       if (!component) return
 
-      setComponents([...components, <Hover>{component}</Hover>])
+      setComponents([
+        ...components,
+        <Hover onClick={removeComponent}>{component}</Hover>
+      ])
     },
     collect: (minoter: DropTargetMonitor) => {
       const isOver = minoter.isOver()
@@ -31,6 +34,10 @@ export default function RightPanel() {
       }
     }
   })
+
+  function removeComponent(key) {
+    console.log(key)
+  }
 
   return (
     <div className='LeftPanel' ref={drop}>
