@@ -9,7 +9,7 @@ const initialState = {
 
 let state = initialState
 
-const EditorStore = {
+const editorStore = {
   init: () => subject.next(state),
   subscribe: setState => subject.subscribe(setState),
   setComponentKey: key => {
@@ -43,4 +43,4 @@ const EditorStore = {
   initialState
 }
 
-export default EditorStore
+export default editorStore

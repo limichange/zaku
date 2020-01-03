@@ -10,7 +10,6 @@ export default function ComponentsPanel() {
 
   return (
     <div className='ComponentsPanel'>
-      {' '}
       <div ref={dragRef}>
         <Example1></Example1>
       </div>
