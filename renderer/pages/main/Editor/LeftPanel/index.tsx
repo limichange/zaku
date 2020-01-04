@@ -1,12 +1,14 @@
 import { useDrop, DropTargetMonitor } from 'react-dnd'
 import { useState } from 'react'
-import { Button, Input, DatePicker } from 'antd'
+import { Button, Input, DatePicker, Tabs } from 'antd'
 import Hover from './Hover'
 import editorStore from '../store/editorStore'
 import uuid from 'uuid'
 import useSubscribe from '../../../../hooks/useSubscribe'
 import MonacoEditor from './MonacoEditor'
 import './index.less'
+
+const { TabPane } = Tabs
 
 function LeftPanel() {
   const [components, setComponents] = useState([])
@@ -56,8 +58,14 @@ function LeftPanel() {
 
   return (
     <div className='LeftPanel' ref={drop}>
-      {components}
-      <MonacoEditor></MonacoEditor>
+      <Tabs animated={false} defaultActiveKey='0'>
+        <TabPane tab='UI' key='0'>
+          {components}
+        </TabPane>
+        <TabPane tab='Code' key='1'>
+          <MonacoEditor></MonacoEditor>
+        </TabPane>
+      </Tabs>
     </div>
   )
 }

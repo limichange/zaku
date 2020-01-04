@@ -1,5 +1,6 @@
 const withLess = require('@zeit/next-less')
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin')
+
 module.exports = withLess({
   lessLoaderOptions: {
     javascriptEnabled: true

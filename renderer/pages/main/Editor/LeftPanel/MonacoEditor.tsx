@@ -15,16 +15,14 @@ export default function(props) {
   }
 
   return (
-    <>
-      <MonacoEditor
-        language='json'
-        theme='vs-dark'
-        value=''
-        options={{ selectOnLineNumbers: true }}
-        onChange={() => null}
-        editorDidMount={() => null}
-        {...props}
-      />
-    </>
+    <MonacoEditor
+      language='json'
+      theme='vs-dark'
+      value=''
+      options={{ selectOnLineNumbers: true }}
+      onChange={() => null}
+      editorDidMount={() => null}
+      {...props}
+    />
   )
 }
