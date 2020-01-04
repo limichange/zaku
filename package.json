@@ -31,6 +31,7 @@
   "dependencies": {
     "@datorama/akita": "^4.5.0",
     "@ffmpeg-installer/ffmpeg": "^1.0.19",
+    "@rooks/use-boundingclientrect": "^3.6.0",
     "@sindresorhus/tsconfig": "^0.4.0",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-less": "^1.0.1",
@@ -60,7 +61,7 @@
     "react": "^16.8.6",
     "react-dnd": "^10.0.2",
     "react-dnd-html5-backend": "^10.0.2",
-    "react-dom": "^16.8.6",
+    "react-dom": "^16.12.0",
     "react-monaco-editor": "^0.32.1",
     "react-split-pane": "^2.0.3",
     "rxdb": "^8.2.1",
