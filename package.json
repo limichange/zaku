@@ -73,7 +73,7 @@
     "acorn": "7.1.0",
     "electron": "7.1.7",
     "electron-builder": "21.2.0",
-    "next": "9.1.6",
+    "next": "9.1.7",
     "np": "5.2.1",
     "typescript": "3.7.4",
     "xo": "0.25.3"
