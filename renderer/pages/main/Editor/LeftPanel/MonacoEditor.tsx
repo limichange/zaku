@@ -1,14 +1,16 @@
-import React, { Component, useEffect } from 'react'
+import React, { Component, useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
 
-export default function(props) {
-  let MonacoEditor = null
+let MonacoEditor = null
 
-  if (process.browser && !MonacoEditor) {
-    MonacoEditor = dynamic(() => import('react-monaco-editor'), {
-      ssr: false
-    })
-  }
+if (process.browser && !MonacoEditor) {
+  MonacoEditor = dynamic(() => import('react-monaco-editor'), {
+    ssr: false
+  })
+}
+
+export default function(props) {
+  const [code, setCode] = useState('')
 
   if (!MonacoEditor) {
     return <div></div>
@@ -18,9 +20,9 @@ export default function(props) {
     <MonacoEditor
       language='javascript'
       theme='vs-dark'
-      value=''
+      value={code}
       options={{ selectOnLineNumbers: true }}
-      onChange={() => null}
+      onChange={setCode}
       editorDidMount={() => null}
       {...props}
     />
