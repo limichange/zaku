@@ -1,5 +1,5 @@
 import uuid from 'uuid'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import store from '../../store/editorStore'
 import useSubscribe from '../../../../../hooks/useSubscribe'
 import classnames from 'classnames'
@@ -11,7 +11,12 @@ interface Hover {
 
 export default function Hover(props) {
   const [editorStoreState] = useSubscribe(store)
+  const ref = useRef(props.children)
   const { uuid: key } = props
+
+  useEffect(() => {
+    console.log(ref.current)
+  }, [])
 
   function onClick() {
     store.setIndex('0')

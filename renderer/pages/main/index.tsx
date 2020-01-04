@@ -53,11 +53,11 @@ class LayoutComponent extends React.Component {
             mode='inline'>
             <Menu.Item key='1'>
               <Icon type='message' />
-              <span>编辑</span>
+              <span>Editor</span>
             </Menu.Item>
             <Menu.Item key='5'>
               <Icon type='setting' />
-              <span>设置</span>
+              <span>Setting</span>
             </Menu.Item>
           </Menu>
         </Sider>
