@@ -4,6 +4,7 @@ import MainHeader from './MainHeader'
 import Setting from './Setting'
 import Editor from './Editor'
 import './index.less'
+import dynamic from 'next/dynamic'
 
 const { Content, Sider } = Layout
 

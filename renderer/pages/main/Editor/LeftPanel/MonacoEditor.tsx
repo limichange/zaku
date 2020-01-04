@@ -1,16 +1,32 @@
-import React, { Component } from 'react'
-import MonacoEditor from 'react-monaco-editor'
+import React, { Component, useEffect } from 'react'
+import dynamic from 'next/dynamic'
 
-export default props => (
-  <MonacoEditor
-    width={500}
-    height={200}
-    language='javascript'
-    theme='vs-dark'
-    value=''
-    options={{ selectOnLineNumbers: true }}
-    onChange={() => null}
-    editorDidMount={() => null}
-    {...props}
-  />
-)
+export default function(props) {
+  let MonacoEditor = null
+
+  if (process.browser) {
+    MonacoEditor = dynamic(() => import('react-monaco-editor'), {
+      ssr: false
+    })
+  }
+
+  if (!MonacoEditor) {
+    return <div></div>
+  }
+
+  return (
+    <>
+      <MonacoEditor
+        width={500}
+        height={200}
+        language='javascript'
+        theme='vs-dark'
+        value=''
+        options={{ selectOnLineNumbers: true }}
+        onChange={() => null}
+        editorDidMount={() => null}
+        {...props}
+      />
+    </>
+  )
+}

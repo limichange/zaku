@@ -5,10 +5,14 @@ import Hover from './Hover'
 import editorStore from '../store/editorStore'
 import uuid from 'uuid'
 import useSubscribe from '../../../../hooks/useSubscribe'
+import MonacoEditor from './MonacoEditor'
+import dynamic from 'next/dynamic'
 import './index.less'
-// import MonacoEditor from './MonacoEditor'
 
 function LeftPanel() {
+  // const MonacoEditor = dynamic(() => import('./MonacoEditor'), {
+  //   ssr: false
+  // })
   const [components, setComponents] = useState([])
   const [editorState] = useSubscribe(editorStore)
   const [collectedProps, drop] = useDrop({
@@ -57,6 +61,7 @@ function LeftPanel() {
   return (
     <div className='LeftPanel' ref={drop}>
       {components}
+      <MonacoEditor></MonacoEditor>
     </div>
   )
 }

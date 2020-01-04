@@ -11,6 +11,11 @@ module.exports = withLess({
       use: ['style-loader', 'css-loader']
     })
 
+    config.module.rules.push({
+      test: /\.ttf$/,
+      use: ['file-loader']
+    })
+
     return Object.assign(config, {
       target: 'electron-renderer',
       devtool: 'cheap-module-source-map',
