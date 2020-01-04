@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic'
 export default function(props) {
   let MonacoEditor = null
 
-  if (process.browser) {
+  if (process.browser && !MonacoEditor) {
     MonacoEditor = dynamic(() => import('react-monaco-editor'), {
       ssr: false
     })
@@ -17,9 +17,7 @@ export default function(props) {
   return (
     <>
       <MonacoEditor
-        width={500}
-        height={200}
-        language='javascript'
+        language='json'
         theme='vs-dark'
         value=''
         options={{ selectOnLineNumbers: true }}

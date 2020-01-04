@@ -1,6 +1,5 @@
-const withCSS = require('@zeit/next-css')
 const withLess = require('@zeit/next-less')
-
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin')
 module.exports = withLess({
   lessLoaderOptions: {
     javascriptEnabled: true
@@ -16,6 +15,13 @@ module.exports = withLess({
       use: ['file-loader']
     })
 
+    config.plugins.push(
+      new MonacoWebpackPlugin({
+        publicPath: '_next',
+        filename: `static/[name].worker.js`
+      })
+    )
+
     return Object.assign(config, {
       target: 'electron-renderer',
       devtool: 'cheap-module-source-map',
@@ -24,6 +30,7 @@ module.exports = withLess({
       })
     })
   },
+  useFileSystemPublicRoutes: false,
   exportPathMap() {
     return {
       '/main': { page: '/main' }
