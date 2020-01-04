@@ -13,7 +13,7 @@ module.exports = withLess({
 
     config.module.rules.push({
       test: /\.ttf$/,
-      use: ['file-loader']
+      use: ['file-loader?outputPath=static']
     })
 
     config.plugins.push(
