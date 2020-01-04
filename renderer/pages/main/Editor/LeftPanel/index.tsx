@@ -60,10 +60,14 @@ function LeftPanel() {
     <div className='LeftPanel'>
       <Tabs animated={false} defaultActiveKey='0'>
         <TabPane tab='UI' key='0'>
-          <div ref={drop}>{components}</div>
+          <div className='uiArea' ref={drop}>
+            {components}
+          </div>
         </TabPane>
         <TabPane tab='Code' key='1'>
-          <MonacoEditor></MonacoEditor>
+          <div className='editor'>
+            <MonacoEditor></MonacoEditor>
+          </div>
         </TabPane>
       </Tabs>
     </div>

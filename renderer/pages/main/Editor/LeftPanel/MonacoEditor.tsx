@@ -16,7 +16,7 @@ export default function(props) {
 
   return (
     <MonacoEditor
-      language='json'
+      language='javascript'
       theme='vs-dark'
       value=''
       options={{ selectOnLineNumbers: true }}
