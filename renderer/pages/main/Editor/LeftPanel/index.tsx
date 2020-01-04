@@ -57,10 +57,10 @@ function LeftPanel() {
   }
 
   return (
-    <div className='LeftPanel' ref={drop}>
+    <div className='LeftPanel'>
       <Tabs animated={false} defaultActiveKey='0'>
         <TabPane tab='UI' key='0'>
-          {components}
+          <div ref={drop}>{components}</div>
         </TabPane>
         <TabPane tab='Code' key='1'>
           <MonacoEditor></MonacoEditor>
