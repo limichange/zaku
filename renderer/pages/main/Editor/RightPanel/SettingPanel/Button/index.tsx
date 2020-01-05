@@ -1,7 +1,7 @@
 import { Select, Row, Col, Input } from 'antd'
 import useSubscribe from '../../../../../../hooks/useSubscribe'
 import editorStore from '../../../store/editorStore'
-import './index.less'
+import $style from './index.less'
 
 const { Option } = Select
 
@@ -21,7 +21,7 @@ export default function Button() {
   const [editorState] = useSubscribe(editorStore)
 
   return (
-    <div className='Button'>
+    <div className={$style.Button}>
       <ItemRow>
         <div>Type</div>
         <Select defaultValue='Default' style={{ width: 120 }}>

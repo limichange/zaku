@@ -4,7 +4,7 @@ import React from 'react'
 import store from '../../../store/editorStore'
 import useSubscribe from '../../../../../../hooks/useSubscribe'
 import useDrag from '../../../RightPanel/useDrag'
-import './index.less'
+import $style from './index.less'
 
 interface Hover {
   props: {}
@@ -51,7 +51,7 @@ export default function Hover(props) {
           height: `${height}px`
         }}
         className={classnames({
-          hover: true,
+          [$style.hover]: true,
           selected: key === editorStoreState.key
         })}></div>
     </div>

@@ -5,6 +5,7 @@ import Hover from './Hover'
 import editorStore from '../../store/editorStore'
 import uuid from 'uuid'
 import useSubscribe from '../../../../../hooks/useSubscribe'
+import $style from './index.less'
 
 export default function Editor(props) {
   const [components, setComponents] = useState([])
@@ -53,7 +54,7 @@ export default function Editor(props) {
   }
 
   return (
-    <div className='uiArea' ref={drop}>
+    <div className={$style.uiArea} ref={drop}>
       {components}
     </div>
   )

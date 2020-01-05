@@ -3,7 +3,7 @@ import editorStore from '../store/editorStore'
 import useSubscribe from '../../../../hooks/useSubscribe'
 import SettingPanel from './SettingPanel'
 import ComponentsPanel from './ComponentsPanel'
-import './index.less'
+import $style from './index.less'
 
 const { TabPane } = Tabs
 
@@ -15,7 +15,7 @@ export default function RightPanel() {
   }
 
   return (
-    <div className='RightPanel'>
+    <div className={$style.RightPanel}>
       <Tabs
         animated={false}
         defaultActiveKey='0'

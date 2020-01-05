@@ -1,6 +1,7 @@
 import React from 'react'
 import { Icon, Menu, Dropdown } from 'antd'
-import './index.less'
+import $style from './index.less'
+import classnames from 'classnames'
 
 const menu = (
   <Menu>
@@ -20,7 +21,9 @@ export default class UserAvatar extends React.Component {
   render() {
     return (
       <Dropdown overlay={menu}>
-        <a className='ant-dropdown-link UserAvatar' href='#'>
+        <a
+          className={classnames([$style.UserAvatar, 'ant-dropdown-link'])}
+          href='#'>
           <img src='https://avatars1.githubusercontent.com/u/1947344?s=460&v=4' />
           <Icon type='caret-down' />
         </a>

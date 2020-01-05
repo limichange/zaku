@@ -2,7 +2,7 @@ import useDrag from '../useDrag'
 import Input from './components/Input'
 import Button from './components/Button'
 import DatePicker from './components/DatePicker'
-import './index.less'
+import $style from './index.less'
 
 const ComponentsPanel: React.FC = function() {
   const [item, dragRef] = useDrag({ type: 'input', text: 'a' })
@@ -10,7 +10,7 @@ const ComponentsPanel: React.FC = function() {
   const [item3, dragRef3] = useDrag({ type: 'datePicker', text: 'a' })
 
   return (
-    <div className='ComponentsPanel'>
+    <div className={$style.ComponentsPanel}>
       <div ref={dragRef}>
         <Input></Input>
       </div>

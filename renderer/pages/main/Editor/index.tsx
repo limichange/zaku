@@ -4,16 +4,14 @@ import HTML5Backend from 'react-dnd-html5-backend'
 import LeftPanel from './LeftPanel'
 import { DndProvider } from 'react-dnd'
 import RightPanel from './RightPanel'
-import './index.less'
+import $style from './index.less'
 
 export default function Editor() {
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className='Editor'>
-        {/* <SplitPane> */}
+      <div className={$style.Editor}>
         <LeftPanel></LeftPanel>
         <RightPanel></RightPanel>
-        {/* </SplitPane> */}
       </div>
     </DndProvider>
   )
