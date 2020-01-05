@@ -1,8 +1,8 @@
 import React from 'react'
 import { Layout, Menu, Icon } from 'antd'
-import MainHeader from './MainHeader'
-import Setting from './Setting'
-import Editor from './Editor'
+import MainHeader from '../../components/mainPage/MainHeader'
+import Setting from '../../components/mainPage/Setting'
+import Editor from '../../components/mainPage/Editor'
 import $style from './index.less'
 import logo from './images/Icon.png'
 
