@@ -29,6 +29,8 @@
     "release": "np"
   },
   "dependencies": {
+    "@babel/generator": "^7.7.7",
+    "@babel/parser": "^7.7.7",
     "@datorama/akita": "^4.5.0",
     "@ffmpeg-installer/ffmpeg": "^1.0.19",
     "@rooks/use-boundingclientrect": "^3.6.0",
