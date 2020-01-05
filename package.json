@@ -54,6 +54,7 @@
     "electron-updater": "^4.1.2",
     "electron-util": "^0.12.1",
     "execa": "^2.0.3",
+    "image-webpack-loader": "^6.0.0",
     "less": "^3.9.0",
     "macos-version": "^5.2.0",
     "monaco-editor": "^0.19.0",
@@ -70,6 +71,7 @@
     "rxjs": "^6.5.4",
     "style-loader": "^0.23.1",
     "styled-components": "^5.0.0-beta.6-ej4",
+    "url-loader": "^3.0.0",
     "uuid": "^3.3.3"
   },
   "devDependencies": {

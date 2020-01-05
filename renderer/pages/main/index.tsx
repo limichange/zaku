@@ -4,7 +4,7 @@ import MainHeader from './MainHeader'
 import Setting from './Setting'
 import Editor from './Editor'
 import './index.less'
-import dynamic from 'next/dynamic'
+import logo from './images/Icon.png'
 
 const { Content, Sider } = Layout
 
@@ -45,7 +45,7 @@ class LayoutComponent extends React.Component {
           collapsed={this.state.collapsed}
           onCollapse={this.onCollapse}>
           <div className='ant-pro-sider-menu-logo' id='logo'>
-            <img src='/static/Icon.png' alt='logo' />
+            <img src={logo} alt='logo' />
           </div>
           <Menu
             theme='dark'

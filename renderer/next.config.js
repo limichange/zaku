@@ -6,15 +6,21 @@ module.exports = withLess({
     javascriptEnabled: true
   },
   webpack(config) {
-    config.module.rules.push({
-      test: /\.css$/,
-      use: ['style-loader', 'css-loader']
-    })
-
-    config.module.rules.push({
-      test: /\.ttf$/,
-      use: ['file-loader?outputPath=static']
-    })
+    config.module.rules = [
+      ...config.module.rules,
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.ttf$/,
+        use: ['file-loader?outputPath=static']
+      },
+      {
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        use: ['url-loader']
+      }
+    ]
 
     config.plugins.push(
       new MonacoWebpackPlugin({
