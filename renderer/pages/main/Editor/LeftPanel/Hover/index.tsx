@@ -35,7 +35,7 @@ export default function Hover(props) {
   }, [])
 
   return (
-    <div style={{ position: 'relative' }}>
+    <div style={{ position: 'relative', display: 'inline-block' }}>
       {children}
       <div
         onClick={onClick}

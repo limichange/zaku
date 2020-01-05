@@ -7,6 +7,7 @@ import uuid from 'uuid'
 import useSubscribe from '../../../../hooks/useSubscribe'
 import MonacoEditor from './MonacoEditor'
 import './index.less'
+import Preview from './Preview'
 
 const { TabPane } = Tabs
 
@@ -58,7 +59,7 @@ function LeftPanel() {
 
   return (
     <div className='LeftPanel'>
-      <Tabs animated={false} defaultActiveKey='0'>
+      <Tabs tabBarStyle={{ margin: 0 }} animated={false} defaultActiveKey='0'>
         <TabPane tab='UI' key='0'>
           <div className='uiArea' ref={drop}>
             {components}
@@ -68,6 +69,9 @@ function LeftPanel() {
           <div className='editor'>
             <MonacoEditor></MonacoEditor>
           </div>
+        </TabPane>
+        <TabPane tab='Preview' key='2'>
+          <Preview></Preview>
         </TabPane>
       </Tabs>
     </div>
