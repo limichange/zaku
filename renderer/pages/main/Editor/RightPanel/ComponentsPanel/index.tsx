@@ -1,7 +1,7 @@
 import useDrag from '../useDrag'
-import Example1 from '../../../../../components/Example1'
-import Example2 from '../../../../../components/Example2'
-import DatePicker from '../../../../../components/DatePicker'
+import Input from './components/Input'
+import Button from './components/Button'
+import DatePicker from './components/DatePicker'
 import './index.less'
 
 const ComponentsPanel: React.FC = function() {
@@ -12,10 +12,10 @@ const ComponentsPanel: React.FC = function() {
   return (
     <div className='ComponentsPanel'>
       <div ref={dragRef}>
-        <Example1></Example1>
+        <Input></Input>
       </div>
       <div ref={dragRef2}>
-        <Example2></Example2>
+        <Button></Button>
       </div>
       <div ref={dragRef3}>
         <DatePicker></DatePicker>
