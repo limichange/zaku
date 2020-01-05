@@ -3,8 +3,8 @@ import classnames from 'classnames'
 import React from 'react'
 import store from '../../../store/editorStore'
 import useSubscribe from '../../../../../../hooks/useSubscribe'
-import './index.less'
 import useDrag from '../../../RightPanel/useDrag'
+import './index.less'
 
 interface Hover {
   props: {}

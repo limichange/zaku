@@ -2,12 +2,13 @@ import MonacoEditor from './MonacoEditor'
 import Preview from './Preview'
 import Editor from './Editor'
 import { Button, Input, DatePicker, Tabs } from 'antd'
-
-import './index.less'
+import css from './index.less'
 
 const { TabPane } = Tabs
 
 function LeftPanel() {
+  console.log('css', css)
+
   return (
     <div className='LeftPanel'>
       <Tabs tabBarStyle={{ margin: 0 }} animated={false} defaultActiveKey='0'>

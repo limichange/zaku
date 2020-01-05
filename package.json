@@ -41,7 +41,7 @@
     "@zeit/next-typescript": "^1.1.1",
     "antd": "^3.20.2",
     "classnames": "^2.2.6",
-    "css-loader": "^3.0.0",
+    "css-loader": "^3.4.1",
     "dayjs": "^1.8.15",
     "electron-better-ipc": "^0.3.0",
     "electron-context-menu": "^0.12.1",

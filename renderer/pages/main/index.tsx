@@ -3,7 +3,7 @@ import { Layout, Menu, Icon } from 'antd'
 import MainHeader from './MainHeader'
 import Setting from './Setting'
 import Editor from './Editor'
-import './index.less'
+import $style from './index.less'
 import logo from './images/Icon.png'
 
 const { Content, Sider } = Layout
@@ -44,7 +44,7 @@ class LayoutComponent extends React.Component {
           defaultCollapsed={true}
           collapsed={this.state.collapsed}
           onCollapse={this.onCollapse}>
-          <div className='ant-pro-sider-menu-logo' id='logo'>
+          <div className={$style['ant-pro-sider-menu-logo']} id='logo'>
             <img src={logo} alt='logo' />
           </div>
           <Menu
@@ -63,9 +63,9 @@ class LayoutComponent extends React.Component {
           </Menu>
         </Sider>
         <Layout>
-          <div className='mainLayout'>
+          <div className={$style.mainLayout}>
             <MainHeader></MainHeader>
-            <div className='mainContent'>
+            <div className={$style.mainContent}>
               {menuKey === '1' && <Editor />}
               {menuKey === '5' && <Setting />}
             </div>

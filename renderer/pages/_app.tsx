@@ -1,5 +1,5 @@
 import App from 'next/app'
-import 'antd/dist/antd.less'
+import 'antd/dist/antd.css'
 
 export default class IMApp extends App {
   componentDidCatch(error: any, errorInfo: any) {
