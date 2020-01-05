@@ -52,7 +52,7 @@ export default function Hover(props) {
         }}
         className={classnames({
           [$style.hover]: true,
-          selected: key === editorStoreState.key
+          [$style.selected]: key === editorStoreState.key
         })}></div>
     </div>
   )

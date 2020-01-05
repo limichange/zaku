@@ -12,7 +12,9 @@ module.exports = withCss(
         ...config.module.rules,
         {
           test: /\.ttf$/,
-          use: ['file-loader?outputPath=static']
+          use: [
+            'file-loader?outputPath=static/css&publicPath=/_next/static/css'
+          ]
         },
         {
           test: /\.(gif|png|jpe?g|svg)$/i,
