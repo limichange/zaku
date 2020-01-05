@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { initialStateInterface } from '../pages/main/Editor/store/editorStore'
+import { initialStateInterface } from '../store/editorStore'
 
 export default function useSubscribe(store: any) {
   const [storeData, setStateData] = useState(store.initialState)

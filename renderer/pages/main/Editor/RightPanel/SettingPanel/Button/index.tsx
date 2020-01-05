@@ -1,6 +1,6 @@
 import { Select, Row, Col, Input } from 'antd'
 import useSubscribe from '../../../../../../hooks/useSubscribe'
-import editorStore from '../../../store/editorStore'
+import editorStore from '../../../../../../store/editorStore'
 import $style from './index.less'
 
 const { Option } = Select

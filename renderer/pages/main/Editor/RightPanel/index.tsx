@@ -1,5 +1,5 @@
 import { Tabs } from 'antd'
-import editorStore from '../store/editorStore'
+import editorStore from '../../../../store/editorStore'
 import useSubscribe from '../../../../hooks/useSubscribe'
 import SettingPanel from './SettingPanel'
 import ComponentsPanel from './ComponentsPanel'
