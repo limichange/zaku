@@ -24,7 +24,7 @@
     "start": "run-electron ./source",
     "build": "next build renderer && next export renderer",
     "pack": "electron-builder --dir",
-    "dist": "electron-builder --macos --linux --windows --publish onTag ./src",
+    "dist": "electron-builder",
     "sign": "electron-osx-sign",
     "release": "np"
   },

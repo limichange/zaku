@@ -11,4 +11,4 @@ jobs:
         uses: actions/checkout@master
 
       - name: Build
-        run: npm install && npm run build && npm run postinstall
+        run: npm install && npm run build && npm run postinstall && npm run dist
