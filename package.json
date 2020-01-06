@@ -71,7 +71,7 @@
     "@types/styled-components": "4.4.1",
     "electron": "7.1.7",
     "electron-builder": "21.2.0",
-    "electron-builder-notarize": "^1.1.1",
+    "electron-builder-notarize": "1.1.1",
     "next": "9.1.7",
     "np": "5.2.1",
     "typescript": "3.7.4",
