@@ -23,21 +23,16 @@
     "test": "npm run lint",
     "start": "run-electron ./source",
     "build": "next build renderer && next export renderer",
-    "pack": "electron-builder --dir",
-    "dist": "electron-builder",
+    "dist": "npm run build && electron-builder",
+    "pack": "npm run build && electron-builder --dir",
     "sign": "electron-osx-sign",
     "release": "np"
   },
   "dependencies": {
     "@babel/generator": "^7.7.7",
     "@babel/parser": "^7.7.7",
-    "@datorama/akita": "^4.5.0",
-    "@ffmpeg-installer/ffmpeg": "^1.0.19",
-    "@rooks/use-boundingclientrect": "^3.6.0",
-    "@sindresorhus/tsconfig": "^0.4.0",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-less": "^1.0.1",
-    "@zeit/next-sass": "^1.0.1",
     "@zeit/next-typescript": "^1.1.1",
     "antd": "^3.20.2",
     "classnames": "^2.2.6",
@@ -53,34 +48,30 @@
     "electron-unhandled": "^2.2.0",
     "electron-updater": "^4.1.2",
     "electron-util": "^0.12.1",
-    "execa": "^2.0.3",
     "image-webpack-loader": "^6.0.0",
     "less": "^3.9.0",
     "macos-version": "^5.2.0",
     "monaco-editor": "^0.19.0",
     "monaco-editor-webpack-plugin": "^1.8.1",
     "next-i18next": "^3.0.1",
-    "node-sass": "^4.12.0",
     "react": "^16.8.6",
     "react-dnd": "^10.0.2",
     "react-dnd-html5-backend": "^10.0.2",
     "react-dom": "^16.12.0",
     "react-monaco-editor": "^0.32.1",
-    "react-split-pane": "^2.0.3",
     "run-electron": "^1.0.0",
     "rxdb": "^8.2.1",
     "rxjs": "^6.5.4",
     "style-loader": "^0.23.1",
-    "styled-components": "^5.0.0-beta.6-ej4",
     "url-loader": "^3.0.0",
     "uuid": "^3.3.3"
   },
   "devDependencies": {
     "@types/next": "8.0.7",
     "@types/styled-components": "4.4.1",
-    "acorn": "7.1.0",
     "electron": "7.1.7",
     "electron-builder": "21.2.0",
+    "electron-builder-notarize": "^1.1.1",
     "next": "9.1.7",
     "np": "5.2.1",
     "typescript": "3.7.4",
@@ -97,17 +88,19 @@
     "releaseDraft": false
   },
   "build": {
-    "appId": "com.hbfocus.implan",
-    "mac": {
-      "category": "public.app-category.social-networking",
-      "darkModeSupport": true
-    },
-    "publish": [
-      {
-        "provider": "generic",
-        "url": "http://127.0.0.1:8080"
-      }
+    "appId": "com.limichange.zaku",
+    "afterSign": "electron-builder-notarize",
+    "files": [
+      "**/*",
+      "!renderer",
+      "renderer/out"
     ],
+    "mac": {
+      "electronUpdaterCompatibility": ">=2.16",
+      "category": "public.app-category.productivity",
+      "minimumSystemVersion": "10.12.0",
+      "hardenedRuntime": true
+    },
     "dmg": {
       "iconSize": 160,
       "contents": [
@@ -122,13 +115,6 @@
           "path": "/Applications"
         }
       ]
-    },
-    "linux": {
-      "target": [
-        "AppImage",
-        "deb"
-      ],
-      "category": "Network;Chat"
     }
   }
 }
