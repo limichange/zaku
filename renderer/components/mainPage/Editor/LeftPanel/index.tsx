@@ -1,4 +1,4 @@
-import MonacoEditor from './MonacoEditor'
+import CodeEditor from './CodeEditor'
 import Preview from './Preview'
 import Editor from './Editor'
 import { Button, Input, DatePicker, Tabs } from 'antd'
@@ -15,7 +15,7 @@ function LeftPanel() {
         </TabPane>
         <TabPane tab='Code' key='1'>
           <div className={$style.editor}>
-            <MonacoEditor></MonacoEditor>
+            <CodeEditor></CodeEditor>
           </div>
         </TabPane>
         <TabPane tab='Preview' key='2'>

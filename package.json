@@ -31,6 +31,8 @@
   "dependencies": {
     "@babel/generator": "^7.7.7",
     "@babel/parser": "^7.7.7",
+    "@babel/traverse": "^7.7.4",
+    "@babel/types": "^7.7.4",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-less": "^1.0.1",
     "@zeit/next-typescript": "^1.1.1",

@@ -1,3 +1,5 @@
+// todo: refactor config
+
 const cssLoaderConfig = require('@zeit/next-css/css-loader-config')
 
 module.exports = (nextConfig = {}) => {
