@@ -1,5 +1,4 @@
 import React from 'react'
-import SplitPane from 'react-split-pane'
 import HTML5Backend from 'react-dnd-html5-backend'
 import LeftPanel from './LeftPanel'
 import { DndProvider } from 'react-dnd'
