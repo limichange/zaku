@@ -16,7 +16,6 @@ export default function Hover(props) {
   const [height, setHeight] = useState(0)
   const [left, setLeft] = useState(0)
   const [top, setTop] = useState(0)
-  const [item, dragRef] = useDrag({ type: props.type, text: 'a' })
   const { uuid: key } = props
 
   const children = React.cloneElement(props.children, {
@@ -46,7 +45,6 @@ export default function Hover(props) {
     <>
       {children}
       <div
-        ref={dragRef}
         onClick={onClick}
         style={{
           position: 'fixed',
