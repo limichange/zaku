@@ -11,6 +11,7 @@ function createAttribute(name, value) {
       type: types.jsxIdentifier,
       name
     },
+
     value: {
       type: types.stringLiteral,
       value
