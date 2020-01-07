@@ -1,6 +1,4 @@
-# WIP
-
-【WIP】A JSX-based page builder 基于 JSX 的编辑器
+# [WIP] A JSX-based UI builder 基于 JSX 的 UI 编辑器
 
 <p align="center">
   <img src="https://github.com/limichange/zaku/blob/master/images/logo.jpg?raw=true" alt="avatar" width="200"/>
