@@ -13,7 +13,7 @@ function LeftPanel() {
         <TabPane tab='UI' key='0'>
           <EditorArea></EditorArea>
         </TabPane>
-        <TabPane tab='Code' key='1'>
+        <TabPane forceRender={true} tab='Code' key='1'>
           <div className={$style.editor}>
             <CodeEditor></CodeEditor>
           </div>
