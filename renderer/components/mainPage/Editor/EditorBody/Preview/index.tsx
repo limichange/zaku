@@ -1,3 +1,37 @@
+import useSubscribe from '../../../../../hooks/useSubscribe'
+import editorStore from '../../../../../store/editorStore'
+import { useState, useEffect } from 'react'
+import { Button, DatePicker, Input } from 'antd'
+import uuid from 'uuid'
+
 export default function() {
-  return <div>todo</div>
+  const [components, setComponents] = useState([])
+  const [editorState] = useSubscribe(editorStore)
+
+  useEffect(() => {
+    console.log('editorState')
+
+    setComponents(
+      editorState.components.map((component, index) => {
+        const item = component
+        const key = uuid()
+
+        if (item.type === 'button') {
+          component = <Button key={key}>Button</Button>
+        } else if (item.type === 'datePicker') {
+          component = <DatePicker key={key} />
+        } else if (item.type === 'input') {
+          component = <Input key={key} />
+        }
+
+        return component
+      })
+    )
+  }, [editorState])
+
+  return (
+    <div style={{ border: '10px solid #eee', height: '100vh' }}>
+      {components}
+    </div>
+  )
 }
