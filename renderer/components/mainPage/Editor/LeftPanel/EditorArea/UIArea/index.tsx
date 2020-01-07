@@ -1,14 +1,13 @@
 import { useDrop, DropTargetMonitor } from 'react-dnd'
 import { useState } from 'react'
 import { Button, Input, DatePicker } from 'antd'
-import Hover from './Hover'
-import editorStore from '../../../../../store/editorStore'
+import Hover from '../Hover'
+import editorStore from '../../../../../../store/editorStore'
 import uuid from 'uuid'
-import useSubscribe from '../../../../../hooks/useSubscribe'
+import useSubscribe from '../../../../../../hooks/useSubscribe'
 import $style from './index.less'
-import TreeView from './TreeView'
 
-export default function Editor(props) {
+export default function UIArea() {
   const [components, setComponents] = useState([])
   const [editorState] = useSubscribe(editorStore)
   const [collectedProps, drop] = useDrop({
@@ -55,8 +54,7 @@ export default function Editor(props) {
   }
 
   return (
-    <div className={$style.uiArea} ref={drop}>
-      <TreeView></TreeView>
+    <div ref={drop} className={$style.uiArea}>
       {components}
     </div>
   )

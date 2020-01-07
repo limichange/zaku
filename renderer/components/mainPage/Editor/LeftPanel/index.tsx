@@ -1,6 +1,6 @@
 import CodeEditor from './CodeEditor'
 import Preview from './Preview'
-import Editor from './Editor'
+import Editor from './EditorArea'
 import { Button, Input, DatePicker, Tabs } from 'antd'
 import $style from './index.less'
 
