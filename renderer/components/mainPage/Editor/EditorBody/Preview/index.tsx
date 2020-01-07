@@ -9,10 +9,8 @@ export default function() {
   const [editorState] = useSubscribe(editorStore)
 
   useEffect(() => {
-    console.log('editorState')
-
     setComponents(
-      editorState.components.map((component, index) => {
+      editorState.components.map(component => {
         const item = component
         const key = uuid()
 
