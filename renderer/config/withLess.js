@@ -34,46 +34,15 @@ module.exports = (nextConfig = {}) => {
         ]
       })
 
-      // config.module.rules.push({
-      //   test: /\.less$/,
-      //   use: options.defaultLoaders.less
-      // })
-
       config.module.rules.push({
         test: /\.less$/,
-        use: cssLoaderConfig(config, {
-          extensions: ['less'],
-          cssModules: true,
-          cssLoaderOptions,
-          postcssLoaderOptions,
-          dev,
-          isServer,
-          loaders: [
-            {
-              loader: 'less-loader',
-              options: lessLoaderOptions
-            }
-          ]
-        }),
+        use: Object.assign(options.defaultLoaders.less, { cssModules: true }),
         exclude: /node_modules/
       })
 
       config.module.rules.push({
         test: /\.less$/,
-        use: cssLoaderConfig(config, {
-          extensions: ['less'],
-          cssModules: false,
-          cssLoaderOptions,
-          postcssLoaderOptions,
-          dev,
-          isServer,
-          loaders: [
-            {
-              loader: 'less-loader',
-              options: lessLoaderOptions
-            }
-          ]
-        }),
+        use: Object.assign(options.defaultLoaders.less, { cssModules: false }),
         include: /node_modules/
       })
 
