@@ -9,7 +9,7 @@ export default class SearchInput extends React.Component {
         <AutoComplete
           className='certain-category-search'
           dropdownClassName='certain-category-search-dropdown'
-          placeholder='搜索'
+          placeholder='Search'
           style={{ width: '100%' }}>
           <Input
             suffix={<Icon type='search' className='certain-category-icon' />}
