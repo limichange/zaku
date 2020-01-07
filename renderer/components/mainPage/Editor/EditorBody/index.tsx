@@ -16,7 +16,7 @@ export default function EditorBody() {
         <TabPane tab='Code' key='1'>
           <CodeEditor></CodeEditor>
         </TabPane>
-        <TabPane tab='Preview' key='2'>
+        <TabPane tab='Preview' forceRender={true} key='2'>
           <Preview></Preview>
         </TabPane>
       </Tabs>
