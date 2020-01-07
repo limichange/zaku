@@ -6,7 +6,7 @@ import $style from './index.less'
 
 const { TabPane } = Tabs
 
-function LeftPanel() {
+export default function EditorBody() {
   return (
     <div className={$style.LeftPanel}>
       <Tabs tabBarStyle={{ margin: 0 }} animated={false} defaultActiveKey='0'>
@@ -23,5 +23,3 @@ function LeftPanel() {
     </div>
   )
 }
-
-export default LeftPanel
