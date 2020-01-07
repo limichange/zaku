@@ -21,18 +21,25 @@ function createJSXelement() {
     identifier('functionName'),
     [],
     blockStatement([
-      returnStatement(
-        jsxElement(
-          jsxOpeningElement(jsxIdentifier('Button'), [
-            jsxAttribute(jsxIdentifier('name'), stringLiteral('value'))
-          ]),
-          jsxClosingElement(jsxIdentifier('Button')),
-          [],
-          true
-        )
-      )
+      returnStatement(element('Button', [{ name: 'name1', value: 'value1' }]))
     ])
   )
+}
+
+function element(name, attributes?) {
+  return jsxElement(
+    jsxOpeningElement(
+      jsxIdentifier(name),
+      attributes.map(({ name, value }) => attribute(name, value))
+    ),
+    jsxClosingElement(jsxIdentifier(name)),
+    [],
+    true
+  )
+}
+
+function attribute(name, value) {
+  return jsxAttribute(jsxIdentifier(name), stringLiteral(value))
 }
 
 function createAttribute(name, value) {
