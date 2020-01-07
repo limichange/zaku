@@ -1,6 +1,6 @@
 import { Tabs } from 'antd'
-import editorStore from '../../../../store/editorStore'
-import useSubscribe from '../../../../hooks/useSubscribe'
+import editorStore from '../../../../../../store/editorStore'
+import useSubscribe from '../../../../../../hooks/useSubscribe'
 import SettingPanel from './SettingPanel'
 import ComponentsPanel from './ComponentsPanel'
 import $style from './index.less'
@@ -21,10 +21,10 @@ export default function RightPanel() {
         defaultActiveKey='0'
         activeKey={editorStoreState.tabIndex}
         onChange={callback}>
-        <TabPane tab='属性' key='0'>
+        <TabPane tab='Properties' key='0'>
           <SettingPanel></SettingPanel>
         </TabPane>
-        <TabPane tab='组件' key='1'>
+        <TabPane tab='Components' key='1'>
           <ComponentsPanel></ComponentsPanel>
         </TabPane>
       </Tabs>
