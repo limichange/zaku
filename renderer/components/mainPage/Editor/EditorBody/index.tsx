@@ -1,7 +1,7 @@
 import CodeEditor from './CodeEditor'
 import Preview from './Preview'
 import EditorArea from './EditorArea'
-import { Button, Input, DatePicker, Tabs } from 'antd'
+import { Tabs } from 'antd'
 import $style from './index.less'
 
 const { TabPane } = Tabs
@@ -14,9 +14,7 @@ function LeftPanel() {
           <EditorArea></EditorArea>
         </TabPane>
         <TabPane forceRender={true} tab='Code' key='1'>
-          <div className={$style.editor}>
-            <CodeEditor></CodeEditor>
-          </div>
+          <CodeEditor></CodeEditor>
         </TabPane>
         <TabPane tab='Preview' key='2'>
           <Preview></Preview>

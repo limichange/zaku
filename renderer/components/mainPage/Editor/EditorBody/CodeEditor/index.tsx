@@ -17,14 +17,20 @@ export default function(props) {
   }
 
   return (
-    <MonacoEditor
-      language='javascript'
-      theme='vs-dark'
-      value={code}
-      options={{ selectOnLineNumbers: true }}
-      onChange={setCode}
-      editorDidMount={() => null}
-      {...props}
-    />
+    <div
+      style={{
+        width: '100%',
+        height: '100vh'
+      }}>
+      <MonacoEditor
+        language='javascript'
+        theme='vs-dark'
+        value={code}
+        options={{ selectOnLineNumbers: true }}
+        onChange={setCode}
+        editorDidMount={() => null}
+        {...props}
+      />
+    </div>
   )
 }
