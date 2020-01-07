@@ -34,15 +34,35 @@ module.exports = (nextConfig = {}) => {
         ]
       })
 
+      const loaderConfig = {
+        extensions: ['less'],
+        cssLoaderOptions,
+        postcssLoaderOptions,
+        dev,
+        isServer,
+        loaders: [
+          {
+            loader: 'less-loader',
+            options: lessLoaderOptions
+          }
+        ]
+      }
+
       config.module.rules.push({
         test: /\.less$/,
-        use: Object.assign(options.defaultLoaders.less, { cssModules: true }),
+        use: cssLoaderConfig(config, {
+          cssModules: true,
+          ...loaderConfig
+        }),
         exclude: /node_modules/
       })
 
       config.module.rules.push({
         test: /\.less$/,
-        use: Object.assign(options.defaultLoaders.less, { cssModules: false }),
+        use: cssLoaderConfig(config, {
+          cssModules: false,
+          ...loaderConfig
+        }),
         include: /node_modules/
       })
 
