@@ -10,6 +10,21 @@
 <img src="https://github.com/limichange/zaku/blob/master/images/preview.png?raw=true" alt="preview" />
 </p>
 
+## Usage
+
+### Development
+
+```
+npm i
+npm run start
+```
+
+### Build client
+
+```
+npm run dist
+```
+
 ## Technology
 
 - rxjs
