@@ -16,7 +16,6 @@ export default function() {
 
   return (
     <div className={$style.TreeView}>
-      {editorState.key}
       <Tree
         onSelect={onSelect}
         defaultExpandAll={true}
