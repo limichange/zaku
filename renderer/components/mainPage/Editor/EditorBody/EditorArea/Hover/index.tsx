@@ -4,7 +4,6 @@ import React from 'react'
 import store from '../../../../../../store/editorStore'
 import useSubscribe from '../../../../../../hooks/useSubscribe'
 import $style from './index.less'
-import useDrag from '../RightPanel/useDrag'
 
 interface Hover {
   props: {}

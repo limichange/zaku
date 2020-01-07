@@ -1,8 +1,8 @@
-import useDrag from '../useDrag'
 import Input from './components/Input'
 import Button from './components/Button'
 import DatePicker from './components/DatePicker'
 import $style from './index.less'
+import useDrag from '../../../../../../../hooks/useDrag'
 
 const ComponentsPanel: React.FC = function() {
   const [item, dragRef] = useDrag({ type: 'input', text: 'a' })
