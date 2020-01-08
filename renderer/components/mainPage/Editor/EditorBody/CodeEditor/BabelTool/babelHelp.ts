@@ -21,9 +21,15 @@ function createJSXelement(components) {
     identifier('functionName'),
     [],
     blockStatement([
-      returnStatement(element('Button', [{ name: 'name1', value: 'value1' }]))
+      returnStatement(
+        JSXempty([element('Button', [{ name: 'name1', value: 'value1' }])])
+      )
     ])
   )
+}
+
+function JSXempty(children) {
+  return element('', [], children)
 }
 
 function element(name, attributes?, children = []) {
