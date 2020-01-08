@@ -15,7 +15,11 @@ export default function() {
         const key = uuid()
 
         if (item.type === 'button') {
-          component = <Button key={key}>Button</Button>
+          component = (
+            <Button {...item.attributes} key={key}>
+              Button
+            </Button>
+          )
         } else if (item.type === 'datePicker') {
           component = <DatePicker key={key} />
         } else if (item.type === 'input') {
