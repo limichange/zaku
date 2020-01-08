@@ -12,25 +12,51 @@ import {
   exportDefaultDeclaration,
   jsxElement,
   functionExpression,
-  jsxMemberExpression,
+  jsxText,
   jsxEmptyExpression,
-  stringLiteral
+  stringLiteral,
+  program,
+  importDeclaration,
+  emptyStatement,
+  importSpecifier,
+  file
 } from '@babel/types'
 
 function createJSXelement(components) {
-  return exportDefaultDeclaration(
-    functionExpression(
-      identifier('functionName'),
-      [],
-      blockStatement([
-        returnStatement(JSXempty(components.map(componentInfoTranslate)))
-      ])
+  return {
+    header: importDeclaration(
+      [importSpecifier(identifier('Button'), identifier('Button'))],
+      stringLiteral('ant')
+    ),
+    body: exportDefaultDeclaration(
+      functionExpression(
+        identifier('functionName'),
+        [],
+        blockStatement([
+          returnStatement(JSXempty(components.map(componentInfoTranslate)))
+        ])
+      )
     )
-  )
+  }
+}
+
+function importComponents(components) {
+  return []
 }
 
 function componentInfoTranslate(componentInfo) {
-  return element(componentInfo.type, [])
+  const { text, tag, attributes } = componentInfo
+
+  return element(
+    tag,
+    Object.entries(attributes).map(([key, value]) => {
+      return {
+        key,
+        value
+      }
+    }),
+    text ? [jsxText(text)] : []
+  )
 }
 
 function JSXempty(children) {
@@ -41,7 +67,7 @@ function element(name, attributes?, children = []) {
   return jsxElement(
     jsxOpeningElement(
       jsxIdentifier(name),
-      attributes.map(({ name, value }) => attribute(name, value))
+      attributes.map(({ key, value }) => attribute(key, value))
     ),
     jsxClosingElement(jsxIdentifier(name)),
     children,

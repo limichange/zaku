@@ -24,13 +24,19 @@ export default function(props) {
   }
 
   useEffect(() => {
-    const formattedCode = prettier.format(
-      generate(babelHelp.createJSXelement(editorState.components)).code,
-      {
-        parser: 'babel',
-        plugins: [parserJS]
-      }
+    const { header: headerAST, body: bodyAST } = babelHelp.createJSXelement(
+      editorState.components
     )
+    const { code: headerCode } = generate(headerAST)
+    const { code: bodyCode } = generate(bodyAST)
+
+    const formattedCode = prettier.format(headerCode + '\n\n' + bodyCode, {
+      parser: 'babel',
+      plugins: [parserJS],
+      singleQuote: true,
+      jsxSingleQuote: true,
+      jsxBracketSameLine: true
+    })
 
     setCode(formattedCode)
   }, [editorState])

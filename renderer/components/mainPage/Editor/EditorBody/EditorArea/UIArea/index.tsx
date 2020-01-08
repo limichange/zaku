@@ -35,6 +35,14 @@ export default function UIArea() {
 
       editorStore.addComponent({
         key,
+        attributes: {
+          type: 'default',
+          type2: 'default2',
+          type3: 'default3',
+          type4: 'default4',
+          type5: 'default5'
+        },
+        text: 'button',
         ...item
       })
 
