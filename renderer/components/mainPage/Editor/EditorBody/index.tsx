@@ -9,7 +9,11 @@ const { TabPane } = Tabs
 export default function EditorBody() {
   return (
     <div className={$style.LeftPanel}>
-      <Tabs tabBarStyle={{ margin: 0 }} animated={false} defaultActiveKey='0'>
+      <Tabs
+        size='small'
+        tabBarStyle={{ margin: 0 }}
+        animated={false}
+        defaultActiveKey='0'>
         <TabPane tab='UI' key='0'>
           <EditorArea></EditorArea>
         </TabPane>

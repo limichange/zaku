@@ -17,6 +17,8 @@ export default function RightPanel() {
   return (
     <div className={$style.RightPanel}>
       <Tabs
+        tabBarStyle={{}}
+        size='small'
         animated={false}
         defaultActiveKey='0'
         activeKey={editorStoreState.tabIndex}
