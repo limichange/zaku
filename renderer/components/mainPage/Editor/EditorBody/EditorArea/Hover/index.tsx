@@ -32,11 +32,12 @@ export default function Hover(props) {
 
     setTimeout(() => {
       const { width, height, left, top } = dom.getBoundingClientRect()
+      const offset = 1
 
-      setLeft(left)
-      setTop(top)
-      setHeight(height)
-      setWidth(width)
+      setLeft(left - offset)
+      setTop(top - offset)
+      setHeight(height + offset * 2)
+      setWidth(width + offset * 2)
     }, 100)
   }, [])
 
