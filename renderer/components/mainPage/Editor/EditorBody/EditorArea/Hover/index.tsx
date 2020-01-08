@@ -39,7 +39,7 @@ export default function Hover(props) {
       setHeight(height + offset * 2)
       setWidth(width + offset * 2)
     }, 100)
-  }, [])
+  }, [editorStoreState])
 
   return (
     <>
