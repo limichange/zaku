@@ -6,20 +6,13 @@ import {
   jsxIdentifier,
   blockStatement,
   returnStatement,
-  binaryExpression,
-  expressionStatement,
-  jsxExpressionContainer,
   exportDefaultDeclaration,
   jsxElement,
   functionExpression,
   jsxText,
-  jsxEmptyExpression,
   stringLiteral,
-  program,
   importDeclaration,
-  emptyStatement,
-  importSpecifier,
-  file
+  importSpecifier
 } from '@babel/types'
 
 function createJSXelement(components) {
@@ -30,7 +23,7 @@ function createJSXelement(components) {
     ),
     body: exportDefaultDeclaration(
       functionExpression(
-        identifier('functionName'),
+        identifier('component'),
         [],
         blockStatement([
           returnStatement(JSXempty(components.map(componentInfoTranslate)))

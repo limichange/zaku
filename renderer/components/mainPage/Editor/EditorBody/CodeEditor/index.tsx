@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
 import editorStore from '../../../../../store/editorStore'
 import useSubscribe from '../../../../../hooks/useSubscribe'
@@ -9,15 +9,15 @@ import parserJS from 'prettier/parser-babylon'
 
 let MonacoEditor = null
 
-if (process.browser && !MonacoEditor) {
-  MonacoEditor = dynamic(() => import('react-monaco-editor'), {
-    ssr: false
-  })
-}
-
 export default function(props) {
   const [code, setCode] = useState('')
   const [editorState] = useSubscribe(editorStore)
+
+  if (process.browser && !MonacoEditor) {
+    MonacoEditor = dynamic(() => import('react-monaco-editor'), {
+      ssr: false
+    })
+  }
 
   if (!MonacoEditor) {
     return <div></div>
