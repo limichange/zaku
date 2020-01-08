@@ -15,7 +15,7 @@ import {
   importSpecifier
 } from '@babel/types'
 
-function createJSXelement(components) {
+function createJSXelement(components: any[]) {
   return {
     header: importComponentsDeclaration(components),
     body: exportDefaultDeclaration(
@@ -23,7 +23,11 @@ function createJSXelement(components) {
         identifier('component'),
         [],
         blockStatement([
-          returnStatement(JSXempty(components.map(componentInfoTranslate)))
+          returnStatement(
+            components.length === 1
+              ? componentInfoTranslate(components[0])
+              : JSXempty(components.map(componentInfoTranslate))
+          )
         ])
       )
     )
