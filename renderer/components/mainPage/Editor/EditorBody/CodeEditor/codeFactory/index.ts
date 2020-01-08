@@ -62,9 +62,13 @@ function importComponentsDeclaration(components) {
 }
 
 function getAllComponentsTag(components) {
-  return components.map(component => {
-    return component.tag
+  const tagSet = new Set()
+
+  components.forEach(component => {
+    tagSet.add(component.tag)
   })
+
+  return Array.from(tagSet)
 }
 
 function componentInfoTranslate(componentInfo) {
