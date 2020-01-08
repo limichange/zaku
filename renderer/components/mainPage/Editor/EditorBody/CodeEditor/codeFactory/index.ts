@@ -14,6 +14,23 @@ import {
   importDeclaration,
   importSpecifier
 } from '@babel/types'
+import generate from '@babel/generator'
+import prettier from 'prettier/standalone'
+import parserJS from 'prettier/parser-babylon'
+
+function generateCode(components) {
+  const { header: headerAST, body: bodyAST } = createJSXelement(components)
+  const { code: headerCode } = generate(headerAST)
+  const { code: bodyCode } = generate(bodyAST)
+
+  return prettier.format(headerCode + '\n\n' + bodyCode, {
+    parser: 'babel',
+    plugins: [parserJS],
+    singleQuote: true,
+    jsxSingleQuote: true,
+    jsxBracketSameLine: true
+  })
+}
 
 function createJSXelement(components: any[]) {
   return {
@@ -101,5 +118,5 @@ function attribute(name, value) {
 }
 
 export default {
-  createJSXelement
+  generateCode
 }
