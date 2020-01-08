@@ -16,7 +16,7 @@ import {
   stringLiteral
 } from '@babel/types'
 
-function createJSXelement() {
+function createJSXelement(components) {
   return functionExpression(
     identifier('functionName'),
     [],
@@ -26,14 +26,14 @@ function createJSXelement() {
   )
 }
 
-function element(name, attributes?) {
+function element(name, attributes?, children = []) {
   return jsxElement(
     jsxOpeningElement(
       jsxIdentifier(name),
       attributes.map(({ name, value }) => attribute(name, value))
     ),
     jsxClosingElement(jsxIdentifier(name)),
-    [],
+    children,
     true
   )
 }

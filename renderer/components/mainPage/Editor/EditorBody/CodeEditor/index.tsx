@@ -22,7 +22,7 @@ export default function(props) {
   }
 
   useEffect(() => {
-    setCode(generate(babelHelp.createJSXelement()).code)
+    setCode(generate(babelHelp.createJSXelement(editorState.components)).code)
   }, [editorState])
 
   return (
