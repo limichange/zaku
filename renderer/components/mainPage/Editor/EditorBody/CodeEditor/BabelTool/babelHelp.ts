@@ -17,10 +17,7 @@ import {
 
 function createJSXelement(components) {
   return {
-    header: importDeclaration(
-      [importSpecifier(identifier('Button'), identifier('Button'))],
-      stringLiteral('ant')
-    ),
+    header: importComponentsDeclaration(components),
     body: exportDefaultDeclaration(
       functionExpression(
         identifier('component'),
@@ -33,8 +30,20 @@ function createJSXelement(components) {
   }
 }
 
-function importComponents(components) {
-  return []
+function importComponentsDeclaration(components) {
+  const componentName = name =>
+    importSpecifier(identifier(name), identifier(name))
+
+  return importDeclaration(
+    getAllComponentsTag(components).map(componentName),
+    stringLiteral('ant')
+  )
+}
+
+function getAllComponentsTag(components) {
+  return components.map(component => {
+    return component.tag
+  })
 }
 
 function componentInfoTranslate(componentInfo) {
@@ -52,10 +61,20 @@ function componentInfoTranslate(componentInfo) {
   )
 }
 
+/**
+ * create jsx <></>
+ * @param children
+ */
 function JSXempty(children) {
   return element('', [], children)
 }
 
+/**
+ * create jsx element
+ * @param name
+ * @param attributes
+ * @param children
+ */
 function element(name, attributes?, children = []) {
   return jsxElement(
     jsxOpeningElement(
@@ -68,6 +87,11 @@ function element(name, attributes?, children = []) {
   )
 }
 
+/**
+ * create jsx attribute
+ * @param name
+ * @param value
+ */
 function attribute(name, value) {
   return jsxAttribute(jsxIdentifier(name), stringLiteral(value))
 }
