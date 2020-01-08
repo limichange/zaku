@@ -1,5 +1,5 @@
 import { useDrop, DropTargetMonitor } from 'react-dnd'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Button, Input, DatePicker } from 'antd'
 import Hover from '../Hover'
 import editorStore from '../../../../../../store/editorStore'
@@ -10,43 +10,41 @@ import $style from './index.less'
 export default function UIArea() {
   const [components, setComponents] = useState([])
   const [editorState] = useSubscribe(editorStore)
+
+  useEffect(() => {
+    setComponents(
+      editorState.components.map(c => {
+        let component = null
+        const key = c.key
+
+        // todo: auto create component
+        if (c.type === 'button') {
+          component = <Button {...c.attributes}>Button</Button>
+        } else if (c.type === 'datePicker') {
+          component = <DatePicker />
+        } else if (c.type === 'input') {
+          component = <Input />
+        }
+
+        if (!component) return
+
+        return (
+          <Hover key={key} uuid={key} onClick={removeComponent}>
+            {component}
+          </Hover>
+        )
+      })
+    )
+  }, [editorState])
+
   const [collectedProps, drop] = useDrop({
     accept: ['input', 'button', 'datePicker'],
     drop: (item, monitor) => {
-      let component = null
-      const key = uuid()
-
-      // todo: auto create component
-      if (item.type === 'button') {
-        component = <Button>Button</Button>
-      } else if (item.type === 'datePicker') {
-        component = <DatePicker />
-      } else if (item.type === 'input') {
-        component = <Input />
-      }
-
-      if (!component) return
-
-      component = (
-        <Hover {...item} key={key} uuid={key} onClick={removeComponent}>
-          {component}
-        </Hover>
-      )
-
       editorStore.addComponent({
-        key,
-        attributes: {
-          type: 'default',
-          type2: 'default2',
-          type3: 'default3',
-          type4: 'default4',
-          type5: 'default5'
-        },
-        text: 'button',
+        key: uuid(),
+        attributes: {},
         ...item
       })
-
-      setComponents([...components, component])
     },
     collect: (minoter: DropTargetMonitor) => {
       const isOver = minoter.isOver()

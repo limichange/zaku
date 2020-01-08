@@ -43,6 +43,15 @@ const editorStore = {
 
     subject.next(state)
   },
+  updateComponentAttribute(componentKey, keyValue) {
+    state.components.forEach(c => {
+      if (c.key === componentKey) {
+        Object.assign(c.attributes, keyValue)
+      }
+    })
+
+    subject.next({ ...state })
+  },
   addComponent(component) {
     state = {
       ...state,
@@ -56,7 +65,8 @@ const editorStore = {
     subject.next(state)
   },
   initialState,
-  subject
+  subject,
+  state
 }
 
 export default editorStore

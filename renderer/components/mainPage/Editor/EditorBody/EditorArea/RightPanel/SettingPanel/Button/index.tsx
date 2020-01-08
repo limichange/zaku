@@ -20,11 +20,20 @@ function ItemRow(props) {
 export default function Button() {
   const [editorState] = useSubscribe(editorStore)
 
+  function onChange(value) {
+    editorStore.updateComponentAttribute(editorState.key, {
+      type: value
+    })
+  }
+
   return (
     <div className={$style.Button}>
       <ItemRow>
         <div>Type</div>
-        <Select defaultValue='Default' style={{ width: 120 }}>
+        <Select
+          onChange={onChange}
+          defaultValue='Default'
+          style={{ width: 120 }}>
           <Option value='default'>default</Option>
           <Option value='primary'>primary</Option>
           <Option value='dashed'>dashed</Option>
