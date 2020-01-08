@@ -18,7 +18,11 @@ let state = initialState
 
 const editorStore = {
   init: () => subject.next(state),
-  subscribe: setState => subject.subscribe(setState),
+  subscribe: setState => {
+    const unsub = subject.subscribe(setState)
+    subject.next(state)
+    return unsub
+  },
   setComponentKey: key => {
     state = {
       ...state,
@@ -44,13 +48,18 @@ const editorStore = {
     subject.next(state)
   },
   updateComponentAttribute(componentKey, keyValue) {
-    state.components.forEach(c => {
-      if (c.key === componentKey) {
-        Object.assign(c.attributes, keyValue)
-      }
-    })
+    state = {
+      ...state,
+      components: state.components.concat().map(c => {
+        if (c.key === componentKey) {
+          Object.assign(c.attributes, keyValue)
+        }
 
-    subject.next({ ...state })
+        return c
+      })
+    }
+
+    subject.next(state)
   },
   addComponent(component) {
     state = {
