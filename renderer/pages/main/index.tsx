@@ -15,7 +15,6 @@ class LayoutComponent extends React.Component {
   }
 
   onCollapse = (collapsed: boolean) => {
-    console.log(collapsed)
     this.setState({ collapsed })
   }
 
@@ -53,7 +52,7 @@ class LayoutComponent extends React.Component {
             defaultSelectedKeys={['1']}
             mode='inline'>
             <Menu.Item key='1'>
-              <Icon type='message' />
+              <Icon type='edit' />
               <span>Editor</span>
             </Menu.Item>
             <Menu.Item key='5'>
