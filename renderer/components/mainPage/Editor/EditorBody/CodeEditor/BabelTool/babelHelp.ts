@@ -9,6 +9,7 @@ import {
   binaryExpression,
   expressionStatement,
   jsxExpressionContainer,
+  exportDefaultDeclaration,
   jsxElement,
   functionExpression,
   jsxMemberExpression,
@@ -17,12 +18,14 @@ import {
 } from '@babel/types'
 
 function createJSXelement(components) {
-  return functionExpression(
-    identifier('functionName'),
-    [],
-    blockStatement([
-      returnStatement(JSXempty(components.map(componentInfoTranslate)))
-    ])
+  return exportDefaultDeclaration(
+    functionExpression(
+      identifier('functionName'),
+      [],
+      blockStatement([
+        returnStatement(JSXempty(components.map(componentInfoTranslate)))
+      ])
+    )
   )
 }
 
@@ -50,11 +53,6 @@ function attribute(name, value) {
   return jsxAttribute(jsxIdentifier(name), stringLiteral(value))
 }
 
-function createAttribute(name, value) {
-  return {}
-}
-
 export default {
-  createAttribute,
   createJSXelement
 }
