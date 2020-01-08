@@ -21,11 +21,13 @@ function createJSXelement(components) {
     identifier('functionName'),
     [],
     blockStatement([
-      returnStatement(
-        JSXempty([element('Button', [{ name: 'name1', value: 'value1' }])])
-      )
+      returnStatement(JSXempty(components.map(componentInfoTranslate)))
     ])
   )
+}
+
+function componentInfoTranslate(componentInfo) {
+  return element(componentInfo.type, [])
 }
 
 function JSXempty(children) {

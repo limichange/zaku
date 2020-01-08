@@ -4,6 +4,8 @@ import editorStore from '../../../../../store/editorStore'
 import useSubscribe from '../../../../../hooks/useSubscribe'
 import babelHelp from './BabelTool/babelHelp'
 import generate from '@babel/generator'
+import prettier from 'prettier/standalone'
+import parserJS from 'prettier/parser-babylon'
 
 let MonacoEditor = null
 
@@ -22,7 +24,15 @@ export default function(props) {
   }
 
   useEffect(() => {
-    setCode(generate(babelHelp.createJSXelement(editorState.components)).code)
+    const formattedCode = prettier.format(
+      generate(babelHelp.createJSXelement(editorState.components)).code,
+      {
+        parser: 'babel',
+        plugins: [parserJS]
+      }
+    )
+
+    setCode(formattedCode)
   }, [editorState])
 
   return (
