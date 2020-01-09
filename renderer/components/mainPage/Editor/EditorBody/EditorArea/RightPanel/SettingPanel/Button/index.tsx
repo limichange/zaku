@@ -50,11 +50,11 @@ export default function Button() {
   return (
     <div className={$style.Button}>
       <ItemRow>
-        <div>Type</div>
+        <div style={{ width: '50px' }}>Type</div>
         <Select
           onChange={onChange}
           value={attributes.type || 'default'}
-          style={{ width: 120 }}>
+          style={{ flex: 1 }}>
           <Option value='default'>default</Option>
           <Option value='primary'>primary</Option>
           <Option value='dashed'>dashed</Option>
@@ -63,10 +63,11 @@ export default function Button() {
         </Select>
       </ItemRow>
       <ItemRow>
-        <div>Text</div>
-        <div>
-          <Input value={text} onChange={onInputChange}></Input>
-        </div>
+        <div style={{ width: '50px' }}>Text</div>
+        <Input
+          style={{ flex: 1 }}
+          value={text}
+          onChange={onInputChange}></Input>
       </ItemRow>
     </div>
   )
