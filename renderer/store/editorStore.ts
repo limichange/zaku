@@ -67,6 +67,16 @@ const editorStore = {
 
     subject.next(state)
   },
+  updateComponentText(componentKey, text) {
+    state = {
+      ...state,
+      components: updateComponentsByKey(componentKey, c => {
+        c.text = text
+      })
+    }
+
+    subject.next(state)
+  },
   addComponent(component) {
     state = {
       ...state,

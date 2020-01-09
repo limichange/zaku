@@ -2,6 +2,7 @@ import { Select, Row, Col, Input } from 'antd'
 import useSubscribe from '../../../../../../../../hooks/useSubscribe'
 import editorStore from '../../../../../../../../store/editorStore'
 import $style from './index.less'
+import { useState } from 'react'
 
 const { Option } = Select
 
@@ -19,11 +20,19 @@ function ItemRow(props) {
 
 export default function Button() {
   const [editorState] = useSubscribe(editorStore)
+  const [text, setText] = useState('')
 
   function onChange(value) {
     editorStore.updateComponentAttribute(editorState.key, {
       type: value
     })
+  }
+
+  function onInputChange(event) {
+    const value = event.target.value
+
+    setText(value)
+    editorStore.updateComponentText(editorState.key, value)
   }
 
   return (
@@ -44,7 +53,7 @@ export default function Button() {
       <ItemRow>
         <div>Text</div>
         <div>
-          <Input></Input>
+          <Input value={text} onChange={onInputChange}></Input>
         </div>
       </ItemRow>
     </div>
