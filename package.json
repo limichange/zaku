@@ -73,7 +73,7 @@
     "@types/next": "8.0.7",
     "electron": "7.1.8",
     "electron-builder": "21.2.0",
-    "electron-builder-notarize": "1.1.1",
+    "electron-builder-notarize": "1.1.2",
     "next": "9.1.7",
     "np": "5.2.1",
     "typescript": "3.7.4",
