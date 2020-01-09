@@ -29,16 +29,13 @@ export default function Hover(props) {
 
   useEffect(() => {
     const dom = document.getElementById(key)
+    const { width, height, left, top } = dom.getBoundingClientRect()
+    const offset = 1
 
-    setTimeout(() => {
-      const { width, height, left, top } = dom.getBoundingClientRect()
-      const offset = 1
-
-      setLeft(left - offset)
-      setTop(top - offset)
-      setHeight(height + offset * 2)
-      setWidth(width + offset * 2)
-    }, 100)
+    setLeft(left - offset)
+    setTop(top - offset)
+    setHeight(height + offset * 2)
+    setWidth(width + offset * 2)
   }, [editorStoreState])
 
   return (
