@@ -43,6 +43,7 @@ function createJSXelement(components: any[]) {
         [],
         blockStatement([
           // todo: auto generate hooks
+          // todo: auto generate style
           returnStatement(
             components.length === 1
               ? componentInfoTranslate(components[0])
