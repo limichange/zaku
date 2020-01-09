@@ -16,6 +16,7 @@ export default function Hover(props) {
   const [left, setLeft] = useState(0)
   const [top, setTop] = useState(0)
   const { uuid: key } = props
+  let timeId = 0
 
   const children = React.cloneElement(props.children, {
     id: key
@@ -28,14 +29,18 @@ export default function Hover(props) {
   }
 
   useEffect(() => {
-    const dom = document.getElementById(key)
-    const { width, height, left, top } = dom.getBoundingClientRect()
-    const offset = 1
+    clearTimeout(timeId)
 
-    setLeft(left - offset)
-    setTop(top - offset)
-    setHeight(height + offset * 2)
-    setWidth(width + offset * 2)
+    timeId = setTimeout(() => {
+      const dom = document.getElementById(key)
+      const { width, height, left, top } = dom.getBoundingClientRect()
+      const offset = 1
+
+      setLeft(left - offset)
+      setTop(top - offset)
+      setHeight(height + offset * 2)
+      setWidth(width + offset * 2)
+    }, 100)
   }, [editorStoreState])
 
   return (
