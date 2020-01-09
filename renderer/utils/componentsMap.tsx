@@ -132,8 +132,9 @@ export default {
   getComponent(type: string) {
     if (type.includes('Antd')) {
       type = type.replace('Antd', '')
+      return componentsMap[type]
+    } else {
+      return type
     }
-
-    return componentsMap[type]
   }
 }
