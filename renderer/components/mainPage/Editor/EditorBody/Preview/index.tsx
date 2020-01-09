@@ -8,6 +8,7 @@ import React from 'react'
 export default function() {
   const [components, setComponents] = useState([])
   const [editorState] = useSubscribe(editorStore)
+
   const componentMap = {
     button: <Button />,
     datePicker: <DatePicker />,
