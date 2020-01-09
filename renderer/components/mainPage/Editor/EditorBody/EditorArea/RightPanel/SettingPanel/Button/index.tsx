@@ -2,7 +2,7 @@ import { Select, Row, Col, Input } from 'antd'
 import useSubscribe from '../../../../../../../../hooks/useSubscribe'
 import editorStore from '../../../../../../../../store/editorStore'
 import $style from './index.less'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const { Option } = Select
 
@@ -21,6 +21,18 @@ function ItemRow(props) {
 export default function Button() {
   const [editorState] = useSubscribe(editorStore)
   const [text, setText] = useState('')
+  const [attributes, setAttributes] = useState({
+    type: 'default'
+  })
+
+  useEffect(() => {
+    const info = editorState.components.find(c => c.key === editorState.key)
+
+    if (info?.type !== 'AntdButton') return
+
+    setText(info.text)
+    setAttributes(info.attributes)
+  }, [editorState])
 
   function onChange(value) {
     editorStore.updateComponentAttribute(editorState.key, {
@@ -41,7 +53,7 @@ export default function Button() {
         <div>Type</div>
         <Select
           onChange={onChange}
-          defaultValue='Default'
+          value={attributes.type || 'default'}
           style={{ width: 120 }}>
           <Option value='default'>default</Option>
           <Option value='primary'>primary</Option>

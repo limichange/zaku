@@ -29,9 +29,12 @@ function updateComponentsByKey(componentKey, callback) {
 const editorStore = {
   init: () => subject.next(state),
   subscribe: setState => {
-    const unsub = subject.subscribe(setState)
+    const sub = subject.subscribe(setState)
     subject.next(state)
-    return unsub
+    return sub
+  },
+  getComponentByKey(key) {
+    return state.components.find(c => c.key === key)
   },
   setComponentKey: key => {
     state = {
