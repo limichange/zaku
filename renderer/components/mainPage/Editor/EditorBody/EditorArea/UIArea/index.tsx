@@ -6,6 +6,8 @@ import editorStore from '../../../../../../store/editorStore'
 import uuid from 'uuid'
 import useSubscribe from '../../../../../../hooks/useSubscribe'
 import $style from './index.less'
+import componentsMap from '../../../../../../utils/componentsMap'
+import React from 'react'
 
 export default function UIArea() {
   const [components, setComponents] = useState([])
@@ -13,20 +15,16 @@ export default function UIArea() {
 
   useEffect(() => {
     setComponents(
-      editorState.components.map(c => {
-        let component = null
-        const key = c.key
-
-        // todo: auto create component
-        if (c.type === 'button') {
-          component = <Button {...c.attributes}>Button</Button>
-        } else if (c.type === 'datePicker') {
-          component = <DatePicker />
-        } else if (c.type === 'input') {
-          component = <Input />
-        }
-
-        if (!component) return
+      editorState.components.map(item => {
+        const key = uuid()
+        const component = React.cloneElement(
+          componentsMap.getComponent(item.type),
+          {
+            key,
+            ...item.attributes
+          },
+          item.text
+        )
 
         return (
           <Hover key={key} uuid={key} onClick={removeComponent}>
@@ -38,7 +36,7 @@ export default function UIArea() {
   }, [editorState])
 
   const [collectedProps, drop] = useDrop({
-    accept: ['input', 'button', 'datePicker'],
+    accept: ['AntdInput', 'AntdButton', 'AntdDatePicker'],
     drop: (item, monitor) => {
       editorStore.addComponent({
         key: uuid(),

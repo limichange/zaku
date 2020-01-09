@@ -5,13 +5,16 @@ import $style from './index.less'
 import useDrag from '../../../../../../../hooks/useDrag'
 
 const ComponentsPanel: React.FC = function() {
-  const [item, dragRef] = useDrag({ type: 'input', tag: 'Input' })
+  const [item, dragRef] = useDrag({ type: 'AntdInput', tag: 'Input' })
   const [item2, dragRef2] = useDrag({
-    type: 'button',
+    type: 'AntdButton',
     tag: 'Button',
     text: 'Button'
   })
-  const [item3, dragRef3] = useDrag({ type: 'datePicker', tag: 'DatePicker' })
+  const [item3, dragRef3] = useDrag({
+    type: 'AntdDatePicker',
+    tag: 'DatePicker'
+  })
 
   return (
     <div className={$style.ComponentsPanel}>
