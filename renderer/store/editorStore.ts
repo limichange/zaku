@@ -16,6 +16,16 @@ const initialState: initialStateInterface = {
 
 let state = initialState
 
+function updateComponentsByKey(componentKey, callback) {
+  return state.components.concat().map(c => {
+    if (c.key === componentKey) {
+      callback(c)
+    }
+
+    return c
+  })
+}
+
 const editorStore = {
   init: () => subject.next(state),
   subscribe: setState => {
@@ -50,12 +60,8 @@ const editorStore = {
   updateComponentAttribute(componentKey, keyValue) {
     state = {
       ...state,
-      components: state.components.concat().map(c => {
-        if (c.key === componentKey) {
-          Object.assign(c.attributes, keyValue)
-        }
-
-        return c
+      components: updateComponentsByKey(componentKey, c => {
+        Object.assign(c.attributes, keyValue)
       })
     }
 

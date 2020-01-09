@@ -6,7 +6,11 @@ import useDrag from '../../../../../../../hooks/useDrag'
 
 const ComponentsPanel: React.FC = function() {
   const [item, dragRef] = useDrag({ type: 'input', tag: 'Input' })
-  const [item2, dragRef2] = useDrag({ type: 'button', tag: 'Button' })
+  const [item2, dragRef2] = useDrag({
+    type: 'button',
+    tag: 'Button',
+    text: 'Button'
+  })
   const [item3, dragRef3] = useDrag({ type: 'datePicker', tag: 'DatePicker' })
 
   return (
