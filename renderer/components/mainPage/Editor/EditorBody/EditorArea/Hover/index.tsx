@@ -31,7 +31,7 @@ export default function Hover(props) {
   useEffect(() => {
     clearTimeout(timeId)
 
-    timeId = setTimeout(() => {
+    timeId = window.setTimeout(() => {
       const dom = document.getElementById(key)
       const { width, height, left, top } = dom.getBoundingClientRect()
       const offset = 1
