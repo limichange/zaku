@@ -33,8 +33,10 @@ function generateCode(components) {
 }
 
 function createJSXelement(components: any[]) {
+  const libName = 'antd'
+
   return {
-    header: importComponentsDeclaration(components),
+    header: importComponentsDeclaration(components, libName),
     body: exportDefaultDeclaration(
       functionExpression(
         identifier('component'),
@@ -52,13 +54,13 @@ function createJSXelement(components: any[]) {
   }
 }
 
-function importComponentsDeclaration(components) {
+function importComponentsDeclaration(components, libName) {
   const componentName = name =>
     importSpecifier(identifier(name), identifier(name))
 
   return importDeclaration(
     getAllComponentsTag(components).map(componentName),
-    stringLiteral('ant')
+    stringLiteral(libName)
   )
 }
 
