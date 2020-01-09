@@ -16,19 +16,14 @@ export default function UIArea() {
   useEffect(() => {
     setComponents(
       editorState.components.map(item => {
-        const key = uuid()
-        const component = React.cloneElement(
-          componentsMap.getComponent(item.type),
-          {
-            key,
-            ...item.attributes
-          },
-          item.text
-        )
+        const key = item.key
+        const Component = componentsMap.getComponent(item.type)
 
         return (
           <Hover key={key} uuid={key} onClick={removeComponent}>
-            {component}
+            <Component key={key} {...item.attributes}>
+              {item.text}
+            </Component>
           </Hover>
         )
       })

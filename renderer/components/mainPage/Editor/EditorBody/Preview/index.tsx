@@ -15,7 +15,7 @@ export default function() {
         const key = uuid()
         const component = componentsMap.getComponent(item.type)
 
-        return React.cloneElement(
+        return React.createElement(
           component,
           {
             key,

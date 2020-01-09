@@ -134,7 +134,6 @@ export default {
       type = type.replace('Antd', '')
     }
 
-    const Component = componentsMap[type]
-    return <Component></Component>
+    return componentsMap[type]
   }
 }
