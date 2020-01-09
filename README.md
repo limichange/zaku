@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-<img src="https://github.com/limichange/zaku/blob/master/images/preview.png?raw=true" alt="preview" />
+<img src="https://github.com/limichange/zaku/blob/master/images/preview.gif?raw=true" alt="preview" />
 </p>
 
 ## Usage
