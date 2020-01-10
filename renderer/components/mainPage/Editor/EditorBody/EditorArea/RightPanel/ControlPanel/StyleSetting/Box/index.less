@@ -1,0 +1,52 @@
+.Box {
+  font-size: 10px;
+}
+
+.marginBox {
+  position: relative;
+  background: #f9cda0;
+  padding: 16px;
+  border: 1px dashed black;
+
+  &::before {
+    content: 'margin';
+    position: absolute;
+    left: 16px;
+    top: 0;
+  }
+}
+
+.borderBox {
+  position: relative;
+  background: #fdde9f;
+  padding: 16px;
+  border: 1px solid black;
+
+  &::before {
+    content: 'border';
+    position: absolute;
+    left: 16px;
+    top: 0;
+  }
+}
+
+.paddingBox {
+  position: relative;
+  background: #c2d08f;
+  padding: 16px;
+  border: 1px dashed black;
+
+  &::before {
+    content: 'padding';
+    position: absolute;
+    left: 16px;
+    top: 0;
+  }
+}
+
+.sizeBox {
+  text-align: center;
+  position: relative;
+  background: #8cb5c1;
+  border: 1px solid black;
+}

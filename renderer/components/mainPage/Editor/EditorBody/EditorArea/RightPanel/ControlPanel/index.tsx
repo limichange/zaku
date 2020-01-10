@@ -3,6 +3,7 @@ import Input from './Input'
 import useSubscribe from '../../../../../../../hooks/useSubscribe'
 import editorStore from '../../../../../../../store/editorStore'
 import Normal from './Normal'
+import StyleSetting from './StyleSetting'
 
 export default function SettingPanel() {
   const [editorState] = useSubscribe(editorStore)
@@ -18,6 +19,7 @@ export default function SettingPanel() {
       <Normal></Normal>
       <div>{component.type === 'AntdButton' && <Button></Button>}</div>
       <div>{component.type === 'AntInput' && <Input></Input>}</div>
+      <StyleSetting></StyleSetting>
     </>
   )
 }
