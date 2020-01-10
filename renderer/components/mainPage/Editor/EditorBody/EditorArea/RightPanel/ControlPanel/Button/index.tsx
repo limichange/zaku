@@ -3,20 +3,9 @@ import useSubscribe from '../../../../../../../../hooks/useSubscribe'
 import editorStore from '../../../../../../../../store/editorStore'
 import $style from './index.less'
 import { useState, useEffect } from 'react'
+import * as Item from '../Item'
 
 const { Option } = Select
-
-function ItemRow(props) {
-  return (
-    <Row
-      style={{ marginBottom: '5px' }}
-      type='flex'
-      justify='space-between'
-      align='middle'>
-      {props.children}
-    </Row>
-  )
-}
 
 export default function Button() {
   const [editorState] = useSubscribe(editorStore)
@@ -49,8 +38,8 @@ export default function Button() {
 
   return (
     <div className={$style.Button}>
-      <ItemRow>
-        <div style={{ width: '50px' }}>Type</div>
+      <Item.Row>
+        <Item.Label>Type</Item.Label>
         <Select
           onChange={onChange}
           value={attributes.type || 'default'}
@@ -61,14 +50,14 @@ export default function Button() {
           <Option value='danger'>danger</Option>
           <Option value='link'>link</Option>
         </Select>
-      </ItemRow>
-      <ItemRow>
-        <div style={{ width: '50px' }}>Text</div>
+      </Item.Row>
+      <Item.Row>
+        <Item.Label>Text</Item.Label>
         <Input
           style={{ flex: 1 }}
           value={text}
           onChange={onInputChange}></Input>
-      </ItemRow>
+      </Item.Row>
     </div>
   )
 }

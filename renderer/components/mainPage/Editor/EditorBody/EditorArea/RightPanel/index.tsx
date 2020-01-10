@@ -1,7 +1,7 @@
 import { Tabs } from 'antd'
 import editorStore from '../../../../../../store/editorStore'
 import useSubscribe from '../../../../../../hooks/useSubscribe'
-import SettingPanel from './SettingPanel'
+import ControlPanel from './ControlPanel'
 import ComponentsPanel from './ComponentsPanel'
 import $style from './index.less'
 
@@ -24,7 +24,7 @@ export default function RightPanel() {
         activeKey={editorStoreState.tabIndex}
         onChange={callback}>
         <TabPane tab='Properties' key='0'>
-          <SettingPanel></SettingPanel>
+          <ControlPanel></ControlPanel>
         </TabPane>
         <TabPane tab='Components' key='1'>
           <ComponentsPanel></ComponentsPanel>
