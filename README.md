@@ -35,6 +35,9 @@ npm run dist
 
 - [ReactJS — A quick tutorial to build dynamic JSON based form.](https://codeburst.io/reactjs-a-quick-tutorial-to-build-dynamic-json-based-form-a4768b3151c0)
 - [How to render dynamic component defined in JSON using React](https://www.storyblok.com/tp/react-dynamic-component-from-json)
+- [webcodesk - A rapid development tool for React Web applications](https://webcodesk.com/)
+- [pagedraw - a UI builder for React web apps](https://pagedraw.io/)
+- [reactstudio - Lightspeed into modern web app production](https://reactstudio.com/)
 
 ## Author
 
