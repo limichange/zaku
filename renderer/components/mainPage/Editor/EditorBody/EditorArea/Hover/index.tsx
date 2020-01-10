@@ -1,15 +1,17 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, FC } from 'react'
 import classnames from 'classnames'
 import React from 'react'
 import store from '../../../../../../store/editorStore'
 import useSubscribe from '../../../../../../hooks/useSubscribe'
 import $style from './index.less'
 
-interface Hover {
-  props: {}
+type Props = {
+  uuid: string
+  children: any
+  onClick: (key: string) => void
 }
 
-export default function Hover(props) {
+const Hover: FC<Props> = props => {
   const [editorStoreState] = useSubscribe(store)
   const [width, setWidth] = useState(0)
   const [height, setHeight] = useState(0)
@@ -62,3 +64,5 @@ export default function Hover(props) {
     </>
   )
 }
+
+export default Hover
