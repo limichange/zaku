@@ -13,10 +13,10 @@ type Props = {
 
 const Hover: FC<Props> = props => {
   const [editorStoreState] = useSubscribe(store)
-  const [width, setWidth] = useState(0)
-  const [height, setHeight] = useState(0)
-  const [left, setLeft] = useState(0)
-  const [top, setTop] = useState(0)
+  const [width, setWidth] = useState<number>(0)
+  const [height, setHeight] = useState<number>(0)
+  const [left, setLeft] = useState<number>(0)
+  const [top, setTop] = useState<number>(0)
   const { uuid: key } = props
   let timeId = 0
 
