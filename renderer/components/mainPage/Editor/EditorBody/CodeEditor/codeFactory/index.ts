@@ -19,6 +19,8 @@ import prettier from 'prettier/standalone'
 import parserJS from 'prettier/parser-babylon'
 
 function generateCode(components) {
+  if (components.length <= 0) return ''
+
   const { header: headerAST, body: bodyAST } = createJSXelement(components)
   const { code: headerCode } = generate(headerAST)
   const { code: bodyCode } = generate(bodyAST)
