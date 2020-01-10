@@ -11,13 +11,13 @@ export default function SettingPanel() {
     item => editorState.key === item.key
   )
 
+  if (!component) return <div></div>
+
   return (
     <>
       <Normal></Normal>
-      <div>
-        {component && component.type === 'AntdButton' && <Button></Button>}
-      </div>
-      <div>{component && component.type === 'AntInput' && <Input></Input>}</div>
+      <div>{component.type === 'AntdButton' && <Button></Button>}</div>
+      <div>{component.type === 'AntInput' && <Input></Input>}</div>
     </>
   )
 }

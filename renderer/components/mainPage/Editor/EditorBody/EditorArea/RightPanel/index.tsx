@@ -17,7 +17,7 @@ export default function RightPanel() {
   return (
     <div className={$style.RightPanel}>
       <Tabs
-        tabBarStyle={{}}
+        tabBarStyle={{ margin: 0 }}
         size='small'
         animated={false}
         defaultActiveKey='0'

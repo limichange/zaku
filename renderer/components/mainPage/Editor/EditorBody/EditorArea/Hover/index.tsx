@@ -43,6 +43,10 @@ const Hover: FC<Props> = props => {
       setHeight(height + offset * 2)
       setWidth(width + offset * 2)
     }, 100)
+
+    return () => {
+      clearTimeout(timeId)
+    }
   }, [editorStoreState])
 
   return (
