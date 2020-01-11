@@ -17,7 +17,14 @@ export default function UIArea() {
   }, [editorState])
 
   const [collectedProps, drop] = useDrop({
-    accept: ['AntdInput', 'AntdButton', 'AntdDatePicker', 'div', 'AntdTooltip'],
+    accept: [
+      'AntdInput',
+      'AntdButton',
+      'AntdDatePicker',
+      'AntdRow',
+      'AntdCol',
+      'AntdTooltip'
+    ],
     drop: (item, monitor) => {
       editorStore.addComponent({
         key: uuid(),

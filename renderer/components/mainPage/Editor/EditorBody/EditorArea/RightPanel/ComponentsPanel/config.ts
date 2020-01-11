@@ -2,7 +2,7 @@ import inputPreviewImage from './images/inputPreview.png'
 import datepickerPreviewImage from './images/datepickerPreview.png'
 import buttonPreviewImage from './images/buttonPreview.png'
 
-export default [
+const config = [
   {
     type: 'AntdInput',
     tag: 'Input',
@@ -33,5 +33,25 @@ export default [
     attributes: {
       title: 'test'
     }
+  },
+  {
+    type: 'AntdRow',
+    tag: 'Row',
+    name: 'Row',
+    previewImage: '',
+    attributes: {
+      type: 'flex'
+    }
+  },
+  {
+    type: 'AntdCol',
+    tag: 'Col',
+    name: 'Col',
+    previewImage: '',
+    attributes: {
+      span: 4
+    }
   }
 ]
+
+export default config
