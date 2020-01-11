@@ -13,10 +13,8 @@ import {
   stringLiteral,
   importDeclaration,
   importSpecifier,
-  numberLiteralTypeAnnotation,
   jsxExpressionContainer,
   numericLiteral,
-  expressionStatement,
   emptyStatement
 } from '@babel/types'
 import generate from '@babel/generator'
