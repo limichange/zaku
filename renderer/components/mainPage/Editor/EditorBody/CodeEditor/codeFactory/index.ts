@@ -78,8 +78,14 @@ function getAllComponentsTag(components) {
 }
 
 function componentInfoTranslate(componentInfo) {
-  const { text, tag, attributes = {}, components, noChildren } = componentInfo
-  let children
+  const {
+    text,
+    tag,
+    attributes = {},
+    components = [],
+    noChildren
+  } = componentInfo
+  let children = []
 
   if (text) {
     children = [jsxText(text)]

@@ -1,4 +1,4 @@
-import { Button } from 'antd'
+import { Button, Tooltip } from 'antd'
 import editorStore from '../../../../../../../../store/editorStore'
 import useSubscribe from '../../../../../../../../hooks/useSubscribe'
 
@@ -14,7 +14,9 @@ export default function Normal() {
       style={{
         padding: '10px'
       }}>
-      <Button size='small' onClick={onClick} icon='delete'></Button>
+      <Tooltip placement='top' title={'remove component'}>
+        <Button size='small' onClick={onClick} icon='delete'></Button>
+      </Tooltip>
     </div>
   )
 }
