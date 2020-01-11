@@ -135,11 +135,11 @@ const editorStore = {
     subject.next({ ...state })
   },
   removeComponent(componentKey) {
-    state = {
-      ...state,
-      components: state.components.filter(c => c.key !== componentKey)
-    }
-    subject.next(state)
+    const { parent, index } = findComponent(componentKey)
+
+    parent.components.splice(index, 1)
+
+    subject.next({ ...state })
   },
   addComponent(component) {
     state = {
