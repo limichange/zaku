@@ -63,7 +63,13 @@ import {
   Upload
 } from 'antd'
 
+const { Header, Footer, Sider, Content } = Layout
+
 const componentsMap = {
+  Header,
+  Footer,
+  Sider,
+  Content,
   Affix,
   Anchor,
   AutoComplete,
