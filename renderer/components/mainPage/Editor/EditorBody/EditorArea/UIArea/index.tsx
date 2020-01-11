@@ -22,6 +22,7 @@ export default function UIArea() {
       editorStore.addComponent({
         key: uuid(),
         attributes: {},
+        components: [],
         ...item
       })
     },
