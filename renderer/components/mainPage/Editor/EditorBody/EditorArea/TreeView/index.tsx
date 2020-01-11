@@ -14,6 +14,29 @@ export default function() {
     })
   }
 
+  function onDrop(e) {
+    const { dropToGap, dropPosition, node, dragNode } = e
+    const dropKey = node.props.eventKey
+    const dragKey = dragNode.props.eventKey
+    editorStore.moveComponent(dragKey, dropKey, dropToGap, dropPosition)
+  }
+
+  function displayNode(components) {
+    return components.map(item => {
+      let children = null
+
+      if (item.components?.length > 0) {
+        children = displayNode(item.components)
+      }
+
+      return (
+        <TreeNode title={item.type} key={item.key}>
+          {children}
+        </TreeNode>
+      )
+    })
+  }
+
   // todo: custom tree component
   return (
     <div className={$style.TreeView}>
@@ -21,10 +44,9 @@ export default function() {
         draggable
         onSelect={onSelect}
         defaultExpandAll={true}
+        onDrop={onDrop}
         selectedKeys={[editorState.key]}>
-        {editorState.components.map(item => {
-          return <TreeNode title={item.type} key={item.key} />
-        })}
+        {displayNode(editorState.components)}
       </Tree>
     </div>
   )

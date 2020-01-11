@@ -11,12 +11,21 @@ export type initialStateInterface = {
 const initialState: initialStateInterface = {
   components: [
     // debug
-    // {
-    //   type: 'div',
-    //   tag: 'div',
-    //   text: 'div',
-    //   key: 'aksdhfu'
-    // }
+    {
+      type: 'div',
+      tag: 'div',
+      text: 'div',
+      key: 'aksdhf22u',
+      components: [
+        {
+          type: 'div',
+          tag: 'div',
+          text: 'div',
+          key: 'aksdhfu',
+          components: []
+        }
+      ]
+    }
   ],
   tabIndex: '0',
   key: ''
@@ -33,6 +42,39 @@ function updateComponentsByKey(componentKey, callback) {
     return c
   })
 }
+
+function findComponent(key) {
+  let parent = null
+  let index = null
+  let findComponent = null
+
+  function find(component) {
+    const { components } = component
+    if (!components || components?.length <= 0 || findComponent) {
+      return null
+    }
+
+    let result = components.find(c => c.key === key)
+
+    if (result) {
+      index = components.findIndex(c => c.key === key)
+      parent = component
+      findComponent = result
+    } else {
+      components.forEach(find)
+    }
+  }
+
+  find(state)
+
+  return {
+    component: findComponent,
+    index,
+    parent
+  }
+}
+
+function insertComponent() {}
 
 const editorStore = {
   init: () => subject.next(state),
@@ -77,6 +119,26 @@ const editorStore = {
     }
 
     subject.next(state)
+  },
+  moveComponent(key, toKey, gap, position) {
+    const { parent, component, index } = findComponent(key)
+    const { parent: targetParent, component: target } = findComponent(toKey)
+
+    if (gap) {
+      parent.components.splice(index, 1)
+
+      targetParent.components.splice(position, 0, component)
+    } else {
+      if (target.key === parent.key) return
+
+      parent.components.splice(index, 1)
+
+      if (!target.components) target.components = []
+
+      target.components.push(component)
+    }
+
+    subject.next({ ...state })
   },
   updateComponentText(componentKey, text) {
     state = {
