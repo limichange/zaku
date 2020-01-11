@@ -8,12 +8,13 @@ const { TreeNode } = Tree
 export default function() {
   const [editorState] = useSubscribe(editorStore)
 
-  function onSelect(keys) {
+  function onSelect([key]) {
     editorStore.update({
-      key: keys[0]
+      key
     })
   }
 
+  // todo: custom tree component
   return (
     <div className={$style.TreeView}>
       <Tree
