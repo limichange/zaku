@@ -90,14 +90,11 @@ const editorStore = {
     subject.next(state)
   },
   updateComponentAttribute(componentKey, keyValue) {
-    state = {
-      ...state,
-      components: updateComponentsByKey(componentKey, c => {
-        Object.assign(c.attributes, keyValue)
-      })
-    }
+    const { component } = findComponent(componentKey)
 
-    subject.next(state)
+    Object.assign(component.attributes, keyValue)
+
+    subject.next({ ...state })
   },
   moveComponent(key, toKey, gap, position) {
     const { parent, component, index } = findComponent(key)
