@@ -35,10 +35,6 @@ export default function UIArea() {
     }
   })
 
-  function removeComponent(key) {
-    console.log(key)
-  }
-
   return (
     <div ref={drop} className={$style.uiArea}>
       {components}
