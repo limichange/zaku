@@ -122,12 +122,20 @@ const editorStore = {
   },
   moveComponent(key, toKey, gap, position) {
     const { parent, component, index } = findComponent(key)
-    const { parent: targetParent, component: target } = findComponent(toKey)
+    const {
+      parent: targetParent,
+      component: target,
+      index: targetIndex
+    } = findComponent(toKey)
 
     if (gap) {
       parent.components.splice(index, 1)
 
-      targetParent.components.splice(position, 0, component)
+      targetParent.components.splice(
+        position === -1 ? targetIndex : targetIndex + 1,
+        0,
+        component
+      )
     } else {
       if (target.key === parent.key) return
 
