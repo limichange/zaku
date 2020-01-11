@@ -20,6 +20,10 @@ const ComponentsPanel: React.FC = function() {
     type: 'AntdDatePicker',
     tag: 'DatePicker'
   })
+  const [item4, dragRef4] = useDrag({
+    type: 'div',
+    tag: 'div'
+  })
 
   return (
     <div className={$style.ComponentsPanel}>
@@ -31,6 +35,9 @@ const ComponentsPanel: React.FC = function() {
       </div>
       <div ref={dragRef3}>
         <DatePicker></DatePicker>
+      </div>
+      <div ref={dragRef4}>
+        <div>DIV</div>
       </div>
     </div>
   )

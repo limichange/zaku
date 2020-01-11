@@ -9,24 +9,7 @@ export type initialStateInterface = {
 }
 
 const initialState: initialStateInterface = {
-  components: [
-    // debug
-    {
-      type: 'div',
-      tag: 'div',
-      text: 'div',
-      key: 'aksdhf22u',
-      components: [
-        {
-          type: 'div',
-          tag: 'div',
-          text: 'div',
-          key: 'aksdhfu',
-          components: []
-        }
-      ]
-    }
-  ],
+  components: [],
   tabIndex: '0',
   key: ''
 }
