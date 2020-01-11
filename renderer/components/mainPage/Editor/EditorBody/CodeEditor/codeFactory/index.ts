@@ -141,14 +141,16 @@ function element(name, attributes?, children = []) {
  * @param name
  * @param value
  */
-function attribute(name, value) {
+function attribute(name, value: number | string) {
+  let attributeValueExpress = null
+
   if (typeof value === 'number') {
-    value = jsxExpressionContainer(numericLiteral(value))
+    attributeValueExpress = jsxExpressionContainer(numericLiteral(value))
   } else {
-    value = stringLiteral(value)
+    attributeValueExpress = stringLiteral(value)
   }
 
-  return jsxAttribute(jsxIdentifier(name), value)
+  return jsxAttribute(jsxIdentifier(name), attributeValueExpress)
 }
 
 export default {
