@@ -78,7 +78,16 @@ function getAllComponentsTag(components) {
 }
 
 function componentInfoTranslate(componentInfo) {
-  const { text, tag, attributes = {} } = componentInfo
+  const { text, tag, attributes = {}, components, noChildren } = componentInfo
+  let children
+
+  if (text) {
+    children = [jsxText(text)]
+  }
+
+  if (!noChildren && components?.length > 0) {
+    children = [...children, ...components.map(componentInfoTranslate)]
+  }
 
   return element(
     tag,
@@ -88,7 +97,7 @@ function componentInfoTranslate(componentInfo) {
         value
       }
     }),
-    text ? [jsxText(text)] : []
+    children
   )
 }
 
