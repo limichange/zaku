@@ -4,45 +4,51 @@ import DatePicker from './components/DatePicker'
 import $style from './index.less'
 import useDrag from '../../../../../../../hooks/useDrag'
 
-const ComponentsPanel: React.FC = function() {
-  const [item, dragRef] = useDrag({
-    type: 'AntdInput',
-    tag: 'Input',
-    noChildren: true
-  })
-  const [item2, dragRef2] = useDrag({
-    type: 'AntdButton',
-    tag: 'Button',
-    text: 'Button'
-  })
-  const [item3, dragRef3] = useDrag({
-    noChildren: true,
-    type: 'AntdDatePicker',
-    tag: 'DatePicker'
-  })
-  const [item4, dragRef4] = useDrag({
-    type: 'AntdTooltip',
-    tag: 'Tooltip',
-    noHover: true,
-    attributes: {
-      title: 'tst'
-    }
-  })
+const Item = props => {
+  const [item, dragRef] = useDrag(props.config)
 
+  return <div ref={dragRef}>{props.children}</div>
+}
+
+const ComponentsPanel: React.FC = function() {
   return (
     <div className={$style.ComponentsPanel}>
-      <div ref={dragRef}>
+      <Item
+        config={{
+          type: 'AntdInput',
+          tag: 'Input',
+          name: 'AntdInput',
+          noChildren: true
+        }}>
         <Input></Input>
-      </div>
-      <div ref={dragRef2}>
+      </Item>
+      <Item
+        config={{
+          type: 'AntdButton',
+          tag: 'Button',
+          text: 'Button'
+        }}>
         <Button></Button>
-      </div>
-      <div ref={dragRef3}>
+      </Item>
+      <Item
+        config={{
+          noChildren: true,
+          type: 'AntdDatePicker',
+          tag: 'DatePicker'
+        }}>
         <DatePicker></DatePicker>
-      </div>
-      <div ref={dragRef4}>
+      </Item>
+      <Item
+        config={{
+          type: 'AntdTooltip',
+          tag: 'Tooltip',
+          noHover: true,
+          attributes: {
+            title: 'tst'
+          }
+        }}>
         <div>Tooltip</div>
-      </div>
+      </Item>
     </div>
   )
 }
