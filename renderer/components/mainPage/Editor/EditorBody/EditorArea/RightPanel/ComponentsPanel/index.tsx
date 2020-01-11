@@ -17,7 +17,7 @@ const ComponentsPanel: React.FC = function() {
     <div className={$style.ComponentsPanel}>
       {configs.map(config => {
         return (
-          <Item config={config}>
+          <Item key={config.type} config={config}>
             <div className={$style.imgWrap}>
               <img src={config.previewImage} alt='' />
             </div>
