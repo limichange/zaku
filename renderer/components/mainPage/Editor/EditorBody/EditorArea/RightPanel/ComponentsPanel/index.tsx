@@ -17,7 +17,7 @@ const ComponentsPanel: React.FC = function() {
         config={{
           type: 'AntdInput',
           tag: 'Input',
-          name: 'AntdInput',
+          name: 'Input',
           noChildren: true
         }}>
         <Input></Input>
@@ -26,6 +26,7 @@ const ComponentsPanel: React.FC = function() {
         config={{
           type: 'AntdButton',
           tag: 'Button',
+          name: 'Button',
           text: 'Button'
         }}>
         <Button></Button>
@@ -34,7 +35,8 @@ const ComponentsPanel: React.FC = function() {
         config={{
           noChildren: true,
           type: 'AntdDatePicker',
-          tag: 'DatePicker'
+          tag: 'DatePicker',
+          name: 'DatePicker'
         }}>
         <DatePicker></DatePicker>
       </Item>
@@ -42,6 +44,7 @@ const ComponentsPanel: React.FC = function() {
         config={{
           type: 'AntdTooltip',
           tag: 'Tooltip',
+          name: 'Tooltip',
           noHover: true,
           attributes: {
             title: 'tst'
