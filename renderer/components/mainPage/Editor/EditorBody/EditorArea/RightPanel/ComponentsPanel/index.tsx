@@ -19,7 +19,10 @@ const ComponentsPanel: React.FC = function() {
         return (
           <Item key={config.type} config={config}>
             <div className={$style.imgWrap}>
-              <img src={config.previewImage} alt='' />
+              {config.previewImage && <img src={config.previewImage} alt='' />}
+              {!config.previewImage && (
+                <div className={$style.noImage}>{`<${config.tag} />`}</div>
+              )}
             </div>
             <div>{config.name}</div>
           </Item>
