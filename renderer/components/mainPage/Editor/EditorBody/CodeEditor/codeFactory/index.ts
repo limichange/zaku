@@ -78,7 +78,7 @@ function getAllComponentsTag(components) {
 }
 
 function componentInfoTranslate(componentInfo) {
-  const { text, tag, attributes } = componentInfo
+  const { text, tag, attributes = {} } = componentInfo
 
   return element(
     tag,

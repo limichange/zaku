@@ -1,30 +1,15 @@
 import useSubscribe from '../../../../../hooks/useSubscribe'
 import editorStore from '../../../../../store/editorStore'
 import { useState, useEffect } from 'react'
-import componentsMap from '../../../../../utils/componentsMap'
-import uuid from 'uuid'
 import React from 'react'
+import renderTree from '../../../../../utils/renderTree'
 
 export default function() {
   const [components, setComponents] = useState([])
   const [editorState] = useSubscribe(editorStore)
 
   useEffect(() => {
-    setComponents(
-      editorState.components.map(item => {
-        const key = uuid()
-        const component = componentsMap.getComponent(item.type)
-
-        return React.createElement(
-          component,
-          {
-            key,
-            ...item.attributes
-          },
-          item.text
-        )
-      })
-    )
+    setComponents(renderTree(editorState.components))
   }, [editorState])
 
   return (

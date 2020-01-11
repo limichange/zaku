@@ -8,7 +8,7 @@ import $style from './index.less'
 type Props = {
   uuid: string
   children: any
-  onClick: (key: string) => void
+  onClick?: (key: string) => void
 }
 
 const Hover: FC<Props> = props => {
@@ -27,7 +27,7 @@ const Hover: FC<Props> = props => {
   function onClick() {
     store.setIndex('0')
     store.setComponentKey(key)
-    props.onClick(key)
+    props.onClick && props.onClick(key)
   }
 
   useEffect(() => {

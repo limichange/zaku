@@ -1,33 +1,19 @@
 import { useDrop, DropTargetMonitor } from 'react-dnd'
 import { useState, useEffect } from 'react'
-import { Button, Input, DatePicker } from 'antd'
 import Hover from '../Hover'
 import editorStore from '../../../../../../store/editorStore'
 import uuid from 'uuid'
 import useSubscribe from '../../../../../../hooks/useSubscribe'
 import $style from './index.less'
-import componentsMap from '../../../../../../utils/componentsMap'
 import React from 'react'
+import renderTree from '../../../../../../utils/renderTree'
 
 export default function UIArea() {
   const [components, setComponents] = useState([])
   const [editorState] = useSubscribe(editorStore)
 
   useEffect(() => {
-    setComponents(
-      editorState.components.map(item => {
-        const key = item.key
-        const Component = componentsMap.getComponent(item.type)
-
-        return (
-          <Hover key={key} uuid={key} onClick={removeComponent}>
-            <Component key={key} {...item.attributes}>
-              {item.text}
-            </Component>
-          </Hover>
-        )
-      })
-    )
+    setComponents(renderTree(editorState.components, Hover))
   }, [editorState])
 
   const [collectedProps, drop] = useDrop({
