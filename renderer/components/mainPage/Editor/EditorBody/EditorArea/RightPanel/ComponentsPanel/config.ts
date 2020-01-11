@@ -49,7 +49,7 @@ const config = [
     name: 'Col',
     previewImage: '',
     attributes: {
-      // span: 4
+      span: 4
     }
   }
 ]

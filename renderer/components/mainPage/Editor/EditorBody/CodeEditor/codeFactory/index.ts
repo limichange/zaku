@@ -12,7 +12,10 @@ import {
   jsxText,
   stringLiteral,
   importDeclaration,
-  importSpecifier
+  importSpecifier,
+  numberLiteralTypeAnnotation,
+  jsxExpressionContainer,
+  numericLiteral
 } from '@babel/types'
 import generate from '@babel/generator'
 import prettier from 'prettier/standalone'
@@ -139,7 +142,13 @@ function element(name, attributes?, children = []) {
  * @param value
  */
 function attribute(name, value) {
-  return jsxAttribute(jsxIdentifier(name), stringLiteral(value))
+  if (typeof value === 'number') {
+    value = jsxExpressionContainer(numericLiteral(value))
+  } else {
+    value = stringLiteral(value)
+  }
+
+  return jsxAttribute(jsxIdentifier(name), value)
 }
 
 export default {
