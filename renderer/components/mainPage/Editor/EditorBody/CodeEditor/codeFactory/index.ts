@@ -15,7 +15,9 @@ import {
   importSpecifier,
   numberLiteralTypeAnnotation,
   jsxExpressionContainer,
-  numericLiteral
+  numericLiteral,
+  expressionStatement,
+  emptyStatement
 } from '@babel/types'
 import generate from '@babel/generator'
 import prettier from 'prettier/standalone'
@@ -47,8 +49,8 @@ function createJSXelement(components: any[]) {
         identifier('component'),
         [],
         blockStatement([
-          // todo: auto generate hooks
-          // todo: auto generate style
+          generateStyles(),
+          generateHooks(),
           returnStatement(
             components.length === 1
               ? componentInfoTranslate(components[0])
@@ -58,6 +60,16 @@ function createJSXelement(components: any[]) {
       )
     )
   }
+}
+
+function generateHooks() {
+  // todo: auto generate hooks
+  return emptyStatement()
+}
+
+function generateStyles() {
+  // todo: auto generate style
+  return emptyStatement()
 }
 
 function exportClassStyleComponent() {
