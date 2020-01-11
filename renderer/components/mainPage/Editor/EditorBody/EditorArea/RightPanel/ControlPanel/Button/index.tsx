@@ -15,7 +15,7 @@ export default function Button() {
   })
 
   useEffect(() => {
-    const info = editorState.components.find(c => c.key === editorState.key)
+    const { component: info } = editorStore.findComponent(editorState.key)
 
     if (info?.type !== 'AntdButton') return
 

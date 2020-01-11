@@ -8,9 +8,7 @@ import StyleSetting from './StyleSetting'
 export default function SettingPanel() {
   const [editorState] = useSubscribe(editorStore)
 
-  const component = editorState.components.find(
-    item => editorState.key === item.key
-  )
+  const { component } = editorStore.findComponent(editorState.key)
 
   if (!component) return <div></div>
 

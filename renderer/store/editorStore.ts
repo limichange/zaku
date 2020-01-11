@@ -17,13 +17,10 @@ const initialState: initialStateInterface = {
 let state = initialState
 
 function updateComponentsByKey(componentKey, callback) {
-  return state.components.concat().map(c => {
-    if (c.key === componentKey) {
-      callback(c)
-    }
+  const { component } = findComponent(componentKey)
+  callback(component)
 
-    return c
-  })
+  return state.components.concet()
 }
 
 function findComponent(key) {
@@ -57,10 +54,9 @@ function findComponent(key) {
   }
 }
 
-function insertComponent() {}
-
 const editorStore = {
   init: () => subject.next(state),
+  findComponent,
   subscribe: setState => {
     const sub = subject.subscribe(setState)
     subject.next(state)
@@ -132,14 +128,11 @@ const editorStore = {
     subject.next({ ...state })
   },
   updateComponentText(componentKey, text) {
-    state = {
-      ...state,
-      components: updateComponentsByKey(componentKey, c => {
-        c.text = text
-      })
-    }
+    const { component } = findComponent(componentKey)
 
-    subject.next(state)
+    component.text = text
+
+    subject.next({ ...state })
   },
   removeComponent(componentKey) {
     state = {
