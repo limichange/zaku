@@ -60,6 +60,14 @@ function createJSXelement(components: any[]) {
   }
 }
 
+function exportClassStyleComponent() {
+  // todo
+}
+
+function exportFunctionStyleComponent() {
+  // todo
+}
+
 function importComponentsDeclaration(components, libName) {
   const componentName = name =>
     importSpecifier(identifier(name), identifier(name))
