@@ -120,6 +120,8 @@ const editorStore = {
       index: targetIndex
     } = findComponent(toKey)
 
+    if (target.noChildren) return
+
     if (gap) {
       parent.components.splice(index, 1)
 
