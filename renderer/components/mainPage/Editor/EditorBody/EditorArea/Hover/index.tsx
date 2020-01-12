@@ -59,7 +59,7 @@ const Hover: FC<Props> = props => {
       <div
         onClick={onClick}
         style={{
-          zIndex: props.zoomIndex + (selected ? 10000 : 0),
+          zIndex: props.zoomIndex,
           left: `${left}px`,
           top: `${top}px`,
           width: `${width}px`,
