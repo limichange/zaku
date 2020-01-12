@@ -5,6 +5,7 @@ import store from '../../../../../../store/editorStore'
 import useSubscribe from '../../../../../../hooks/useSubscribe'
 import $style from './index.less'
 import { Icon } from 'antd'
+import { px } from '../../../../../../utils/style'
 
 type Props = {
   type: string
@@ -60,10 +61,10 @@ const Hover: FC<Props> = props => {
         onClick={onClick}
         style={{
           zIndex: props.zoomIndex,
-          left: `${left}px`,
-          top: `${top}px`,
-          width: `${width}px`,
-          height: `${height}px`
+          left: px(left),
+          top: px(top),
+          width: px(width),
+          height: px(height)
         }}
         className={classnames({
           [$style.hover]: true,
