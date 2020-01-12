@@ -1,7 +1,7 @@
 import { useState, useEffect, FC } from 'react'
 import classnames from 'classnames'
 import React from 'react'
-import store from '../../../../../../store/editorStore'
+import editorStore from '../../../../../../store/editorStore'
 import useSubscribe from '../../../../../../hooks/useSubscribe'
 import $style from './index.less'
 import { Icon } from 'antd'
@@ -16,13 +16,13 @@ type Props = {
 }
 
 const Hover: FC<Props> = props => {
-  const [editorStoreState] = useSubscribe(store)
+  const [editorState] = useSubscribe(editorStore)
   const [width, setWidth] = useState<number>(0)
   const [height, setHeight] = useState<number>(0)
   const [left, setLeft] = useState<number>(0)
   const [top, setTop] = useState<number>(0)
   const { uuid: key } = props
-  const selected = key === editorStoreState.key
+  const selected = key === editorState.key
   let timeId = 0
 
   const children = React.cloneElement(props.children, {
@@ -30,9 +30,13 @@ const Hover: FC<Props> = props => {
   })
 
   function onClick() {
-    store.setIndex('0')
-    store.setComponentKey(key)
+    editorStore.setIndex('0')
+    editorStore.setComponentKey(key)
     props.onClick && props.onClick(key)
+  }
+
+  function delNode() {
+    editorStore.removeComponent(editorState.key)
   }
 
   useEffect(() => {
@@ -52,7 +56,7 @@ const Hover: FC<Props> = props => {
     return () => {
       clearTimeout(timeId)
     }
-  }, [editorStoreState])
+  }, [editorState])
 
   return (
     <>
@@ -72,7 +76,7 @@ const Hover: FC<Props> = props => {
         })}>
         <div className={$style.label}>
           {props.type} <Icon className={$style.icon} type='drag' />
-          <Icon className={$style.icon} type='delete' />
+          <Icon onClick={delNode} className={$style.icon} type='delete' />
         </div>
         <div className={$style.hoverInner}></div>
       </div>
