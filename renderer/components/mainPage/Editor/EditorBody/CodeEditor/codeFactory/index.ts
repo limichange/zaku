@@ -91,9 +91,16 @@ function importComponentsDeclaration(components, libName) {
 function getAllComponentsTag(components) {
   const tagSet = new Set()
 
-  components.forEach(component => {
-    tagSet.add(component.tag)
-  })
+  function find(components) {
+    components &&
+      components.forEach(component => {
+        tagSet.add(component.tag)
+
+        if (component.components) find(component.components)
+      })
+  }
+
+  find(components)
 
   return Array.from(tagSet)
 }
