@@ -18,7 +18,7 @@ export default function renderTree(components = [], WrapComponent?) {
 
     if (WrapComponent && !item.noHover) {
       return (
-        <WrapComponent key={key} uuid={key}>
+        <WrapComponent {...item} key={key} uuid={key}>
           {displayComponent}
         </WrapComponent>
       )

@@ -2,7 +2,6 @@
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 100;
 
   &:hover {
     background: RGBA(40, 134, 244, 0.3);
@@ -10,5 +9,17 @@
 
   &.selected {
     border: 1px solid #2886f4;
+  }
+
+  &.dragEnter {
+    &:hover {
+      background: #c2d08f;
+    }
+  }
+
+  .hoverInner {
+    position: relative;
+    width: 100%;
+    height: 100%;
   }
 }

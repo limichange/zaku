@@ -54,6 +54,22 @@ function findComponent(key) {
   }
 }
 
+function updateZoomIndex(components) {
+  let zoomIndex = 1000
+
+  function mark(components) {
+    components?.forEach(component => {
+      component.zoomIndex = ++zoomIndex
+    })
+
+    components?.forEach(component => {
+      mark(component.components)
+    })
+  }
+
+  mark(components)
+}
+
 const editorStore = {
   init: () => subject.next(state),
   findComponent,
@@ -122,6 +138,8 @@ const editorStore = {
       target.components.push(component)
     }
 
+    updateZoomIndex(state.components)
+
     subject.next({ ...state })
   },
   updateComponentText(componentKey, text) {
@@ -139,9 +157,12 @@ const editorStore = {
     subject.next({ ...state })
   },
   addComponent(component) {
+    const components = [...state.components, component]
+    updateZoomIndex(components)
+
     state = {
       ...state,
-      components: [...state.components, component]
+      components
     }
 
     subject.next(state)
