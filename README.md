@@ -38,6 +38,7 @@ npm run dist
 - [webcodesk - A rapid development tool for React Web applications](https://webcodesk.com/)
 - [pagedraw - a UI builder for React web apps](https://pagedraw.io/)
 - [reactstudio - Lightspeed into modern web app production](https://reactstudio.com/)
+- [craft.js - A React Framework for building extensible drag and drop page editors](https://github.com/prevwong/craft.js)
 
 ## Author
 
