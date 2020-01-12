@@ -142,5 +142,8 @@ export default {
     } else {
       return type
     }
+  },
+  getAllComponetsName() {
+    return Object.keys(componentsMap).map(name => `Antd${name}`)
   }
 }

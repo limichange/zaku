@@ -7,6 +7,7 @@ import useSubscribe from '../../../../../../hooks/useSubscribe'
 import $style from './index.less'
 import React from 'react'
 import renderTree from '../../../../../../utils/renderTree'
+import componentsMap from '../../../../../../utils/componentsMap'
 
 export default function UIArea() {
   const [components, setComponents] = useState([])
@@ -17,14 +18,7 @@ export default function UIArea() {
   }, [editorState])
 
   const [collectedProps, drop] = useDrop({
-    accept: [
-      'AntdInput',
-      'AntdButton',
-      'AntdDatePicker',
-      'AntdRow',
-      'AntdCol',
-      'AntdTooltip'
-    ],
+    accept: [...componentsMap.getAllComponetsName()],
     drop: (item, monitor) => {
       editorStore.addComponent({
         key: uuid(),
