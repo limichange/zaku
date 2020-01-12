@@ -2,9 +2,27 @@
   position: absolute;
   left: 0;
   top: 0;
+  border: 1px solid transparent;
+
+  .label {
+    display: none;
+  }
 
   &:hover {
     background: RGBA(40, 134, 244, 0.3);
+
+    .label {
+      position: absolute;
+      display: block;
+      left: 0;
+      top: -20px;
+      padding: 0 6px;
+      height: 20px;
+      color: #555;
+      font-size: 12px;
+      line-height: 20px;
+      background: RGBA(40, 134, 244, 0.3);
+    }
   }
 
   &.selected {

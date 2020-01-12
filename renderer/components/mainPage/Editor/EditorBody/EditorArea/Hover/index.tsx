@@ -6,6 +6,7 @@ import useSubscribe from '../../../../../../hooks/useSubscribe'
 import $style from './index.less'
 
 type Props = {
+  type: string
   zoomIndex: number
   uuid: string
   children: any
@@ -68,6 +69,7 @@ const Hover: FC<Props> = props => {
           [$style.hover]: true,
           [$style.selected]: key === editorStoreState.key
         })}>
+        <div className={$style.label}>{props.type}</div>
         <div className={$style.hoverInner}></div>
       </div>
     </>
