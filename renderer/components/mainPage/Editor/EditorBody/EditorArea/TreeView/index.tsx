@@ -35,6 +35,7 @@ export default function() {
       return (
         <TreeNode title={item.type} key={item.key}>
           {children}
+          <div></div>
         </TreeNode>
       )
     })
