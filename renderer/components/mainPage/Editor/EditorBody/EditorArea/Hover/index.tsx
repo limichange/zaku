@@ -4,6 +4,7 @@ import React from 'react'
 import store from '../../../../../../store/editorStore'
 import useSubscribe from '../../../../../../hooks/useSubscribe'
 import $style from './index.less'
+import { Icon } from 'antd'
 
 type Props = {
   type: string
@@ -59,7 +60,6 @@ const Hover: FC<Props> = props => {
         onClick={onClick}
         style={{
           zIndex: props.zoomIndex + (selected ? 10000 : 0),
-          position: 'fixed',
           left: `${left}px`,
           top: `${top}px`,
           width: `${width}px`,
@@ -69,7 +69,10 @@ const Hover: FC<Props> = props => {
           [$style.hover]: true,
           [$style.selected]: selected
         })}>
-        <div className={$style.label}>{props.type}</div>
+        <div className={$style.label}>
+          {props.type} <Icon className={$style.icon} type='drag' />
+          <Icon className={$style.icon} type='delete' />
+        </div>
         <div className={$style.hoverInner}></div>
       </div>
     </>

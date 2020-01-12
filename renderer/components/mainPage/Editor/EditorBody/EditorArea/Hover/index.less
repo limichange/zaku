@@ -6,27 +6,38 @@
 
   .label {
     display: none;
+    position: absolute;
+    left: -1px;
+    top: -26px;
+    padding: 0 6px;
+    height: 26px;
+    color: white;
+    font-size: 14px;
+    line-height: 26px;
+    background: #208dfc;
+    align-items: center;
+
+    .icon {
+      margin-left: 5px;
+    }
   }
 
   &:hover {
     background: RGBA(40, 134, 244, 0.3);
 
     .label {
-      position: absolute;
-      display: block;
-      left: 0;
-      top: -20px;
-      padding: 0 6px;
-      height: 20px;
-      color: #555;
-      font-size: 12px;
-      line-height: 20px;
-      background: RGBA(40, 134, 244, 0.3);
+      z-index: 100000;
+      display: flex;
     }
   }
 
   &.selected {
     border: 1px solid #208dfc;
+
+    .label {
+      z-index: 99999;
+      display: flex;
+    }
   }
 
   &.dragEnter {
@@ -35,9 +46,9 @@
     }
   }
 
-  .hoverInner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-  }
+  // .hoverInner {
+  //   position: relative;
+  //   width: 100%;
+  //   height: 100%;
+  // }
 }
