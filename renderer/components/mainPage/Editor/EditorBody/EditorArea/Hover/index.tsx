@@ -19,8 +19,8 @@ const Hover: FC<Props> = props => {
   const [height, setHeight] = useState<number>(0)
   const [left, setLeft] = useState<number>(0)
   const [top, setTop] = useState<number>(0)
-
   const { uuid: key } = props
+  const selected = key === editorStoreState.key
   let timeId = 0
 
   const children = React.cloneElement(props.children, {
@@ -58,7 +58,7 @@ const Hover: FC<Props> = props => {
       <div
         onClick={onClick}
         style={{
-          zIndex: props.zoomIndex,
+          zIndex: props.zoomIndex + (selected ? 10000 : 0),
           position: 'fixed',
           left: `${left}px`,
           top: `${top}px`,
@@ -67,7 +67,7 @@ const Hover: FC<Props> = props => {
         }}
         className={classnames({
           [$style.hover]: true,
-          [$style.selected]: key === editorStoreState.key
+          [$style.selected]: selected
         })}>
         <div className={$style.label}>{props.type}</div>
         <div className={$style.hoverInner}></div>
