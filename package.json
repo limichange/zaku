@@ -72,7 +72,7 @@
   },
   "devDependencies": {
     "@types/next": "8.0.7",
-    "electron": "7.1.8",
+    "electron": "7.1.9",
     "electron-builder": "21.2.0",
     "electron-builder-notarize": "1.1.2",
     "next": "9.1.7",
