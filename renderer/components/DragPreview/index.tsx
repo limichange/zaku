@@ -6,7 +6,7 @@ let index = 5000
 export default function DragPreview(props) {
   return (
     <div
-      style={{ top: px((index += 30)) }}
+      style={{ top: px((index += 100)) }}
       ref={props.ref}
       className={$style.previewWrap}>
       <div className={$style.preview}>{props.children}</div>
