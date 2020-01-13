@@ -39,6 +39,7 @@ const config = [
     tag: 'Row',
     name: 'Row',
     previewImage: '',
+    emptyPlaceholder: true,
     attributes: {
       type: 'flex'
     }
@@ -47,6 +48,7 @@ const config = [
     type: 'AntdCol',
     tag: 'Col',
     name: 'Col',
+    emptyPlaceholder: true,
     previewImage: '',
     attributes: {
       span: 4
@@ -55,7 +57,12 @@ const config = [
   {
     type: 'div',
     tag: 'div',
-    name: 'div'
+    name: 'div',
+    emptyPlaceholder: true,
+    style: {
+      padding: '10px 20px',
+      margin: '20px 10ppx'
+    }
   }
 ]
 
