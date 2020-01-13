@@ -10,10 +10,9 @@ const menu = (
         target='_blank'
         rel='noopener noreferrer'
         href='https://github.com/limichange/zaku'>
-        关于
+        Fork me
       </a>
     </Menu.Item>
-    <Menu.Item>退出</Menu.Item>
   </Menu>
 )
 
