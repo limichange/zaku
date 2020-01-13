@@ -1,13 +1,14 @@
 const withLess = require('./config/withLess')
 const withCss = require('./config/withCSS')
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin')
+const isProd = (process.env.NODE_ENV || 'production') === 'production'
 
 module.exports = withCss(
   withLess({
     lessLoaderOptions: {
       javascriptEnabled: true
     },
-    assetPrefix: '/zaku/',
+    assetPrefix: isProd ? '/zaku/' : '',
     webpack(config) {
       config.module.rules = [
         ...config.module.rules,
