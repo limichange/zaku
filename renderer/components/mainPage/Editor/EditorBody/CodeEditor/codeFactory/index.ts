@@ -24,17 +24,24 @@ import parserJS from 'prettier/parser-babylon'
 function generateCode(components) {
   if (components.length <= 0) return ''
 
-  const { header: headerAST, body: bodyAST } = createJSXelement(components)
-  const { code: headerCode } = generate(headerAST)
-  const { code: bodyCode } = generate(bodyAST)
+  const {
+    header: headerAST,
+    body: bodyAST,
+    style: styleAST
+  } = createJSXelement(components)
 
-  return prettier.format(headerCode + '\n\n' + bodyCode, {
-    parser: 'babel',
-    plugins: [parserJS],
-    singleQuote: true,
-    jsxSingleQuote: true,
-    jsxBracketSameLine: true
-  })
+  return prettier.format(
+    [generate(headerAST).code, generate(styleAST).code, generate(bodyAST).code]
+      .filter(code => code)
+      .join('\n\n'),
+    {
+      parser: 'babel',
+      plugins: [parserJS],
+      singleQuote: true,
+      jsxSingleQuote: true,
+      jsxBracketSameLine: true
+    }
+  )
 }
 
 function createJSXelement(components: any[]) {
@@ -42,12 +49,12 @@ function createJSXelement(components: any[]) {
 
   return {
     header: importComponentsDeclaration(components, libName),
+    style: generateStyles(),
     body: exportDefaultDeclaration(
       functionExpression(
         identifier('component'),
         [],
         blockStatement([
-          generateStyles(),
           generateHooks(),
           returnStatement(
             components.length === 1
