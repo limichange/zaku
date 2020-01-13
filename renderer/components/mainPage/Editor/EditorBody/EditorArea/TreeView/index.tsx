@@ -33,7 +33,7 @@ export default function() {
       }
 
       return (
-        <TreeNode title={item.type} key={item.key}>
+        <TreeNode title={<div>{item.type}</div>} key={item.key}>
           {children}
         </TreeNode>
       )

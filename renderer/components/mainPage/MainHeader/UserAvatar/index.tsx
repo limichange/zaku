@@ -6,10 +6,7 @@ import classnames from 'classnames'
 const menu = (
   <Menu>
     <Menu.Item>
-      <a
-        target='_blank'
-        rel='noopener noreferrer'
-        href='https://github.com/limichange/zaku'>
+      <a target='_blank' href='https://github.com/limichange/zaku'>
         Fork me
       </a>
     </Menu.Item>

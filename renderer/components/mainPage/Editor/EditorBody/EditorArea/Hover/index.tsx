@@ -6,6 +6,7 @@ import useSubscribe from '../../../../../../hooks/useSubscribe'
 import $style from './index.less'
 import { Icon } from 'antd'
 import { px } from '../../../../../../utils/style'
+import { useDrag, DragPreviewOptions } from 'react-dnd'
 
 type Props = {
   type: string
@@ -21,6 +22,19 @@ const Hover: FC<Props> = props => {
   const [height, setHeight] = useState<number>(0)
   const [left, setLeft] = useState<number>(0)
   const [top, setTop] = useState<number>(0)
+  const [{ opacity }, drag, preview] = useDrag({
+    item: { ...props },
+    options: {
+      dropEffect: 'move'
+    },
+    previewOptions: {
+      offsetX: 0,
+      offsetY: 0
+    },
+    collect: monitor => ({
+      opacity: monitor.isDragging() ? 0.4 : 1
+    })
+  })
   const { uuid: key } = props
   const selected = key === editorState.key
   let timeId = 0
@@ -75,10 +89,20 @@ const Hover: FC<Props> = props => {
           [$style.selected]: selected
         })}>
         <div className={$style.label}>
-          {props.type} <Icon className={$style.icon} type='drag' />
-          <Icon onClick={delNode} className={$style.icon} type='delete' />
+          {props.type}
+          <div ref={drag}>
+            <Icon className={$style.icon} type='drag' />
+          </div>
+
+          <div>
+            <Icon onClick={delNode} className={$style.icon} type='delete' />
+          </div>
         </div>
         <div className={$style.hoverInner}></div>
+      </div>
+
+      <div ref={preview} className={$style.previewWrap}>
+        <div className={$style.preview}>{props.type}</div>
       </div>
     </>
   )
