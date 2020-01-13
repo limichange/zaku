@@ -5,7 +5,10 @@ import DragPreview from '../../../../../../DragPreview'
 import editorStore from '../../../../../../../store/editorStore'
 
 const Item = props => {
-  const [item, dragRef, previewRef] = useDrag(props.config)
+  const [item, dragRef, previewRef] = useDrag({
+    ...props.config,
+    operate: 'add'
+  })
 
   function onDragStart() {
     editorStore.update({

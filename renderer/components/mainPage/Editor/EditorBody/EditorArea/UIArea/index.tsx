@@ -18,10 +18,16 @@ export default function UIArea() {
 
   const [collectedProps, drop] = useDrop({
     accept: [...componentsMap.getAllComponetsName()],
-    drop: (item, monitor) => {
-      editorStore.addComponent({
-        ...item
-      })
+    drop: (item: any, monitor) => {
+      if (item?.operate === 'add') {
+        Reflect.deleteProperty(item, 'operate')
+
+        editorStore.addComponent({
+          ...item
+        })
+      } else if (editorState.dragComponent) {
+        editorStore.moveComponent(editorState.dragComponent.key)
+      }
     },
     collect: (minoter: DropTargetMonitor) => {
       const isOver = minoter.isOver()

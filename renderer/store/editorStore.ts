@@ -71,32 +71,37 @@ function updateZoomIndex(components) {
   mark(components)
 }
 
-function moveComponent(key, toKey, gap = false, position = 0) {
+function moveComponent(key, toKey = null, gap = false, position = 0) {
   const { parent, component, index } = findComponent(key)
-  const {
-    parent: targetParent,
-    component: target,
-    index: targetIndex
-  } = findComponent(toKey)
 
-  if (target.noChildren) return
-
-  if (gap) {
+  if (!toKey) {
     parent.components.splice(index, 1)
 
-    targetParent.components.splice(
-      position === -1 ? targetIndex : targetIndex + 1,
-      0,
-      component
-    )
+    state.components.push(component)
   } else {
-    if (target.key === parent.key) return
+    const {
+      parent: targetParent,
+      component: target,
+      index: targetIndex
+    } = findComponent(toKey)
+
+    if (target.noChildren) return
 
     parent.components.splice(index, 1)
 
-    if (!target.components) target.components = []
+    if (gap) {
+      targetParent.components.splice(
+        position === -1 ? targetIndex : targetIndex + 1,
+        0,
+        component
+      )
+    } else {
+      if (target.key === parent.key) return
 
-    target.components.push(component)
+      if (!target.components) target.components = []
+
+      target.components.push(component)
+    }
   }
 
   updateZoomIndex(state.components)
