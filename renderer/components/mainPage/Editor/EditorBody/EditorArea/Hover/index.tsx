@@ -58,7 +58,12 @@ const Hover: FC<Props> = props => {
 
     if (!editorState.dragComponent) return
 
-    editorStore.moveComponent(editorState.dragComponent.uuid, key, false, 0)
+    if (editorState.dragComponent.key) {
+      editorStore.moveComponent(editorState.dragComponent.key, key, false, 0)
+    } else {
+      editorStore.addComponent(editorState.dragComponent, key)
+    }
+
     editorStore.update({
       dragComponent: null
     })
@@ -80,6 +85,7 @@ const Hover: FC<Props> = props => {
     editorStore.update({
       dragComponent: {
         ...props,
+        key,
         children: null
       }
     })

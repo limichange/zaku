@@ -8,7 +8,7 @@ import $style from './index.less'
 const { TabPane } = Tabs
 
 export default function RightPanel() {
-  const [editorStoreState, setEditorStore] = useSubscribe(editorStore)
+  const [editorStoreState] = useSubscribe(editorStore)
 
   function callback(key) {
     editorStore.setIndex(key)

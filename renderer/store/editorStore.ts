@@ -162,7 +162,7 @@ const editorStore = {
     subject.next({ ...state })
   },
   addComponent(componentInfo, parentKey?) {
-    let components = []
+    let components = state.components
     const newComponent = {
       key: uuid(),
       attributes: {},
@@ -173,10 +173,11 @@ const editorStore = {
     if (!parentKey) {
       components = [...state.components, newComponent]
     } else {
-      moveComponent(newComponent.key, parentKey)
+      const { component } = findComponent(parentKey)
+      component.components.push(newComponent)
     }
 
-    updateZoomIndex(components)
+    updateZoomIndex(state.components)
 
     state = {
       ...state,
