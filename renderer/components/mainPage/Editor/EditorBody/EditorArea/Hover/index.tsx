@@ -6,8 +6,9 @@ import useSubscribe from '../../../../../../hooks/useSubscribe'
 import $style from './index.less'
 import { Icon } from 'antd'
 import { px } from '../../../../../../utils/style'
-import { useDrag, DragPreviewOptions } from 'react-dnd'
+import { useDrag, DragPreviewOptions, useDrop } from 'react-dnd'
 import DragPreview from '../../../../../DragPreview'
+import componentsMap from '../../../../../../utils/componentsMap'
 
 type Props = {
   type: string
@@ -23,6 +24,18 @@ const Hover: FC<Props> = props => {
   const [height, setHeight] = useState<number>(0)
   const [left, setLeft] = useState<number>(0)
   const [top, setTop] = useState<number>(0)
+  const [isActive, setIsActive] = useState(false)
+  // const [{ canDrop, isOver }, drop] = useDrop({
+  //   accept: [...componentsMap.getAllComponetsName()],
+  //   drop: (item, monitor) => {
+  //     console.log(item)
+  //   },
+  //   collect: monitor => ({
+  //     isOver: monitor.isOver(),
+  //     canDrop: monitor.canDrop()
+  //   })
+  // })
+  // const isActive = canDrop && isOver
   const [{ opacity }, drag, preview] = useDrag({
     item: { ...props },
     options: {
@@ -43,6 +56,20 @@ const Hover: FC<Props> = props => {
   const children = React.cloneElement(props.children, {
     id: key
   })
+
+  function onDragEnter() {
+    setIsActive(true)
+  }
+
+  function onDragLeave() {
+    setIsActive(false)
+  }
+
+  function onDrop(e) {
+    setIsActive(false)
+    e.preventDefault()
+    e.stopPropagation()
+  }
 
   function onClick() {
     editorStore.setIndex('0')
@@ -99,7 +126,15 @@ const Hover: FC<Props> = props => {
             <Icon onClick={delNode} className={$style.icon} type='delete' />
           </div>
         </div>
-        <div className={$style.hoverInner}></div>
+
+        <div
+          onDrop={onDrop}
+          onDragLeave={onDragLeave}
+          onDragEnter={onDragEnter}
+          className={classnames({
+            [$style.hoverInner]: true,
+            [$style.isActive]: isActive
+          })}></div>
       </div>
       <div ref={preview}>
         <DragPreview>{props.type}</DragPreview>
