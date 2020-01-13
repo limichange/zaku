@@ -177,7 +177,7 @@ const editorStore = {
       component.components.push(newComponent)
     }
 
-    updateZoomIndex(state.components)
+    updateZoomIndex(components)
 
     state = {
       ...state,
