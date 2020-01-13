@@ -4,7 +4,7 @@ on:
     branches:
       - master
 jobs:
-  build-and-deploy:
+  build-client:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -12,3 +12,21 @@ jobs:
 
       - name: Build
         run: npm install && npm run build && npm run postinstall && npm run dist
+
+  deploy-github-page:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: Build
+        run: npm install && npm run build
+
+      - name: Build and Deploy
+        uses: peaceiris/actions-gh-pages@v2
+        env:
+          PERSONAL_TOKEN: ${{ secrets.zaku }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: ./renderer/out
+        with:
+          forceOrphan: true

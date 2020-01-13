@@ -29,18 +29,20 @@ module.exports = withCss(
         })
       )
 
-      return Object.assign(config, {
-        target: 'electron-renderer',
-        devtool: 'cheap-module-source-map',
-        plugins: config.plugins.filter(p => {
-          return p.constructor.name !== 'UglifyJsPlugin'
-        })
-      })
+      // return Object.assign(config, {
+      //   target: 'electron-renderer',
+      //   devtool: 'cheap-module-source-map',
+      //   plugins: config.plugins.filter(p => {
+      //     return p.constructor.name !== 'UglifyJsPlugin'
+      //   })
+      // })
+      return config
     },
     useFileSystemPublicRoutes: false,
     exportPathMap() {
       return {
-        '/main': { page: '/main' }
+        '/main': { page: '/main' },
+        '/': { page: '/main' }
       }
     }
   })
