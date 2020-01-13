@@ -16,6 +16,9 @@ export default function() {
 
   function onDrop(e) {
     const { dropToGap, node, dragNode } = e
+
+    if (!dragNode) return
+
     const dropKey = node.props.eventKey
     const dragKey = dragNode.props.eventKey
     const dropPos = node.props.pos.split('-')
