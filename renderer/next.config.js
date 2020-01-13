@@ -7,6 +7,7 @@ module.exports = withCss(
     lessLoaderOptions: {
       javascriptEnabled: true
     },
+    assetPrefix: '/zaku/',
     webpack(config) {
       config.module.rules = [
         ...config.module.rules,
