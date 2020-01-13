@@ -8,6 +8,11 @@
 <img src="https://github.com/limichange/zaku/blob/master/images/preview.gif?raw=true" alt="preview" />
 </p>
 
+## Demo
+
+- [Github Page](https://limichange.github.io/zaku/)
+- PC Client (todo)
+
 ## Usage
 
 ### Development
@@ -16,6 +21,8 @@
 npm i
 npm run start
 ```
+
+auto open client or manual open http://localhost:8000/
 
 ### Build client
 
