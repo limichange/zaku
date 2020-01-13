@@ -7,6 +7,7 @@ import $style from './index.less'
 import { Icon } from 'antd'
 import { px } from '../../../../../../utils/style'
 import { useDrag, DragPreviewOptions } from 'react-dnd'
+import DragPreview from '../../../../../DragPreview'
 
 type Props = {
   type: string
@@ -100,9 +101,8 @@ const Hover: FC<Props> = props => {
         </div>
         <div className={$style.hoverInner}></div>
       </div>
-
-      <div ref={preview} className={$style.previewWrap}>
-        <div className={$style.preview}>{props.type}</div>
+      <div ref={preview}>
+        <DragPreview>{props.type}</DragPreview>
       </div>
     </>
   )
