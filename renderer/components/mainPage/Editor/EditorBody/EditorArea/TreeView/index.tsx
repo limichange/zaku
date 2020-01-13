@@ -15,14 +15,13 @@ export default function() {
   }
 
   function onDrop(e) {
-    console.log(e)
-    //   const { dropToGap, node, dragNode } = e
-    //   const dropKey = node.props.eventKey
-    //   const dragKey = dragNode.props.eventKey
-    //   const dropPos = node.props.pos.split('-')
-    //   const dropPosition = e.dropPosition - Number(dropPos[dropPos.length - 1])
+    const { dropToGap, node, dragNode } = e
+    const dropKey = node.props.eventKey
+    const dragKey = dragNode.props.eventKey
+    const dropPos = node.props.pos.split('-')
+    const dropPosition = e.dropPosition - Number(dropPos[dropPos.length - 1])
 
-    //   editorStore.moveComponent(dragKey, dropKey, dropToGap, dropPosition)
+    editorStore.moveComponent(dragKey, dropKey, dropToGap, dropPosition)
   }
 
   function displayNode(components) {
