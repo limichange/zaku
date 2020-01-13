@@ -30,6 +30,12 @@ auto open client or manual open http://localhost:8000/
 npm run dist
 ```
 
+### Build website
+
+```
+npm run build
+```
+
 ## Technology
 
 - rxjs
