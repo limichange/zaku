@@ -55,8 +55,13 @@ const Hover: FC<Props> = props => {
 
   function onDrop(e) {
     setIsActive(false)
-    editorStore.moveComponent(editorState.dragComponent.uuid, key, false, 0)
 
+    if (!editorState.dragComponent) return
+
+    editorStore.moveComponent(editorState.dragComponent.uuid, key, false, 0)
+    editorStore.update({
+      dragComponent: null
+    })
     e.preventDefault()
     e.stopPropagation()
   }
