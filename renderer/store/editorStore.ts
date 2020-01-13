@@ -6,12 +6,14 @@ export type initialStateInterface = {
   tabIndex: string
   key: string
   components: any
+  dragComponent: any
 }
 
 const initialState: initialStateInterface = {
   components: [],
   tabIndex: '0',
-  key: ''
+  key: '',
+  dragComponent: null
 }
 
 let state = initialState

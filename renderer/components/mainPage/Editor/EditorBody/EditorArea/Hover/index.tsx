@@ -1,4 +1,4 @@
-import { useState, useEffect, FC } from 'react'
+import { useState, useEffect, FC, useContext } from 'react'
 import classnames from 'classnames'
 import React from 'react'
 import editorStore from '../../../../../../store/editorStore'
@@ -6,9 +6,8 @@ import useSubscribe from '../../../../../../hooks/useSubscribe'
 import $style from './index.less'
 import { Icon } from 'antd'
 import { px } from '../../../../../../utils/style'
-import { useDrag, DragPreviewOptions, useDrop } from 'react-dnd'
+import { useDrag } from 'react-dnd'
 import DragPreview from '../../../../../DragPreview'
-import componentsMap from '../../../../../../utils/componentsMap'
 
 type Props = {
   type: string
@@ -25,17 +24,6 @@ const Hover: FC<Props> = props => {
   const [left, setLeft] = useState<number>(0)
   const [top, setTop] = useState<number>(0)
   const [isActive, setIsActive] = useState(false)
-  // const [{ canDrop, isOver }, drop] = useDrop({
-  //   accept: [...componentsMap.getAllComponetsName()],
-  //   drop: (item, monitor) => {
-  //     console.log(item)
-  //   },
-  //   collect: monitor => ({
-  //     isOver: monitor.isOver(),
-  //     canDrop: monitor.canDrop()
-  //   })
-  // })
-  // const isActive = canDrop && isOver
   const [{ opacity }, drag, preview] = useDrag({
     item: { ...props },
     options: {
@@ -67,6 +55,8 @@ const Hover: FC<Props> = props => {
 
   function onDrop(e) {
     setIsActive(false)
+    editorStore.moveComponent(editorState.dragComponent.uuid, key, false, 0)
+
     e.preventDefault()
     e.stopPropagation()
   }
@@ -79,6 +69,15 @@ const Hover: FC<Props> = props => {
 
   function delNode() {
     editorStore.removeComponent(editorState.key)
+  }
+
+  function onDragStart() {
+    editorStore.update({
+      dragComponent: {
+        ...props,
+        children: null
+      }
+    })
   }
 
   useEffect(() => {
@@ -118,7 +117,7 @@ const Hover: FC<Props> = props => {
         })}>
         <div className={$style.label}>
           {props.type}
-          <div ref={drag}>
+          <div onDragStart={onDragStart} ref={drag}>
             <Icon className={$style.icon} type='drag' />
           </div>
 
