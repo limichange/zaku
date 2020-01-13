@@ -36,7 +36,9 @@ export default function() {
       }
 
       return (
-        <TreeNode title={<div>{item.type}</div>} key={item.key}>
+        <TreeNode
+          title={<div>{item.type + item.zoomIndex}</div>}
+          key={item.key}>
           {children}
         </TreeNode>
       )

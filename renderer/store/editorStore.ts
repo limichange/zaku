@@ -57,12 +57,10 @@ function findComponent(key) {
 function updateZoomIndex(components) {
   let zoomIndex = 1000
 
-  function mark(components) {
-    components?.forEach(component => {
+  function mark(components = []) {
+    components.forEach(component => {
       component.zoomIndex = ++zoomIndex
-    })
 
-    components?.forEach(component => {
       mark(component.components)
     })
   }
