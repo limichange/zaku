@@ -51,6 +51,11 @@ const config = [
     attributes: {
       span: 4
     }
+  },
+  {
+    type: 'div',
+    tag: 'div',
+    name: 'div'
   }
 ]
 

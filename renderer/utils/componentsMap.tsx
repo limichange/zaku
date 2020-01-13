@@ -144,6 +144,11 @@ export default {
     }
   },
   getAllComponetsName() {
-    return Object.keys(componentsMap).map(name => `Antd${name}`)
+    const names = [
+      ...Object.keys(componentsMap).map(name => `Antd${name}`),
+      'div'
+    ]
+
+    return names
   }
 }
