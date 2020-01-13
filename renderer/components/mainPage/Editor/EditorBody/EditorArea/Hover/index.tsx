@@ -73,7 +73,7 @@ const Hover: FC<Props> = props => {
   }
 
   function delNode() {
-    editorStore.removeComponent(editorState.key)
+    editorStore.removeComponent(key)
   }
 
   function onDragStart() {
