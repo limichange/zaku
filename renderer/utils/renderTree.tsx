@@ -7,7 +7,21 @@ export default function renderTree(components = [], WrapComponent?) {
     let children = null
 
     if (!item.noChildren) {
-      children = [item.text, renderTree(item.components, WrapComponent)]
+      children = [
+        item.text,
+        ...renderTree(item.components, WrapComponent)
+      ].filter(item => item)
+    }
+
+    if (
+      ['AntdRow', 'AntdCol', 'div'].includes(item.type) &&
+      children.length === 0
+    ) {
+      children.push(
+        <div style={{ padding: '5px', color: '#aaa' }} key={key}>
+          #{item.type}#
+        </div>
+      )
     }
 
     const displayComponent = (
