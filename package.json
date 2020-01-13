@@ -21,7 +21,7 @@
     "postinstall": "electron-builder install-app-deps",
     "lint": "xo",
     "test": "npm run lint",
-    "start": "run-electron ./source",
+    "start": "cross-env NODE_ENV=development run-electron ./source",
     "build": "next build renderer && next export renderer",
     "dist": "npm run build && electron-builder",
     "pack": "npm run build && electron-builder --dir",

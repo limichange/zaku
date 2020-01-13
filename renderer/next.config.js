@@ -3,6 +3,8 @@ const withCss = require('./config/withCSS')
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin')
 const isProd = (process.env.NODE_ENV || 'production') === 'production'
 
+console.log(isProd)
+
 module.exports = withCss(
   withLess({
     lessLoaderOptions: {
