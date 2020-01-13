@@ -8,6 +8,7 @@ import { Icon } from 'antd'
 import { px } from '../../../../../../utils/style'
 import { useDrag } from 'react-dnd'
 import DragPreview from '../../../../../DragPreview'
+import { useWindowResize } from 'beautiful-react-hooks'
 
 type Props = {
   type: string
@@ -91,7 +92,7 @@ const Hover: FC<Props> = props => {
     })
   }
 
-  useEffect(() => {
+  function updateSize() {
     clearTimeout(timeId)
 
     timeId = window.setTimeout(() => {
@@ -108,7 +109,10 @@ const Hover: FC<Props> = props => {
     return () => {
       clearTimeout(timeId)
     }
-  }, [editorState])
+  }
+
+  useWindowResize(updateSize)
+  useEffect(updateSize, [editorState])
 
   return (
     <>
