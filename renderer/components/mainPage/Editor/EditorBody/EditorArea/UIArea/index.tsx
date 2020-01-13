@@ -2,7 +2,6 @@ import { useDrop, DropTargetMonitor } from 'react-dnd'
 import { useState, useEffect } from 'react'
 import Hover from '../Hover'
 import editorStore from '../../../../../../store/editorStore'
-import uuid from 'uuid'
 import useSubscribe from '../../../../../../hooks/useSubscribe'
 import $style from './index.less'
 import React from 'react'
@@ -21,9 +20,6 @@ export default function UIArea() {
     accept: [...componentsMap.getAllComponetsName()],
     drop: (item, monitor) => {
       editorStore.addComponent({
-        key: uuid(),
-        attributes: {},
-        components: [],
         ...item
       })
     },

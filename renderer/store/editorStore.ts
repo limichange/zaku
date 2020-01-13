@@ -1,4 +1,5 @@
 import { Subject } from 'rxjs'
+import uuid from 'uuid'
 
 const subject = new Subject()
 
@@ -70,9 +71,43 @@ function updateZoomIndex(components) {
   mark(components)
 }
 
+function moveComponent(key, toKey, gap = false, position = 0) {
+  const { parent, component, index } = findComponent(key)
+  const {
+    parent: targetParent,
+    component: target,
+    index: targetIndex
+  } = findComponent(toKey)
+
+  if (target.noChildren) return
+
+  if (gap) {
+    parent.components.splice(index, 1)
+
+    targetParent.components.splice(
+      position === -1 ? targetIndex : targetIndex + 1,
+      0,
+      component
+    )
+  } else {
+    if (target.key === parent.key) return
+
+    parent.components.splice(index, 1)
+
+    if (!target.components) target.components = []
+
+    target.components.push(component)
+  }
+
+  updateZoomIndex(state.components)
+
+  subject.next({ ...state })
+}
+
 const editorStore = {
   init: () => subject.next(state),
   findComponent,
+  moveComponent,
   subscribe: setState => {
     const sub = subject.subscribe(setState)
     subject.next(state)
@@ -112,38 +147,6 @@ const editorStore = {
 
     subject.next({ ...state })
   },
-  moveComponent(key, toKey, gap, position) {
-    const { parent, component, index } = findComponent(key)
-    const {
-      parent: targetParent,
-      component: target,
-      index: targetIndex
-    } = findComponent(toKey)
-
-    if (target.noChildren) return
-
-    if (gap) {
-      parent.components.splice(index, 1)
-
-      targetParent.components.splice(
-        position === -1 ? targetIndex : targetIndex + 1,
-        0,
-        component
-      )
-    } else {
-      if (target.key === parent.key) return
-
-      parent.components.splice(index, 1)
-
-      if (!target.components) target.components = []
-
-      target.components.push(component)
-    }
-
-    updateZoomIndex(state.components)
-
-    subject.next({ ...state })
-  },
   updateComponentText(componentKey, text) {
     const { component } = findComponent(componentKey)
 
@@ -158,8 +161,21 @@ const editorStore = {
 
     subject.next({ ...state })
   },
-  addComponent(component) {
-    const components = [...state.components, component]
+  addComponent(componentInfo, parentKey?) {
+    let components = []
+    const newComponent = {
+      key: uuid(),
+      attributes: {},
+      components: [],
+      ...componentInfo
+    }
+
+    if (!parentKey) {
+      components = [...state.components, newComponent]
+    } else {
+      moveComponent(newComponent.key, parentKey)
+    }
+
     updateZoomIndex(components)
 
     state = {
