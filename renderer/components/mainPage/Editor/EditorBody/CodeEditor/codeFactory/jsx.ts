@@ -37,7 +37,10 @@ export function jsx(name, attributes?, children = []) {
  * @param name
  * @param value
  */
-export function attribute(name, value: number | string | { var: string }) {
+export function attribute(
+  name,
+  value: number | string | { type: string; value: string }
+) {
   let attributeValueExpress = null
 
   if (typeof value === 'number') {
@@ -45,7 +48,7 @@ export function attribute(name, value: number | string | { var: string }) {
   } else if (typeof value === 'string') {
     attributeValueExpress = stringLiteral(value)
   } else {
-    attributeValueExpress = jsxExpressionContainer(identifier(value.var))
+    attributeValueExpress = jsxExpressionContainer(identifier(value.value))
   }
 
   return jsxAttribute(jsxIdentifier(name), attributeValueExpress)

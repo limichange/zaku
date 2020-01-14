@@ -19,7 +19,8 @@ export function generate(components = []) {
     const className = `style${styleIndex++}`
 
     component.attributes.className = {
-      var: className
+      type: 'object',
+      value: className
     }
 
     styleArray.push(
