@@ -24,7 +24,7 @@ export default function Margin() {
   }
 
   return (
-    <div style={{ padding: '0 12px' }}>
+    <Item.Panel>
       <Item.Row>
         <Item.Label>margin</Item.Label>
         <InputNumber
@@ -35,6 +35,6 @@ export default function Margin() {
           value={value}
           onChange={onInputChange}></InputNumber>
       </Item.Row>
-    </div>
+    </Item.Panel>
   )
 }

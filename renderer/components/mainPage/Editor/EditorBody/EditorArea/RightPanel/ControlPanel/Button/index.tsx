@@ -1,7 +1,6 @@
 import { Select, Row, Col, Input } from 'antd'
 import useSubscribe from '../../../../../../../../hooks/useSubscribe'
 import editorStore from '../../../../../../../../store/editorStore'
-import $style from './index.less'
 import { useState, useEffect } from 'react'
 import * as Item from '../Item'
 
@@ -37,7 +36,7 @@ export default function Button() {
   }
 
   return (
-    <div className={$style.Button}>
+    <Item.Panel>
       <Item.Row>
         <Item.Label>Type</Item.Label>
         <Select
@@ -58,6 +57,6 @@ export default function Button() {
           value={text}
           onChange={onInputChange}></Input>
       </Item.Row>
-    </div>
+    </Item.Panel>
   )
 }
