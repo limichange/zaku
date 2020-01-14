@@ -6,7 +6,8 @@ import {
   jsxExpressionContainer,
   numericLiteral,
   stringLiteral,
-  jsxAttribute
+  jsxAttribute,
+  identifier
 } from '@babel/types'
 
 export function jsxEmpty(children = []) {
@@ -36,13 +37,15 @@ export function jsx(name, attributes?, children = []) {
  * @param name
  * @param value
  */
-export function attribute(name, value: number | string) {
+export function attribute(name, value: number | string | { var: string }) {
   let attributeValueExpress = null
 
   if (typeof value === 'number') {
     attributeValueExpress = jsxExpressionContainer(numericLiteral(value))
-  } else {
+  } else if (typeof value === 'string') {
     attributeValueExpress = stringLiteral(value)
+  } else {
+    attributeValueExpress = jsxExpressionContainer(identifier(value.var))
   }
 
   return jsxAttribute(jsxIdentifier(name), attributeValueExpress)

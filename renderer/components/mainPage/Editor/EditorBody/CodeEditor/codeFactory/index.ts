@@ -14,6 +14,7 @@ import { jsxEmpty, jsx } from './jsx'
 import generate from '@babel/generator'
 import prettier from 'prettier/standalone'
 import parserJS from 'prettier/parser-babylon'
+import style from './style'
 
 function generateCode(components) {
   if (components.length <= 0) return ''
@@ -43,7 +44,7 @@ function createJSXelement(components: any[]) {
 
   return {
     header: importComponentsDeclaration(components, libName),
-    style: generateStyles(),
+    style: generateStyles(components),
     body: exportDefaultDeclaration(
       functionExpression(
         identifier('component'),
@@ -66,9 +67,8 @@ function generateHooks() {
   return emptyStatement()
 }
 
-function generateStyles() {
-  // todo: auto generate style
-  return emptyStatement()
+function generateStyles(components) {
+  return style.generate(components)
 }
 
 function exportClassStyleComponent() {
