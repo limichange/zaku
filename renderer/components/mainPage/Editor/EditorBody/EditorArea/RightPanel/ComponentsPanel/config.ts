@@ -54,6 +54,37 @@ const config = [
       span: 4
     }
   },
+  // Header, Footer, Sider, Content, Layout
+  {
+    type: 'AntdLayout',
+    tag: 'Layout',
+    name: 'Layout',
+    emptyPlaceholder: true
+  },
+  {
+    type: 'AntdHeader',
+    tag: 'Layout.Header',
+    name: 'Header',
+    emptyPlaceholder: true
+  },
+  {
+    type: 'AntdFooter',
+    tag: 'Layout.Footer',
+    name: 'Footer',
+    emptyPlaceholder: true
+  },
+  {
+    type: 'AntdSider',
+    tag: 'Layout.Sider',
+    name: 'Sider',
+    emptyPlaceholder: true
+  },
+  {
+    type: 'AntdContent',
+    tag: 'Layout.Content',
+    name: 'Content',
+    emptyPlaceholder: true
+  },
   {
     type: 'div',
     tag: 'div',

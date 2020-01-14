@@ -46,12 +46,12 @@ const ComponentsPanel: React.FC = function() {
       {configs.map(config => {
         return (
           <Item {...config} key={config.type} config={config}>
-            <div className={$style.imgWrap}>
+            {/* <div className={$style.imgWrap}>
               {config.previewImage && <img src={config.previewImage} alt='' />}
               {!config.previewImage && (
                 <div className={$style.noImage}>{`<${config.tag} />`}</div>
               )}
-            </div>
+            </div> */}
             <div>{config.name}</div>
           </Item>
         )

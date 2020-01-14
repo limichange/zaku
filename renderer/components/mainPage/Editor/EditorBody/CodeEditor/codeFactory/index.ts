@@ -102,7 +102,7 @@ function getAllComponentsTag(components) {
     components &&
       components.forEach(component => {
         if (component.type.includes('Antd')) {
-          tagSet.add(component.tag)
+          tagSet.add(component.tag.split('.')[0])
         }
 
         if (component.components) find(component.components)
