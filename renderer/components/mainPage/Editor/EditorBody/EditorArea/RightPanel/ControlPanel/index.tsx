@@ -5,6 +5,7 @@ import editorStore from '../../../../../../../store/editorStore'
 import Normal from './Normal'
 import StyleSetting from './StyleSetting'
 import Margin from './Margin'
+import Color from './Color'
 
 export default function SettingPanel() {
   const [editorState] = useSubscribe(editorStore)
@@ -16,6 +17,7 @@ export default function SettingPanel() {
   return (
     <>
       <Normal></Normal>
+      <Color></Color>
       <Margin></Margin>
       <div>{component.type === 'AntdButton' && <Button></Button>}</div>
       <div>{component.type === 'AntInput' && <Input></Input>}</div>
