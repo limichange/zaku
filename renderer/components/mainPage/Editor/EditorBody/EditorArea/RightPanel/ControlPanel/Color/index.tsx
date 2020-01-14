@@ -19,13 +19,16 @@ export default function Color() {
     editorStore.updateComponentStyle(editorState.key, {
       color: event.target.value
     })
+
+    event.preventDefault()
+    event.stopPropagation()
   }
 
   return (
     <Item.Panel>
       <Item.Row>
         <Item.Label>color</Item.Label>
-        <input onChange={onChange} type='color'></input>
+        <input value={value} onChange={onChange} type='color'></input>
       </Item.Row>
     </Item.Panel>
   )
