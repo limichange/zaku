@@ -40,6 +40,7 @@ export default function Button() {
       <Item.Row>
         <Item.Label>Type</Item.Label>
         <Select
+          size='small'
           onChange={onChange}
           value={attributes.type || 'default'}
           style={{ flex: 1 }}>
@@ -53,6 +54,7 @@ export default function Button() {
       <Item.Row>
         <Item.Label>Text</Item.Label>
         <Input
+          size='small'
           style={{ flex: 1 }}
           value={text}
           onChange={onInputChange}></Input>
