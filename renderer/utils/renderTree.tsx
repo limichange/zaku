@@ -5,42 +5,39 @@ import { FC } from 'react'
 interface renderTree {
   components: any[]
   mode: 'editor' | 'preview'
-  WrapComponent: FC
+  HoverComponent: FC
 }
 
 export default function renderTree(
   components = [],
-  WrapComponent?,
+  HoverComponent?,
   mode = 'editor'
 ) {
   return [
     <div key='createStyleTree'>{createStyleTree(components)}</div>,
-    <div key='createComponentTree'>
-      {createComponentTree(components, WrapComponent)}
-    </div>,
+    <div key='createComponentTree'>{createComponentTree(components)}</div>,
     <div key='createHolderTree'>
-      {createHolderTree(components, WrapComponent)}
+      {createHolderTree(components, HoverComponent)}
     </div>
   ]
 }
 
-function createHolderTree(components, WrapComponent) {
+function createHolderTree(components, HoverComponent) {
   return components.map(item => {
     const key = item.key
     let children = []
 
     if (!item.noChildren) {
-      children = [
-        item.text,
-        ...createHolderTree(item.components, WrapComponent)
-      ].filter(item => item)
+      children = createHolderTree(item.components, HoverComponent).filter(
+        item => item
+      )
     }
 
-    if (WrapComponent && !item.noHover) {
+    if (HoverComponent && !item.noHover) {
       return (
-        <WrapComponent key={'wrap' + key} {...item} uuid={key}>
+        <HoverComponent key={'wrap' + key} {...item} uuid={key}>
           {children}
-        </WrapComponent>
+        </HoverComponent>
       )
     }
   })
@@ -83,17 +80,16 @@ function createStyleTree(components = []) {
   return styles
 }
 
-function createComponentTree(components = [], WrapComponent?) {
+function createComponentTree(components = []) {
   return components.map(item => {
     const key = item.key
     const Component = componentsMap.getComponent(item.type)
     let children = null
 
     if (!item.noChildren) {
-      children = [
-        item.text,
-        ...createComponentTree(item.components, WrapComponent)
-      ].filter(item => item)
+      children = [item.text, ...createComponentTree(item.components)].filter(
+        item => item
+      )
     }
 
     const displayComponent = (
