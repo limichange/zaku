@@ -152,7 +152,7 @@ const editorStore = {
     subject.next({ ...state })
   },
   updateComponentStyle(componentKey, keyValue) {
-    const { component } = findComponent(componentKey)
+    let { component } = findComponent(componentKey)
 
     Object.assign(component.style, keyValue)
 

@@ -14,19 +14,19 @@ export function generate(components = []) {
 
   function generateStyleDeclaration(component) {
     const { style } = component
-    if (!style) return
+    if (!style || Reflect.ownKeys(style).length === 0) return
 
-    const className = `style${styleIndex++}`
+    const styleName = `style${styleIndex++}`
 
-    component.attributes.className = {
+    component.attributes.style = {
       type: 'object',
-      value: className
+      value: styleName
     }
 
     styleArray.push(
       variableDeclaration('const', [
         variableDeclarator(
-          identifier(className),
+          identifier(styleName),
           objectExpression(
             Object.entries(style).map(([key, value]) => {
               return objectProperty(

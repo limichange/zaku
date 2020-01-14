@@ -1,4 +1,5 @@
 import componentsMap from './componentsMap'
+import klona from 'klona'
 
 export default function renderTree(components = [], WrapComponent?) {
   return components.map(item => {
@@ -22,7 +23,7 @@ export default function renderTree(components = [], WrapComponent?) {
     }
 
     const displayComponent = (
-      <Component key={key} {...item.attributes} style={item.style}>
+      <Component key={key} {...item.attributes} style={klona(item.style)}>
         {children}
       </Component>
     )
