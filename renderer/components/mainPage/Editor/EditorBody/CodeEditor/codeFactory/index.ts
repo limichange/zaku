@@ -102,6 +102,7 @@ function getAllComponentsTag(components) {
     components &&
       components.forEach(component => {
         if (component.type.includes('Antd')) {
+          // <Layout.Header> just import Layout
           tagSet.add(component.tag.split('.')[0])
         }
 
