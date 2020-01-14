@@ -14,8 +14,6 @@ export default function Margin() {
 
     if (!component) return
 
-    console.log(component)
-
     setValue(noPx(component.style.margin))
   }, [editorState])
 
