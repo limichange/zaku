@@ -151,6 +151,13 @@ const editorStore = {
 
     subject.next({ ...state })
   },
+  updateComponentStyle(componentKey, keyValue) {
+    const { component } = findComponent(componentKey)
+
+    Object.assign(component.style, keyValue)
+
+    subject.next({ ...state })
+  },
   updateComponentText(componentKey, text) {
     const { component } = findComponent(componentKey)
 
