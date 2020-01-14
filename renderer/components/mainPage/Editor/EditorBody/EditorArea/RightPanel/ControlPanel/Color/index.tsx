@@ -4,7 +4,7 @@ import useSubscribe from '../../../../../../../../hooks/useSubscribe'
 import editorStore from '../../../../../../../../store/editorStore'
 
 export default function Color() {
-  const [value, setValue] = useState(0)
+  const [value, setValue] = useState('#000000')
   const [editorState] = useSubscribe(editorStore)
 
   useEffect(() => {
