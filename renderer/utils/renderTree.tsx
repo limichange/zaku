@@ -14,11 +14,9 @@ export default function renderTree(
   mode = 'editor'
 ) {
   return [
-    <div key='createStyleTree'>{createStyleTree(components)}</div>,
-    <div key='createComponentTree'>{createComponentTree(components)}</div>,
-    <div key='createHolderTree'>
-      {createHolderTree(components, HoverComponent)}
-    </div>
+    <div key='style'>{createStyleTree(components)}</div>,
+    <div key='component'>{createComponentTree(components)}</div>,
+    <div key='hover'>{createHolderTree(components, HoverComponent)}</div>
   ]
 }
 
