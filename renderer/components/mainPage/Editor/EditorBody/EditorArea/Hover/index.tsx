@@ -149,9 +149,9 @@ const Hover: FC<Props> = props => {
             [$style.hoverInner]: true,
             [$style.isActive]: isActive
           })}></div>
-      </div>
-      <div ref={preview}>
-        <DragPreview>{props.type}</DragPreview>
+        <div ref={preview}>
+          <DragPreview>{props.type}</DragPreview>
+        </div>
       </div>
     </>
   )

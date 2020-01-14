@@ -39,7 +39,10 @@ const config = [
     tag: 'Row',
     name: 'Row',
     previewImage: '',
-    emptyPlaceholder: true
+    emptyPlaceholder: true,
+    attributes: {
+      type: 'flex'
+    }
   },
   {
     type: 'AntdCol',

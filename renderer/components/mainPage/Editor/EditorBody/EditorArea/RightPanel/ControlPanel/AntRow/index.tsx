@@ -9,7 +9,8 @@ const { Option } = Select
 export default function AntRow() {
   const [editorState] = useSubscribe(editorStore)
   const [attributes, setAttributes] = useState({
-    align: 'top'
+    align: 'top',
+    justify: 'start'
   })
 
   useEffect(() => {
@@ -21,9 +22,7 @@ export default function AntRow() {
   }, [editorState])
 
   function onChange(value) {
-    editorStore.updateComponentAttribute(editorState.key, {
-      align: value
-    })
+    editorStore.updateComponentAttribute(editorState.key, value)
   }
 
   return (
@@ -32,12 +31,26 @@ export default function AntRow() {
         <Item.Label>align</Item.Label>
         <Select
           size='small'
-          onChange={onChange}
+          onChange={align => onChange({ align })}
           value={attributes.align || 'top'}
           style={{ flex: 1 }}>
           <Option value='top'>top</Option>
           <Option value='middle'>middle</Option>
           <Option value='bottom'>bottom</Option>
+        </Select>
+      </Item.Row>
+      <Item.Row>
+        <Item.Label>justify</Item.Label>
+        <Select
+          size='small'
+          onChange={justify => onChange({ justify })}
+          value={attributes.justify || 'start'}
+          style={{ flex: 1 }}>
+          <Option value='start'>start</Option>
+          <Option value='end'>end</Option>
+          <Option value='center'>center</Option>
+          <Option value='space-between'>space-between</Option>
+          <Option value='space-around'>space-around</Option>
         </Select>
       </Item.Row>
     </Item.Panel>
