@@ -1,5 +1,6 @@
 import { Subject } from 'rxjs'
 import uuid from 'uuid'
+import klona from 'klona'
 
 const subject = new Subject()
 
@@ -174,13 +175,13 @@ const editorStore = {
   },
   addComponent(componentInfo, parentKey?) {
     let components = state.components
-    const newComponent = {
+    const newComponent = klona({
       key: uuid(),
       style: {},
       attributes: {},
       components: [],
       ...componentInfo
-    }
+    })
 
     if (!parentKey) {
       components = [...state.components, newComponent]

@@ -4,6 +4,7 @@ import useSubscribe from '../../../../../../hooks/useSubscribe'
 import editorStore from '../../../../../../store/editorStore'
 
 const { TreeNode } = Tree
+let dtopNodeKey = ''
 
 export default function() {
   const [editorState] = useSubscribe(editorStore)
@@ -17,6 +18,7 @@ export default function() {
   function onDrop(e) {
     const { dropToGap, node, dragNode } = e
 
+    // tree move
     if (dragNode) {
       const dropKey = node.props.eventKey
       const dragKey = dragNode.props.eventKey
@@ -25,12 +27,23 @@ export default function() {
 
       editorStore.moveComponent(dragKey, dropKey, dropToGap, dropPosition)
     } else if (editorState.dragComponent) {
-      // todo
-
-      if (editorState.dragComponent) {
-        // todo
+      if (editorState.dragComponent.key) {
+        // uiarea move
+        editorStore.moveComponent(
+          editorState.dragComponent.key,
+          dtopNodeKey,
+          false,
+          0
+        )
+      } else {
+        // component panel move
+        editorStore.addComponent(editorState.dragComponent, dtopNodeKey)
       }
     }
+  }
+
+  function onNodeDrop(e) {
+    dtopNodeKey = e.target.className
   }
 
   function displayNode(components) {
@@ -42,7 +55,13 @@ export default function() {
       }
 
       return (
-        <TreeNode title={<div>{item.type}</div>} key={item.key}>
+        <TreeNode
+          title={
+            <div className={item.key} onDrop={onNodeDrop}>
+              {item.type}
+            </div>
+          }
+          key={item.key}>
           {children}
         </TreeNode>
       )

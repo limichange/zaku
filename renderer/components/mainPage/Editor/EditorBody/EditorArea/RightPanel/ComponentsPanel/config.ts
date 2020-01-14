@@ -49,10 +49,7 @@ const config = [
     tag: 'Col',
     name: 'Col',
     emptyPlaceholder: true,
-    previewImage: '',
-    attributes: {
-      span: 4
-    }
+    previewImage: ''
   },
   // Header, Footer, Sider, Content, Layout
   {
