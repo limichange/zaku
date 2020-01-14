@@ -22,7 +22,7 @@ export default function renderTree(components = [], WrapComponent?) {
     }
 
     const displayComponent = (
-      <Component key={key} {...item.attributes}>
+      <Component key={key} {...item.attributes} style={item.style}>
         {children}
       </Component>
     )

@@ -89,10 +89,16 @@ function importComponentsDeclaration(components, libName) {
   const componentName = name =>
     importSpecifier(identifier(name), identifier(name))
 
-  return importDeclaration(
-    getAllComponentsTag(components).map(componentName),
-    stringLiteral(libName)
-  )
+  const allTags = getAllComponentsTag(components)
+
+  if (allTags.length > 0) {
+    return importDeclaration(
+      getAllComponentsTag(components).map(componentName),
+      stringLiteral(libName)
+    )
+  } else {
+    return emptyStatement()
+  }
 }
 
 function getAllComponentsTag(components) {

@@ -60,8 +60,8 @@ const config = [
     name: 'div',
     emptyPlaceholder: true,
     style: {
-      padding: '10px 20px',
-      margin: '20px 10ppx'
+      padding: '1px 2px',
+      margin: '2px 1ppx'
     }
   }
 ]
