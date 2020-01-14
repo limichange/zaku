@@ -48,6 +48,7 @@ export function attribute(
   } else if (typeof value === 'string') {
     attributeValueExpress = stringLiteral(value)
   } else {
+    // object attribute
     attributeValueExpress = jsxExpressionContainer(identifier(value.value))
   }
 
