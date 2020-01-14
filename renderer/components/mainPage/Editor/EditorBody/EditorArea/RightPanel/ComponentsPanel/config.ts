@@ -58,11 +58,7 @@ const config = [
     type: 'div',
     tag: 'div',
     name: 'div',
-    emptyPlaceholder: true,
-    style: {
-      padding: '1px 2px',
-      margin: '2px 1ppx'
-    }
+    emptyPlaceholder: true
   }
 ]
 

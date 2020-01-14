@@ -169,6 +169,7 @@ const editorStore = {
     let components = state.components
     const newComponent = {
       key: uuid(),
+      style: {},
       attributes: {},
       components: [],
       ...componentInfo
