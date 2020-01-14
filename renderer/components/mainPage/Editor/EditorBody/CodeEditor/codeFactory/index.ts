@@ -15,9 +15,12 @@ import generate from '@babel/generator'
 import prettier from 'prettier/standalone'
 import parserJS from 'prettier/parser-babylon'
 import style from './style'
+import klona from 'klona'
 
 function generateCode(components) {
   if (components.length <= 0) return ''
+
+  components = klona(components)
 
   const {
     header: headerAST,
