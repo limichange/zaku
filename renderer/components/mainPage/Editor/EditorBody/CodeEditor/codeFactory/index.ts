@@ -1,22 +1,16 @@
 import {
   identifier,
-  jsxOpeningElement,
-  jsxClosingElement,
-  jsxAttribute,
-  jsxIdentifier,
   blockStatement,
   returnStatement,
   exportDefaultDeclaration,
-  jsxElement,
   functionExpression,
   jsxText,
   stringLiteral,
   importDeclaration,
   importSpecifier,
-  jsxExpressionContainer,
-  numericLiteral,
   emptyStatement
 } from '@babel/types'
+import { jsxEmpty, jsx } from './jsx'
 import generate from '@babel/generator'
 import prettier from 'prettier/standalone'
 import parserJS from 'prettier/parser-babylon'
@@ -59,7 +53,7 @@ function createJSXelement(components: any[]) {
           returnStatement(
             components.length === 1
               ? componentInfoTranslate(components[0])
-              : JSXempty(components.map(componentInfoTranslate))
+              : jsxEmpty(components.map(componentInfoTranslate))
           )
         ])
       )
@@ -138,7 +132,7 @@ function componentInfoTranslate(componentInfo) {
     children = [...children, ...components.map(componentInfoTranslate)]
   }
 
-  return element(
+  return jsx(
     tag,
     Object.entries(attributes).map(([key, value]) => {
       return {
@@ -148,49 +142,6 @@ function componentInfoTranslate(componentInfo) {
     }),
     children
   )
-}
-
-/**
- * create jsx <></>
- * @param children
- */
-function JSXempty(children) {
-  return element('', [], children)
-}
-
-/**
- * create jsx element
- * @param name
- * @param attributes
- * @param children
- */
-function element(name, attributes?, children = []) {
-  return jsxElement(
-    jsxOpeningElement(
-      jsxIdentifier(name),
-      attributes.map(({ key, value }) => attribute(key, value))
-    ),
-    jsxClosingElement(jsxIdentifier(name)),
-    children,
-    true
-  )
-}
-
-/**
- * create jsx attribute
- * @param name
- * @param value
- */
-function attribute(name, value: number | string) {
-  let attributeValueExpress = null
-
-  if (typeof value === 'number') {
-    attributeValueExpress = jsxExpressionContainer(numericLiteral(value))
-  } else {
-    attributeValueExpress = stringLiteral(value)
-  }
-
-  return jsxAttribute(jsxIdentifier(name), attributeValueExpress)
 }
 
 export default {

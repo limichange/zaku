@@ -73,6 +73,7 @@ function updateZoomIndex(components) {
 
 function moveComponent(key, toKey = null, gap = false, position = 0) {
   const { parent, component, index } = findComponent(key)
+  if (key === toKey) return
 
   if (!toKey) {
     parent.components.splice(index, 1)
@@ -96,8 +97,6 @@ function moveComponent(key, toKey = null, gap = false, position = 0) {
         component
       )
     } else {
-      if (target.key === parent.key) return
-
       if (!target.components) target.components = []
 
       target.components.push(component)
