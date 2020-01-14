@@ -95,6 +95,22 @@ const config = [
     emptyPlaceholder: true
   },
   {
+    type: 'AntdMenu',
+    tag: 'Menu',
+    name: 'Menu',
+    emptyPlaceholder: true,
+    attributes: {
+      theme: 'dark',
+      mode: 'horizontal'
+    }
+  },
+  {
+    type: 'AntdMenuItem',
+    tag: 'Menu.Item',
+    name: 'MenuItem',
+    emptyPlaceholder: true
+  },
+  {
     type: 'div',
     tag: 'div',
     name: 'div',

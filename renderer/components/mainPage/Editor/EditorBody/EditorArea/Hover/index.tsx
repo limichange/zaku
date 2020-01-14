@@ -42,10 +42,6 @@ const Hover: FC<Props> = props => {
   const selected = key === editorState.key
   let timeId = 0
 
-  const children = React.cloneElement(props.children, {
-    id: key
-  })
-
   function onDragEnter() {
     setIsActive(true)
   }
@@ -96,7 +92,7 @@ const Hover: FC<Props> = props => {
     clearTimeout(timeId)
 
     timeId = window.setTimeout(() => {
-      const dom = document.getElementById(key)
+      const dom = document.getElementById('id' + key)
       const { width, height, left, top } = dom.getBoundingClientRect()
       const offset = 1
 
@@ -116,7 +112,7 @@ const Hover: FC<Props> = props => {
 
   return (
     <>
-      {children}
+      {props.children}
       <div
         onClick={onClick}
         style={{

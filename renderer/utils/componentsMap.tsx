@@ -67,6 +67,7 @@ const { Header, Footer, Sider, Content } = Layout
 
 const componentsMap = {
   BreadcrumbItem: Breadcrumb.Item,
+  MenuItem: Menu.Item,
   Header,
   Footer,
   Sider,
