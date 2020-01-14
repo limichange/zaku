@@ -12,23 +12,20 @@ export default function Color() {
 
     if (!component) return
 
-    setValue(component.style.color)
+    setValue(component.style.color || '#000000')
   }, [editorState])
 
   function onChange(event) {
     editorStore.updateComponentStyle(editorState.key, {
       color: event.target.value
     })
-
-    event.preventDefault()
-    event.stopPropagation()
   }
 
   return (
     <Item.Panel>
       <Item.Row>
         <Item.Label>color</Item.Label>
-        <input value={value} onChange={onChange} type='color'></input>
+        <input type='color' value={value} onChange={onChange}></input>
       </Item.Row>
     </Item.Panel>
   )
