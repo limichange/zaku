@@ -83,6 +83,18 @@ const config = [
     emptyPlaceholder: true
   },
   {
+    type: 'AntdBreadcrumb',
+    tag: 'Breadcrumb',
+    name: 'Breadcrumb',
+    emptyPlaceholder: true
+  },
+  {
+    type: 'AntdBreadcrumbItem',
+    tag: 'Breadcrumb.Item',
+    name: 'BreadcrumbItem',
+    emptyPlaceholder: true
+  },
+  {
     type: 'div',
     tag: 'div',
     name: 'div',

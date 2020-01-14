@@ -66,6 +66,7 @@ import {
 const { Header, Footer, Sider, Content } = Layout
 
 const componentsMap = {
+  BreadcrumbItem: Breadcrumb.Item,
   Header,
   Footer,
   Sider,
