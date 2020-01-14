@@ -28,6 +28,8 @@ export default function Margin() {
       <Item.Row>
         <Item.Label>margin</Item.Label>
         <InputNumber
+          formatter={value => `${value}px`}
+          parser={value => value.replace('px', '')}
           size='small'
           style={{ flex: 1 }}
           value={value}
