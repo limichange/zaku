@@ -7,7 +7,12 @@ const menu = (
   <Menu>
     <Menu.Item>
       <a target='_blank' href='https://github.com/limichange/zaku'>
-        Fork me
+        Star & Fork
+      </a>
+    </Menu.Item>
+    <Menu.Item>
+      <a target='_blank' href='https://github.com/limichange/zaku/issues/new'>
+        Report Bug 🐞
       </a>
     </Menu.Item>
   </Menu>
