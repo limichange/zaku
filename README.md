@@ -10,6 +10,7 @@
 
 ## Demo
 
+- [Video](https://www.youtube.com/watch?v=_lS0FQg4340)
 - [Github Page](https://limichange.github.io/zaku/)
 - PC Client (todo)
 
