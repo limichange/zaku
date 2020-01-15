@@ -19,7 +19,7 @@ export default function SettingPanel() {
 
   return (
     <>
-      {component.type}-{editorState.key}
+      {/* {component.type}-{editorState.key} */}
       <Normal></Normal>
       <Color></Color>
       <Background></Background>
