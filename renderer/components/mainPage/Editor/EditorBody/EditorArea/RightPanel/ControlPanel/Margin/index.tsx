@@ -35,6 +35,7 @@ export default function Margin() {
           value={value}
           onChange={onInputChange}></InputNumber>
       </Item.Row>
+      <div></div>
     </Item.Panel>
   )
 }
