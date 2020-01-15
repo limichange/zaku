@@ -114,7 +114,7 @@ const editorStore = {
   findComponent,
   moveComponent,
   subscribe: setState => {
-    const sub = subject.subscribe(setState)
+    const sub = subject.subscribe(value => setState(klona(value)))
     subject.next(state)
     return sub
   },

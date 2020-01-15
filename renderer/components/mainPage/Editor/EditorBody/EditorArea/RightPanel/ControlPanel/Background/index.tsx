@@ -5,7 +5,7 @@ import editorStore from '../../../../../../../../store/editorStore'
 import Colorpicker from '../Colorpicker'
 
 export default function Background() {
-  const [value, setValue] = useState('trnasparent')
+  const [value, setValue] = useState('transparent')
   const [editorState] = useSubscribe(editorStore)
 
   useEffect(() => {
@@ -13,7 +13,7 @@ export default function Background() {
 
     if (!component) return
 
-    setValue(component.style.background || 'trnasparent')
+    setValue(component.style.background || 'transparent')
   }, [editorState])
 
   function onChange(color) {
@@ -26,7 +26,7 @@ export default function Background() {
     <Item.Panel>
       <Item.Row>
         <Item.Label>background</Item.Label>
-        <Colorpicker color={value} onChange={onChange}></Colorpicker>
+        <Colorpicker defaultValue={value} onChange={onChange}></Colorpicker>
       </Item.Row>
     </Item.Panel>
   )

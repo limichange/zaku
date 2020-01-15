@@ -26,7 +26,7 @@ export default function Color() {
     <Item.Panel>
       <Item.Row>
         <Item.Label>color</Item.Label>
-        <Colorpicker color={value} onChange={onChange}></Colorpicker>
+        <Colorpicker defaultValue={value} onChange={onChange}></Colorpicker>
       </Item.Row>
     </Item.Panel>
   )
