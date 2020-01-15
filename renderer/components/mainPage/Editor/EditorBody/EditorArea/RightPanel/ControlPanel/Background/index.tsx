@@ -2,9 +2,10 @@ import * as Item from '../Item'
 import { useState, useEffect } from 'react'
 import useSubscribe from '../../../../../../../../hooks/useSubscribe'
 import editorStore from '../../../../../../../../store/editorStore'
+import Colorpicker from '../Colorpicker'
 
 export default function Background() {
-  const [value, setValue] = useState('#000000')
+  const [value, setValue] = useState('trnasparent')
   const [editorState] = useSubscribe(editorStore)
 
   useEffect(() => {
@@ -12,12 +13,12 @@ export default function Background() {
 
     if (!component) return
 
-    setValue(component.style.background || '#000000')
+    setValue(component.style.background || 'trnasparent')
   }, [editorState])
 
-  function onChange(event) {
+  function onChange(color) {
     editorStore.updateComponentStyle(editorState.key, {
-      background: event.target.value
+      background: color
     })
   }
 
@@ -25,7 +26,7 @@ export default function Background() {
     <Item.Panel>
       <Item.Row>
         <Item.Label>background</Item.Label>
-        <input type='color' value={value} onChange={onChange}></input>
+        <Colorpicker color={value} onChange={onChange}></Colorpicker>
       </Item.Row>
     </Item.Panel>
   )
