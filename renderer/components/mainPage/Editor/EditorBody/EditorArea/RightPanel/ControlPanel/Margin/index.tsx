@@ -25,7 +25,11 @@ export default function Margin() {
     setValueMarginBottomValue(marginBottom)
     setValueMarginLeftValue(marginLeft)
 
-    if (((marginTop === marginRight) === marginBottom) === marginLeft) {
+    if (
+      marginTop === marginRight &&
+      marginBottom === marginRight &&
+      marginLeft === marginRight
+    ) {
       setValueMarginValue(marginTop)
     } else {
       setValueMarginValue(undefined)
