@@ -1,37 +1,43 @@
 // https://cssgrid-generator.netlify.com/
 
 .parent {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
+  position: relative;
+  width: 100%;
+  height: 100px;
+
+  & > div {
+    width: 60px;
+  }
 }
 
-.div1 {
-  grid-area: 1 / 1 / 2 / 2;
-}
-.left {
-  grid-area: 2 / 1 / 3 / 2;
-}
-.div3 {
-  grid-area: 3 / 1 / 4 / 2;
-}
-.bottom {
-  grid-area: 3 / 2 / 4 / 3;
-}
 .center {
-  grid-area: 2 / 2 / 3 / 3;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
 }
+
 .top {
-  grid-area: 1 / 2 / 2 / 3;
-}
-.div7 {
-  grid-area: 1 / 3 / 2 / 4;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
 }
 .right {
-  grid-area: 2 / 3 / 3 / 4;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate3d(0, -50%, 0);
 }
-.div9 {
-  grid-area: 3 / 3 / 4 / 4;
+.bottom {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
+}
+.left {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate3d(0, -50%, 0);
 }
