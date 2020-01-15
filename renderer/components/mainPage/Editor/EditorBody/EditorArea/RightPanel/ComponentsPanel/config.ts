@@ -92,7 +92,8 @@ const config = [
     type: 'AntdBreadcrumbItem',
     tag: 'Breadcrumb.Item',
     name: 'BreadcrumbItem',
-    emptyPlaceholder: true
+    emptyPlaceholder: true,
+    noChildren: true
   },
   {
     type: 'AntdMenu',
@@ -108,6 +109,7 @@ const config = [
     type: 'AntdMenuItem',
     tag: 'Menu.Item',
     name: 'MenuItem',
+    noChildren: true,
     emptyPlaceholder: true
   },
   {
