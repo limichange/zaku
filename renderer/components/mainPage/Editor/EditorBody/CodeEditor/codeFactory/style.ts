@@ -5,7 +5,8 @@ import {
   objectProperty,
   stringLiteral,
   variableDeclaration,
-  program
+  program,
+  numericLiteral
 } from '@babel/types'
 
 export function generate(components = []) {
@@ -28,11 +29,14 @@ export function generate(components = []) {
         variableDeclarator(
           identifier(styleName),
           objectExpression(
-            Object.entries(style).map(([key, value]) => {
-              return objectProperty(
-                stringLiteral(key),
-                stringLiteral(value as string)
-              )
+            Object.entries(style).map(([key, value]: any) => {
+              if (typeof value === 'string') {
+                value = stringLiteral(value)
+              } else {
+                value = numericLiteral(value)
+              }
+
+              return objectProperty(stringLiteral(key), value)
             })
           )
         )
