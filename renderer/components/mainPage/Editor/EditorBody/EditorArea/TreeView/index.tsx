@@ -4,7 +4,7 @@ import useSubscribe from '../../../../../../hooks/useSubscribe'
 import editorStore from '../../../../../../store/editorStore'
 
 const { TreeNode } = Tree
-let dtopNodeKey = ''
+let dropNodeKey = ''
 
 export default function() {
   const [editorState] = useSubscribe(editorStore)
@@ -31,19 +31,19 @@ export default function() {
         // uiarea move
         editorStore.moveComponent(
           editorState.dragComponent.key,
-          dtopNodeKey,
+          dropNodeKey,
           false,
           0
         )
       } else {
         // component panel move
-        editorStore.addComponent(editorState.dragComponent, dtopNodeKey)
+        editorStore.addComponent(editorState.dragComponent, dropNodeKey)
       }
     }
   }
 
   function onNodeDrop(e) {
-    dtopNodeKey = e.target.className
+    dropNodeKey = e.target.className
   }
 
   function displayNode(components) {
