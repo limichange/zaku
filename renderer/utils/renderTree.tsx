@@ -89,9 +89,10 @@ function createComponentTree(components = []) {
     }
 
     if (!item.noChildren) {
-      children = [...children, ...createComponentTree(item.components)].filter(
-        item => item
-      )
+      children = [
+        ...(children || []),
+        ...createComponentTree(item.components)
+      ].filter(item => item)
     }
 
     return (
