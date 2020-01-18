@@ -8,7 +8,8 @@ import {
   stringLiteral,
   importDeclaration,
   importSpecifier,
-  emptyStatement
+  emptyStatement,
+  callExpression
 } from '@babel/types'
 import { jsxEmpty, jsx } from './jsx'
 import generate from '@babel/generator'
@@ -61,7 +62,7 @@ function createJSXelement(
 
   let body
   let func = functionExpression(
-    identifier('component'),
+    identifier('Component'),
     [],
     blockStatement([
       generateHooks(),

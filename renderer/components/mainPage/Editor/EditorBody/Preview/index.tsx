@@ -11,22 +11,21 @@ const scope = {
 }
 
 export default function() {
-  const [components, setComponents] = useState([])
   const [editorState] = useSubscribe(editorStore)
   const [code, setCode] = useState('')
 
   useEffect(() => {
-    setCode(
-      codeFactory.generateCode(editorState.components, {
-        withImport: false,
-        withExport: false
-      })
-    )
+    const renderCode = codeFactory.generateCode(editorState.components, {
+      withImport: false,
+      withExport: false
+    })
+
+    setCode(renderCode + '\n render(<Component />)')
   }, [editorState])
 
   return (
     <div style={{ border: '10px solid #eee', height: '100vh' }}>
-      <LiveProvider code={code} scope={scope}>
+      <LiveProvider noInline={true} code={code} scope={scope}>
         <LiveError />
         <LivePreview />
       </LiveProvider>
