@@ -15,12 +15,18 @@ export default function() {
   const [code, setCode] = useState('')
 
   useEffect(() => {
-    const renderCode = codeFactory.generateCode(editorState.components, {
+    let renderCode = codeFactory.generateCode(editorState.components, {
       withImport: false,
       withExport: false
     })
 
-    setCode(renderCode + '\n render(<Component />)')
+    if (renderCode) {
+      renderCode += '\nrender(<Component />)'
+    } else {
+      renderCode = 'render(null)'
+    }
+
+    setCode(renderCode)
   }, [editorState])
 
   return (
