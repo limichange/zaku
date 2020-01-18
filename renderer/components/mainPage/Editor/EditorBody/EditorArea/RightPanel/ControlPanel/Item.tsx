@@ -14,7 +14,7 @@ export const Row: FC = props => {
 }
 
 export const Label: FC = props => {
-  return <div style={{ width: '50px' }}>{props.children}</div>
+  return <div style={{ width: '100px' }}>{props.children}</div>
 }
 
 export const Panel: FC = props => {
