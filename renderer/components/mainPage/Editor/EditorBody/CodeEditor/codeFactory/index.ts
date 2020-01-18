@@ -59,7 +59,7 @@ function createJSXelement(
   }
 ) {
   const libName = 'antd'
-
+  let style = generateStyles(components)
   let body
   let func = functionExpression(
     identifier('Component'),
@@ -82,7 +82,7 @@ function createJSXelement(
 
   return {
     header: importComponentsDeclaration(components, libName),
-    style: generateStyles(components),
+    style,
     body
   }
 }
