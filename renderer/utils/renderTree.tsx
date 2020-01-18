@@ -82,10 +82,10 @@ function createComponentTree(components = []) {
   return components.map(item => {
     const key = item.key
     const Component = componentsMap.getComponent(item.type)
-    let children = []
+    let children = null
 
     if (item.text) {
-      children.push(item.text)
+      children = [item.text]
     }
 
     if (!item.noChildren) {
