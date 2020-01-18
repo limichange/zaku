@@ -17,51 +17,72 @@ import parserJS from 'prettier/parser-babylon'
 import style from './style'
 import klona from 'klona'
 
-function generateCode(components) {
+const initConfig = {
+  withImport: true,
+  withExport: true
+}
+
+function generateCode(components, config = initConfig) {
   if (components.length <= 0) return ''
 
   components = klona(components)
 
+  let codeArray = []
   const {
     header: headerAST,
     body: bodyAST,
     style: styleAST
-  } = createJSXelement(components)
+  } = createJSXelement(components, {
+    withExport: config.withExport
+  })
 
-  return prettier.format(
-    [generate(headerAST).code, generate(styleAST).code, generate(bodyAST).code]
-      .filter(code => code)
-      .join('\n\n'),
-    {
-      parser: 'babel',
-      plugins: [parserJS],
-      singleQuote: true,
-      jsxSingleQuote: true,
-      jsxBracketSameLine: true
-    }
-  )
+  codeArray = [generate(styleAST).code, generate(bodyAST).code]
+
+  if (config.withImport) {
+    codeArray.unshift(generate(headerAST).code)
+  }
+
+  return prettier.format(codeArray.filter(code => code).join('\n\n'), {
+    parser: 'babel',
+    plugins: [parserJS],
+    singleQuote: true,
+    jsxSingleQuote: true,
+    jsxBracketSameLine: true
+  })
 }
 
-function createJSXelement(components: any[]) {
+function createJSXelement(
+  components: any[],
+  config = {
+    withExport: true
+  }
+) {
   const libName = 'antd'
+
+  let body
+  let func = functionExpression(
+    identifier('component'),
+    [],
+    blockStatement([
+      generateHooks(),
+      returnStatement(
+        components.length === 1
+          ? componentInfoTranslate(components[0])
+          : jsxEmpty(components.map(componentInfoTranslate))
+      )
+    ])
+  )
+
+  if (config.withExport) {
+    body = exportDefaultDeclaration(func)
+  } else {
+    body = func
+  }
 
   return {
     header: importComponentsDeclaration(components, libName),
     style: generateStyles(components),
-    body: exportDefaultDeclaration(
-      functionExpression(
-        identifier('component'),
-        [],
-        blockStatement([
-          generateHooks(),
-          returnStatement(
-            components.length === 1
-              ? componentInfoTranslate(components[0])
-              : jsxEmpty(components.map(componentInfoTranslate))
-          )
-        ])
-      )
-    )
+    body
   }
 }
 

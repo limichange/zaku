@@ -137,6 +137,9 @@ const componentsMap = {
 }
 
 export default {
+  getComponentsMap() {
+    return componentsMap
+  },
   getComponent(type: string) {
     if (type.includes('Antd')) {
       type = type.replace('Antd', '')

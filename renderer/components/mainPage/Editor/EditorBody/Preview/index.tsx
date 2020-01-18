@@ -2,19 +2,34 @@ import useSubscribe from '../../../../../hooks/useSubscribe'
 import editorStore from '../../../../../store/editorStore'
 import { useState, useEffect } from 'react'
 import React from 'react'
-import renderTree from '../../../../../utils/renderTree'
+import { LiveProvider, LiveError, LivePreview } from 'react-live'
+import componentsMap from '../../../../../utils/componentsMap'
+import codeFactory from '../CodeEditor/codeFactory'
+
+const scope = {
+  ...componentsMap.getComponentsMap()
+}
 
 export default function() {
   const [components, setComponents] = useState([])
   const [editorState] = useSubscribe(editorStore)
+  const [code, setCode] = useState('')
 
   useEffect(() => {
-    setComponents(renderTree(editorState.components))
+    setCode(
+      codeFactory.generateCode(editorState.components, {
+        withImport: false,
+        withExport: false
+      })
+    )
   }, [editorState])
 
   return (
     <div style={{ border: '10px solid #eee', height: '100vh' }}>
-      {components}
+      <LiveProvider code={code} scope={scope}>
+        <LiveError />
+        <LivePreview />
+      </LiveProvider>
     </div>
   )
 }
