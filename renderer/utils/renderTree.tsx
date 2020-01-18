@@ -82,15 +82,19 @@ function createComponentTree(components = []) {
   return components.map(item => {
     const key = item.key
     const Component = componentsMap.getComponent(item.type)
-    let children = null
+    let children = []
+
+    if (item.text) {
+      children.push(item.text)
+    }
 
     if (!item.noChildren) {
-      children = [item.text, ...createComponentTree(item.components)].filter(
+      children = [...children, ...createComponentTree(item.components)].filter(
         item => item
       )
     }
 
-    const displayComponent = (
+    return (
       <Component
         id={'id' + key}
         key={key}
@@ -99,7 +103,5 @@ function createComponentTree(components = []) {
         {children}
       </Component>
     )
-
-    return displayComponent
   })
 }
