@@ -8,12 +8,14 @@ import {
   numericLiteral
 } from '@babel/types'
 
-export function generateUseState(name: string, type: 'string' | 'number') {
+export function generateUseState(name: string, value: string | number) {
   name.toLocaleUpperCase()
 
   const funcName = name[0].toUpperCase() + name.substr(1).toLowerCase()
   const stateDefaultValue =
-    type === 'string' ? stringLiteral('""') : numericLiteral(0)
+    typeof value === 'string'
+      ? stringLiteral(`'${value}'`)
+      : numericLiteral(value)
 
   return variableDeclaration('const', [
     variableDeclarator(
