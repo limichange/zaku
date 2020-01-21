@@ -16,6 +16,7 @@ import generate from '@babel/generator'
 import prettier from 'prettier/standalone'
 import parserJS from 'prettier/parser-babylon'
 import style from './style'
+import hooks from './hooks'
 import klona from 'klona'
 
 const initConfig = {
@@ -89,7 +90,7 @@ function createJSXelement(
 
 function generateHooks() {
   // todo: auto generate hooks
-  return emptyStatement()
+  return hooks.generate()
 }
 
 function generateStyles(components) {
