@@ -7,6 +7,7 @@ import componentsMap from '../../../../../utils/componentsMap'
 import codeFactory from '../CodeEditor/codeFactory'
 
 const scope = {
+  useState,
   ...componentsMap.getComponentsMap()
 }
 
@@ -21,7 +22,7 @@ export default function() {
     })
 
     if (renderCode) {
-      renderCode += '\nrender(<Component />)'
+      renderCode = renderCode + '\nrender(<Component />)'
     } else {
       renderCode = 'render(null)'
     }
