@@ -77,7 +77,7 @@
     "@types/next": "8.0.7",
     "cross-env": "6.0.3",
     "electron": "7.1.10",
-    "electron-builder": "22.2.0",
+    "electron-builder": "22.3.2",
     "electron-builder-notarize": "1.1.2",
     "next": "9.2.1",
     "np": "5.2.1",
