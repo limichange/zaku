@@ -80,7 +80,7 @@
     "electron-builder": "22.2.0",
     "electron-builder-notarize": "1.1.2",
     "next": "9.2.1",
-    "np": "5.2.1",
+    "np": "6.0.0",
     "typescript": "3.7.5",
     "xo": "0.25.3"
   },
