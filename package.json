@@ -76,7 +76,7 @@
   "devDependencies": {
     "@types/next": "8.0.7",
     "cross-env": "7.0.0",
-    "electron": "7.1.12",
+    "electron": "8.0.0",
     "electron-builder": "22.3.2",
     "electron-builder-notarize": "1.1.2",
     "next": "9.2.1",
