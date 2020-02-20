@@ -81,7 +81,7 @@
     "electron-builder-notarize": "1.1.2",
     "next": "9.2.1",
     "np": "6.1.0",
-    "typescript": "3.7.5",
+    "typescript": "3.8.2",
     "xo": "0.26.1"
   },
   "xo": {
