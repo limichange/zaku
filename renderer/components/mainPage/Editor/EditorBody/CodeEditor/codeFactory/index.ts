@@ -97,14 +97,6 @@ function generateStyles(components) {
   return style.generate(components)
 }
 
-function exportClassStyleComponent() {
-  // todo
-}
-
-function exportFunctionStyleComponent() {
-  // todo
-}
-
 function importComponentsDeclaration(components, libName) {
   const componentName = name =>
     importSpecifier(identifier(name), identifier(name))
