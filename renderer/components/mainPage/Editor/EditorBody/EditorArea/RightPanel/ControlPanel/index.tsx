@@ -18,7 +18,6 @@ export default function SettingPanel() {
 
   return (
     <>
-      {/* {component.type}-{editorState.key} */}
       <Normal></Normal>
       <Color></Color>
       <Background></Background>
@@ -27,7 +26,6 @@ export default function SettingPanel() {
       <div>{component.type === 'AntdInput' && <Input></Input>}</div>
       <div>{component.type === 'AntdRow' && <AntRow></AntRow>}</div>
       <Margin></Margin>
-      {/* <StyleSetting></StyleSetting> */}
     </>
   )
 }
