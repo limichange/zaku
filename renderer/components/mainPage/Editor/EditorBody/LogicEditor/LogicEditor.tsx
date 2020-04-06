@@ -2,11 +2,13 @@ import React, { useLayoutEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
 import G6 from '@antv/g6'
 import editorStyle from './utils/style'
+import nodes from './nodes'
 
 const data = {
   nodes: [
     {
-      id: 'node1',
+      id: 'parallel-gateway-node',
+      shape: 'parallel-gateway-node',
       x: 100,
       y: 200
     },
@@ -25,7 +27,22 @@ const data = {
       x: 300,
       y: 100,
       shape: 'modelRect',
-      label: 'modelRect'
+      label: 'modelRect',
+      anchorPoints: [
+        [0, 1],
+        [0.5, 1]
+      ]
+    },
+    {
+      id: 'node-modelRect2',
+      x: 300,
+      y: 300,
+      shape: 'modelRect',
+      label: 'modelRect',
+      anchorPoints: [
+        [0, 1],
+        [0.5, 1]
+      ]
     }
   ],
   edges: [
@@ -144,8 +161,11 @@ export default function() {
         plugins: [createG6MiniMap()]
       })
 
+      nodes(G6)
+      graph.setMode('edit')
       graph.data(data)
     }
+
     graph.render()
   }, [])
 
