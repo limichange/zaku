@@ -3,7 +3,7 @@ import Preview from './Preview'
 import EditorArea from './EditorArea'
 import { Tabs } from 'antd'
 import $style from './index.less'
-import EventEditor from './EventEditor'
+import LogicEditor from './LogicEditor'
 
 const { TabPane } = Tabs
 
@@ -18,8 +18,8 @@ export default function EditorBody() {
         <TabPane tab='UI' key='0'>
           <EditorArea></EditorArea>
         </TabPane>
-        <TabPane tab='Event' key='2'>
-          <EventEditor></EventEditor>
+        <TabPane tab='Logic' key='2'>
+          <LogicEditor></LogicEditor>
         </TabPane>
         <TabPane tab='Code' key='3'>
           <CodeEditor></CodeEditor>
