@@ -1,6 +1,7 @@
 import React, { useLayoutEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
 import G6 from '@antv/g6'
+import editorStyle from './utils/style'
 
 const data = {
   nodes: [
@@ -18,6 +19,13 @@ const data = {
       id: 'node3',
       x: 300,
       y: 300
+    },
+    {
+      id: 'node-modelRect',
+      x: 300,
+      y: 100,
+      shape: 'modelRect',
+      label: 'modelRect'
     }
   ],
   edges: [
@@ -27,6 +35,14 @@ const data = {
       source: 'node1'
     }
   ]
+}
+
+function createG6MiniMap() {
+  return new G6.Minimap({
+    size: [100, 100],
+    className: 'minimap',
+    type: 'delegate'
+  })
 }
 
 export default function() {
@@ -118,13 +134,14 @@ export default function() {
         },
         // The node styles in different states
         nodeStateStyles: {
-          // The node styles in selected state, corresponds to the built-in click-select behavior
           selected: {
-            stroke: '#666',
-            lineWidth: 2,
-            fill: 'steelblue'
+            fill: '#95D6FB'
+          },
+          hover: {
+            cursor: editorStyle.cursor.hoverNode
           }
-        }
+        },
+        plugins: [createG6MiniMap()]
       })
 
       graph.data(data)
