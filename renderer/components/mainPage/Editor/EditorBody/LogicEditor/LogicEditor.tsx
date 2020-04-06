@@ -3,24 +3,28 @@ import ReactDOM from 'react-dom'
 import G6 from '@antv/g6'
 
 const data = {
-  // 点集
   nodes: [
     {
-      id: 'node1', // String，该节点存在则必须，节点的唯一标识
-      x: 100, // Number，可选，节点位置的 x 值
-      y: 200 // Number，可选，节点位置的 y 值
+      id: 'node1',
+      x: 100,
+      y: 200
     },
     {
-      id: 'node2', // String，该节点存在则必须，节点的唯一标识
-      x: 300, // Number，可选，节点位置的 x 值
-      y: 200 // Number，可选，节点位置的 y 值
+      id: 'node2',
+      x: 300,
+      y: 200
+    },
+    {
+      id: 'node3',
+      x: 300,
+      y: 300
     }
   ],
-  // 边集
   edges: [
     {
-      source: 'node1', // String，必须，起始点 id
-      target: 'node2' // String，必须，目标点 id
+      id: 'edge1',
+      target: 'node2',
+      source: 'node1'
     }
   ]
 }
@@ -31,37 +35,100 @@ export default function() {
 
   useLayoutEffect(() => {
     if (!graph) {
-      graph = new G6.Graph({
-        container: ReactDOM.findDOMNode(ref.current),
-        width: 1200,
-        height: 800,
-        modes: {
-          default: ['drag-canvas', 'zoom-canvas'],
-          edit: ['click-select']
-        },
-        layout: {
-          type: 'dagre',
-          direction: 'LR'
-        },
-        defaultNode: {
-          type: 'node',
-          labelCfg: {
-            style: {
-              fill: '#000000A6',
-              fontSize: 10
-            }
-          },
-          style: {
-            stroke: '#72CC4A',
-            width: 150
+      let addedCount = 0
+      G6.registerBehavior('click-add-edge', {
+        getEvents() {
+          return {
+            'node:click': 'onClick',
+            mousemove: 'onMousemove',
+            'edge:click': 'onEdgeClick' // 点击空白处，取消边
           }
         },
-        defaultEdge: {
-          type: 'polyline'
+        onClick(ev) {
+          const node = ev.item
+          const graph = this.graph
+          const point = {
+            x: ev.x,
+            y: ev.y
+          }
+          const model = node.getModel()
+          if (this.addingEdge && this.edge) {
+            graph.updateItem(this.edge, {
+              target: model.id
+            })
+            // graph.setItemState(this.edge, 'selected', true);
+            this.edge = null
+            this.addingEdge = false
+          } else {
+            this.edge = graph.addItem('edge', {
+              source: model.id,
+              target: point
+            })
+            this.addingEdge = true
+          }
+        },
+        onMousemove(ev) {
+          const point = {
+            x: ev.x,
+            y: ev.y
+          }
+          if (this.addingEdge && this.edge) {
+            this.graph.updateItem(this.edge, {
+              target: point
+            })
+          }
+        },
+        onEdgeClick(ev) {
+          const currentEdge = ev.item
+          // 拖拽过程中，点击会点击到新增的边上
+          if (this.addingEdge && this.edge == currentEdge) {
+            graph.removeItem(this.edge)
+            this.edge = null
+            this.addingEdge = false
+          }
         }
       })
+
+      // Register a custom behavior to add node
+      G6.registerBehavior('click-add-node', {
+        getEvents() {
+          return {
+            'canvas:click': 'onClick'
+          }
+        },
+        onClick(ev) {
+          const graph = this.graph
+          const node = this.graph.addItem('node', {
+            x: ev.canvasX,
+            y: ev.canvasY,
+            id: `node-${addedCount}` // 生成唯一的 id
+          })
+          addedCount++
+        }
+      })
+
+      graph = new G6.Graph({
+        container: ReactDOM.findDOMNode(ref.current),
+        width: 500,
+        height: 500,
+        modes: {
+          default: ['drag-node', 'click-select'],
+          addNode: ['click-add-node', 'click-select'],
+          addEdge: ['click-add-edge', 'click-select']
+        },
+        // The node styles in different states
+        nodeStateStyles: {
+          // The node styles in selected state, corresponds to the built-in click-select behavior
+          selected: {
+            stroke: '#666',
+            lineWidth: 2,
+            fill: 'steelblue'
+          }
+        }
+      })
+
+      graph.data(data)
     }
-    graph.data(data)
     graph.render()
   }, [])
 
