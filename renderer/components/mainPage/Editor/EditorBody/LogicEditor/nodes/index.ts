@@ -1,4 +1,3 @@
-const deepMix = require('@antv/util/lib/deep-mix')
 import editorStyle from '../utils/style'
 
 const taskDefaultOptions = {
