@@ -43,7 +43,7 @@
     "css-loader": "^3.4.1",
     "dayjs": "^1.8.15",
     "electron-better-ipc": "^1.0.0",
-    "electron-context-menu": "^0.16.0",
+    "electron-context-menu": "^1.0.0",
     "electron-debug": "^3.0.0",
     "electron-dl": "^3.0.0",
     "electron-is-dev": "^1.1.0",
