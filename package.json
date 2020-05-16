@@ -68,7 +68,7 @@
     "react-live": "^2.2.2",
     "react-monaco-editor": "^0.36.0",
     "run-electron": "^1.0.0",
-    "rxdb": "^8.2.1",
+    "rxdb": "^9.0.0",
     "rxjs": "^6.5.4",
     "style-loader": "^0.23.1",
     "url-loader": "^4.0.0",
