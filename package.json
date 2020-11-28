@@ -40,7 +40,7 @@
     "antd": "^4.0.0",
     "beautiful-react-hooks": "^0.23.0",
     "classnames": "^2.2.6",
-    "css-loader": "^3.4.1",
+    "css-loader": "^5.0.0",
     "dayjs": "^1.8.15",
     "electron-better-ipc": "^1.0.0",
     "electron-context-menu": "^1.0.0",
