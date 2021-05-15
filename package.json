@@ -38,7 +38,7 @@
     "@zeit/next-less": "^1.0.1",
     "@zeit/next-typescript": "^1.1.1",
     "antd": "^4.0.0",
-    "beautiful-react-hooks": "^0.23.0",
+    "beautiful-react-hooks": "^0.35.0",
     "classnames": "^2.2.6",
     "css-loader": "^3.4.1",
     "dayjs": "^1.8.15",
